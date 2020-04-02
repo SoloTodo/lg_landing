@@ -15,7 +15,7 @@ import {
 export function initializeStore () {
     return createStore(
         combineReducers({
-            apiResourceObject: apiResourceObjectsReducer,
+            apiResourceObjects: apiResourceObjectsReducer,
             loadedResources: loadedResourcesReducer,
             loadedBundle: loadedBundleReducer,
             browser: createResponsiveStateReducer({
