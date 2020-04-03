@@ -13,12 +13,14 @@ class Home extends React.Component {
     }
 
     render() {
+        console.log(this.props.productEntries);
         return <div>Probando</div>;
     }
 }
 
 function mapStateToProps(state) {
     return {
+        productEntries: state.productEntries,
         stores: filterApiResourceObjectsByType(state.apiResourceObjects, 'stores'),
         categories: filterApiResourceObjectsByType(state.apiResourceObjects, 'categories')
     }
