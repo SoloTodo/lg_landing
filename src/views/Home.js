@@ -13,8 +13,9 @@ class Home extends React.Component {
     }
 
     render() {
-        console.log(this.props.productEntries);
-        return <div>Probando</div>;
+        return <div className="container">
+            Home
+        </div>;
     }
 }
 
