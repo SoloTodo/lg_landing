@@ -4,13 +4,15 @@ import { Provider } from 'react-redux';
 
 import Home from "./views/Home";
 
-import RequiredBundle from "./react-utils/components/RequiredBundle";
+import RequiredBundle from './react-utils/components/RequiredBundle';
 import { initializeStore } from './redux/store';
+import { loadRequiredProducts } from './redux/actions';
 
 class App extends React.Component{
   constructor(props) {
     super(props);
-    this.store = initializeStore()
+    this.store = initializeStore();
+    this.store.dispatch(loadRequiredProducts);
   }
 
   render() {

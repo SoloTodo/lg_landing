@@ -4,13 +4,17 @@ import thunkMiddleware from 'redux-thunk'
 import {
     createResponsiveStateReducer,
     responsiveStoreEnhancer
-} from "redux-responsive";
+} from 'redux-responsive';
 
 import {
     apiResourceObjectsReducer,
     loadedBundleReducer,
     loadedResourcesReducer
-} from "../react-utils/redux/reducers";
+} from '../react-utils/redux/reducers';
+
+import {
+    productEntriesReducer
+} from './reducers';
 
 export function initializeStore () {
     return createStore(
@@ -18,6 +22,7 @@ export function initializeStore () {
             apiResourceObjects: apiResourceObjectsReducer,
             loadedResources: loadedResourcesReducer,
             loadedBundle: loadedBundleReducer,
+            productEntries: productEntriesReducer,
             browser: createResponsiveStateReducer({
                 extraSmall: 575,
                 small: 767,
