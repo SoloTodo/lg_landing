@@ -1,1 +1,89 @@
+/* Header*/
+
+.header {
+  height: 86px;
+  background: black;
+}
+
+.header.sidebar {
+  background: #C00E40;
+  border-bottom: 1px #FFFFFF;
+}
+
+.header.sidebar .header-separator{
+  position: absolute;
+  top: 84px;
+  left: 18px;
+  right: 18px;
+  opacity: 0.3;
+  border: 1px solid #FFFF;
+
+}
+
+.bm-burger-button.visible {
+  display: block;
+  position: absolute;
+  background: transparent;
+  right: 18px;
+  top: 25px;
+  z-index: 9000;
+}
+
+.header-search-button {
+  position: absolute;
+  background: transparent;
+  right: 59px;
+  top: 25px;
+  z-index: 9000;
+}
+
+.header-button{
+  padding: 0 !important;
+}
+
+/* Sidebar */
+
+.bm-burger-button {
+  display: none;
+}
+
+.bm-cross-button {
+  display: none;
+}
+
+.bm-overlay{
+  top: 86px;
+  background: transparent !important;
+}
+
+.bm-menu-wrap {
+  width: 100% !important;
+  top: 86px;
+}
+
+.bm-menu {
+  background: #C00E40;
+}
+
+.menu-item {
+  padding-top: 30px;
+  padding-left: 27px;
+  padding-right: 20px;
+  text-decoration: none !important;
+  color: #FFFFFF;
+  font-size: 21px;
+  letter-spacing: 0.05em;
+}
+
+.menu-item:hover {
+  color: #FFFFFF;
+  text-decoration: none !important;
+}
+
+.menu-item:focus{
+  outline: none;
+}
+
+/* General Imports */
+
 @import "~bootstrap/scss/bootstrap";

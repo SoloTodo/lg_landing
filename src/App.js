@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import Home from "./views/Home";
-import Header from "./Components/Header";
 import Sidebar from "./Components/Sidebar";
 
 import RequiredBundle from './react-utils/components/RequiredBundle';
@@ -23,7 +22,6 @@ class App extends React.Component{
     return <Provider store={ this.store }>
       <RequiredBundle resources={['stores', 'categories', 'currencies', 'countries']} loading={ null }>
         <BrowserRouter>
-          <Header/>
           <Sidebar/>
           <Switch>
             <Route exact path="/">
