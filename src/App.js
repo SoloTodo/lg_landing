@@ -1,10 +1,9 @@
 import React from 'react';
 import './styles.scss';
 import { Provider } from 'react-redux';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 
-import Home from "./views/Home";
-import Sidebar from "./Components/Sidebar";
+import Layout from "./Layout/Layout";
 
 import RequiredBundle from './react-utils/components/RequiredBundle';
 import { initializeStore } from './redux/store';
@@ -22,15 +21,7 @@ class App extends React.Component{
     return <Provider store={ this.store }>
       <RequiredBundle resources={['stores', 'categories', 'currencies', 'countries']} loading={ null }>
         <BrowserRouter>
-          <Sidebar/>
-          <Switch>
-            <Route exact path="/">
-              <Home/>
-            </Route>
-            <Route exact path="/test">
-              <div>Ruta de prueba</div>
-            </Route>
-          </Switch>
+          <Layout/>
         </BrowserRouter>
       </RequiredBundle>
     </Provider>;
