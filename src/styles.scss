@@ -1,3 +1,11 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~slick-carousel/slick/slick";
+@import "~slick-carousel/slick/slick-theme";
+
+html {
+  background: #F8F8F8;
+}
+
 /* Header*/
 
 .header {
@@ -142,8 +150,121 @@
   background: #CB2853;
 }
 
-/* General Imports */
+/* Promo Slider */
 
-@import "~bootstrap/scss/bootstrap";
-@import "~slick-carousel/slick/slick";
-@import "~slick-carousel/slick/slick-theme";
+.content-title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.slider-buttons .slick-slide {
+  padding-top: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.slider-button {
+  color: white !important;
+  text-decoration: none !important;
+  height: 37px;
+  border-radius: 18px;
+  background: #CECECE;
+  border: none;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.slider-button.selected {
+  background: #CB2853;
+}
+
+/* Filter Buttons */
+
+.filter-button {
+  background: white;
+  color: black;
+  height: 40px;
+  font-size: 14px;
+  font-weight: bold;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
+  margin-bottom: 30px;
+}
+
+.order-button {
+  background: white;
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  border: 0;
+  border-left: 1px;
+  border-left-color: #CECECE;
+  border-radius: 10px;
+  box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
+  margin-bottom: 30px;
+}
+
+/* Product Cards */
+
+.product-card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
+  margin-bottom: 20px;
+}
+
+.product-card-category {
+  width: 80px;
+  height: 24px;
+  background: #FFB5BE;
+  border-radius: 18px;
+  font-size: 15px;
+  font-style: italic;
+  line-height: 17px;
+  color: white;
+}
+
+.product-card-sku {
+  font-size: 13px;
+  line-height: 15px;
+  font-style: italic;
+}
+
+.product-card-sku span {
+  font-weight: bold;
+}
+
+.product-card-name h2 {
+  padding-top: 20px;
+  font-size:28px;
+  line-height: 32px;
+  font-weight: bold;
+  color: #CB2853;
+}
+
+.product-card-image {
+  height: 204px;
+}
+
+.product-card-price .price-text {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.product-card-price .price {
+  font-size: 30px;
+  font-weight: bold;
+  color: #BF0C3F;
+}
+
+.product-card-price .old-price {
+  font-size: 14px;
+  font-style: italic;
+  color: #737373;
+}
+
+.product-card-price .old-price span{
+  font-weight: bold;
+  text-decoration: line-through;
+}

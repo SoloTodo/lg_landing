@@ -24,4 +24,3 @@ class Sidebar extends React.Component{
 }
 
 export default withRouter(Sidebar)
-
