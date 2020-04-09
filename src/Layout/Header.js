@@ -1,32 +1,20 @@
 import React from 'react';
 import { Button } from 'reactstrap'
-import { withRouter } from 'react-router-dom';
 
+import Logo from '../logo.png'
 import { SbSvg, CloseSvg, SearchSvg, SearchWhiteSvg } from '../Icons';
-import cyberPng from '../cyber.png'
 
 
 class Header extends React.Component{
     render() {
         const Icon = this.props.isOpen? CloseSvg : SbSvg;
         const SearchIcon = this.props.isOpen? SearchWhiteSvg: SearchSvg;
-        const small_header = ['/search', '/free_delivery'];
-
-        let header_class = "big-header";
-        
-        for (const location of small_header) {
-            if (location === this.props.location.pathname) {
-                header_class = 'header';
-            }
-        }
-
-        if (this.props.isOpen) {
-            header_class = "header sidebar"
-        }
+        const header_class = this.props.isOpen? "header sidebar" : "header";
 
         return <div className={header_class}>
-            {this.props.isOpen? null: <img alt="header background" src={cyberPng}/>}
-
+            <div className="header-logo">
+                <img alt= "LG Logo" src={Logo}/>
+            </div>
             <div className="header-search-button">
                 <Button className="header-button" color="link">
                     <SearchIcon/>
@@ -42,4 +30,4 @@ class Header extends React.Component{
     }
 }
 
-export default withRouter(Header)
+export default Header

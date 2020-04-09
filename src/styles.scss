@@ -2,8 +2,8 @@
 @import "~slick-carousel/slick/slick";
 @import "~slick-carousel/slick/slick-theme";
 
-html {
-  background: #F8F8F8;
+body {
+  background: url("bg-landing-lg.gif");
 }
 
 /* Header*/
@@ -12,25 +12,10 @@ html {
   height: 86px;
 }
 
-.big-header {
-  height: 257px;
-}
-
-.header img {
-  width: 100%;
-  clip-path: polygon(0 0, 0 99px, 100% 86px, 100% 0);
-}
-
-.big-header img {
-  width: 100%;
-  clip-path: polygon(0 0, 0 270px, 100% 257px, 100% 0);
-  z-index: 8997;
-}
-
 .header.sidebar {
   background: #C00E40;
   border-bottom: 1px #FFFFFF;
-  z-index: 8999;
+  z-index: 8000;
 }
 
 .header.sidebar .header-separator{
@@ -41,6 +26,11 @@ html {
   opacity: 0.3;
   border: 1px solid #FFFF;
 
+}
+
+.header-logo {
+  margin-left: 20px;
+  padding-top: 24px;
 }
 
 .bm-burger-button.visible {
@@ -77,6 +67,7 @@ html {
 .bm-overlay{
   top: 86px;
   background: transparent !important;
+  z-index: 8000;
 }
 
 .bm-menu-wrap {
@@ -114,7 +105,7 @@ html {
 /* Slider / Carrousel */
 
 .slider-limits {
-  height: 240px;
+  height: 184px;
 }
 
 .slider-container {
@@ -123,6 +114,7 @@ html {
   right: 0;
   height: 345px;
   top: 103px;
+  z-index: 1000;
 }
 
 .slick-slide {
@@ -134,7 +126,7 @@ html {
   background: linear-gradient(180deg, #7F6AED 0%, #C02A4F 100%);
   border-radius: 10px;
   height: 345px;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
 .custom-dot {
@@ -148,6 +140,14 @@ html {
 
 .slick-active .custom-dot {
   background: #CB2853;
+}
+
+/* Content */
+
+.content-container {
+  background: #F8F8F8;
+  padding-top: 220px;
+  clip-path: polygon(0 13px, 0 100%, 100% 100%, 100% 0);
 }
 
 /* Promo Slider */

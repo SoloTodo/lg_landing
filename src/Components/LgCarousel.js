@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 
-class LgSlider extends React.Component {
+class LgCarousel extends React.Component {
     constructor(props) {
         super(props);
 
@@ -16,7 +16,7 @@ class LgSlider extends React.Component {
             slidesToShow: 1,
             slidesToScroll: 1,
             customPaging: i => {
-                return <div className="custom-dot"></div>
+                return <div className="custom-dot"/>
             }
         };
 
@@ -35,4 +35,4 @@ class LgSlider extends React.Component {
     }
 }
 
-export default LgSlider;
+export default LgCarousel;
