@@ -3,6 +3,7 @@ import {Route, Switch} from 'react-router-dom'
 
 import Sidebar from "./Sidebar";
 import Header from './Header'
+import Footer from "./Footer";
 import routes from "./routes";
 
 
@@ -34,6 +35,7 @@ class Layout extends React.Component{
                         name={route.name}
                         render={route.render}/>})}
             </Switch>
+            <Footer/>
         </React.Fragment>
     }
 }

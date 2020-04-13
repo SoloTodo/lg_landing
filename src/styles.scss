@@ -54,6 +54,27 @@ body {
   padding: 0 !important;
 }
 
+/* Footer */
+
+.footer{
+  position: absolute;
+  height: 122px;
+  width: 100%;
+  margin-top: -122px;
+  background: black;
+  clip-path: polygon(0 13px, 0 100%, 100% 100%, 100% 0);
+}
+
+.footer-logo {
+  padding-top: 33px;
+}
+
+.footer-text {
+  color: white;
+  font-size: 14px;
+  padding-top: 10px;
+}
+
 /* Layout */
 
 .bm-burger-button {
@@ -66,7 +87,6 @@ body {
 
 .bm-overlay{
   top: 86px;
-  background: transparent !important;
   z-index: 8000;
 }
 
@@ -147,15 +167,16 @@ body {
 .content-container {
   background: #F8F8F8;
   padding-top: 220px;
+  padding-bottom: 122px;
   clip-path: polygon(0 13px, 0 100%, 100% 100%, 100% 0);
 }
-
-/* Promo Slider */
 
 .content-title {
   font-size: 22px;
   font-weight: bold;
 }
+
+/* Promo Slider */
 
 .slider-buttons .slick-slide {
   padding-top: 30px;
@@ -267,4 +288,26 @@ body {
 .product-card-price .old-price span{
   font-weight: bold;
   text-decoration: line-through;
+}
+
+.card-button {
+  height: 41px;
+
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 21px;
+  border-radius: 30px;
+}
+
+.card-button.product {
+  color: black;
+  background: white;
+  margin-bottom: 20px;
+  border: 2px solid #000000;
+}
+
+.card-button.want {
+  background: #CB2853;
+  margin-bottom: 10px;
+  border: none;
 }

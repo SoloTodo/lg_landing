@@ -43,6 +43,10 @@ class Category extends React.Component {
                                 <div className="d-flex justify-content-center price">$309.000</div>
                                 <div className="d-flex justify-content-center old-price">Precio normal: <span>$371.990</span></div>
                             </div>
+                            <div className="d-flex flex-column pt-4">
+                                <Button className="card-button product">Ver producto</Button>
+                                <Button className="card-button want">Lo quiero</Button>
+                            </div>
                         </CardBody>
                     </Card>
                     <Card className="product-card">
@@ -61,6 +65,10 @@ class Category extends React.Component {
                                 <div className="d-flex justify-content-center price-text">Precio desde:</div>
                                 <div className="d-flex justify-content-center price">$309.000</div>
                                 <div className="d-flex justify-content-center old-price">Precio normal: <span>$371.990</span></div>
+                            </div>
+                            <div className="d-flex flex-column pt-4">
+                                <Button className="card-button product">Ver producto</Button>
+                                <Button className="card-button want">Lo quiero</Button>
                             </div>
                         </CardBody>
                     </Card>
