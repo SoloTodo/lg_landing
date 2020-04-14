@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container, ButtonGroup, Button, Card, CardBody} from 'reactstrap';
+import { Container, ButtonGroup, Button, Card, CardBody, Modal, ModalBody } from 'reactstrap';
 
 import {
     filterApiResourceObjectsByType
@@ -13,45 +13,79 @@ import LgCategoryButtons from "../Components/LgCategoryButtons";
 class Category extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            filterModalOpen: false
+        }
+    }
+
+    toggleFilterModalOpen= () => {
+        this.setState({
+            filterModalOpen: !this.state.filterModalOpen
+        })
     }
 
     render() {
+        if (!this.props.productEntries) {
+            return null
+        }
+        const productList = this.props.productEntries.filter(productEntry => {
+            return productEntry.customFields.pageCategories.includes(this.props.name)
+        })
+
+        const showFilters = this.props.name !== "Home"
+
         return <React.Fragment>
             <LgCarousel/>
             <div className="content-container">
                 <Container fluid>
                     <div className="d-flex justify-content-center content-title pt-3">PRODUCTOS</div>
                     <LgCategoryButtons/>
-                    <ButtonGroup className="d-flex justify-content-center pt-4">
-                        <Button className="filter-button">FILTRAR POR</Button>
-                        <Button className="order-button">ORDENAR POR</Button>
-                    </ButtonGroup>
-                    {this.props.productEntries.map(productEntry => {
+                    {showFilters ?
+                        <ButtonGroup
+                            className="d-flex justify-content-center">
+                            <Button className="filter-button"
+                                    onClick={this.toggleFilterModalOpen}>FILTRAR
+                                POR</Button>
+                            <Button className="order-button">ORDENAR
+                                POR</Button>
+                        </ButtonGroup> : null
+                    }
+                    {productList.map(productEntry => {
                         let entity = productEntry.entities[0]
-
                         for (const e of productEntry.entities){
                             if (e.active_registry.offer_price < entity.active_registry.offer_price) {
                                 entity = e
                             }
                         }
 
-                        return <Card key={productEntry.product.id} className="product-card">
+                        const activeRegistry = entity.active_registry;
+                        const showOldPrice = activeRegistry.offer_price !== activeRegistry.normal_price
+
+                        console.log(productEntry);
+                        const product = productEntry.product;
+                        const lgData = productEntry.customFields;
+
+                        return <Card key={product.id} className="product-card">
                             <CardBody>
                                 <div className="d-flex justify-content-between">
-                                    <div className="d-flex product-card-category justify-content-center align-items-center">Celulares</div>
-                                    <div className="d-flex product-card-sku align-items-center"><span>SKU:</span>LMG810EA</div>
+                                    <div className="d-flex product-card-category justify-content-center align-items-center">{lgData.showCategory}</div>
+                                    <div className="d-flex product-card-sku align-items-center"><span>SKU:</span>{lgData.lgSku}</div>
                                 </div>
                                 <div className="d-flex product-card-name justify-content-center align-items-center">
-                                    <h2>{productEntry.product.name}</h2>
+                                    <h2>{lgData.customTitle}</h2>
                                 </div>
                                 <div className="d-flex product-card-image justify-content-center align-items-center">
-                                    <img alt={productEntry.product.name} src={productEntry.product.picture_url}/>
+                                    <img alt={product.name} src={product.picture_url}/>
                                 </div>
                                 <div className="product-card-price">
                                     <div className="d-flex justify-content-center price-text">Precio desde:</div>
                                     <div className="d-flex justify-content-center price">{this.props.formatCurrency(entity.active_registry.offer_price)}</div>
-                                    <div className="d-flex justify-content-center old-price">Precio normal: <span>{this.props.formatCurrency(entity.active_registry.normal_price)}</span></div>
+                                    {showOldPrice?
+                                        <div className="d-flex justify-content-center old-price">
+                                            Precio normal: <span>{this.props.formatCurrency(entity.active_registry.normal_price)}</span>
+                                        </div>:
+                                        null
+                                    }
                                 </div>
                                 <div className="d-flex flex-column pt-4">
                                     <Button className="card-button product">Ver producto</Button>
@@ -62,6 +96,11 @@ class Category extends React.Component {
                     })}
                 </Container>
             </div>
+            <Modal centered isOpen={this.state.filterModalOpen} toggle={this.toggleFilterModalOpen}>
+                <ModalBody>
+                    Modal de Filtros
+                </ModalBody>
+            </Modal>
         </React.Fragment>
     }
 }
