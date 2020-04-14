@@ -7,7 +7,6 @@ import Footer from "./Footer";
 import routes from "./routes";
 
 
-
 class Layout extends React.Component{
     constructor(props) {
         super(props);
