@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container, ButtonGroup, Button, Card, CardBody, Modal, ModalBody } from 'reactstrap';
+import { Container, ButtonGroup, Button, Card, CardBody } from 'reactstrap';
 
 import {
     filterApiResourceObjectsByType
@@ -8,20 +8,38 @@ import {
 import {lgStateToPropsUtils} from "../utils";
 import LgCarousel from "../Components/LgCarousel";
 import LgCategoryButtons from "../Components/LgCategoryButtons";
+import FiltersModal from "../Components/FiltersModal";
+import ProductDetailModal from "../Components/ProductDetailModal";
 
 
 class Category extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            filterModalOpen: false
+            filterModalOpen: false,
+            productModalOpen: false,
+            modalProductEntry: null,
         }
     }
 
-    toggleFilterModalOpen= () => {
+    toggleFilterModalOpen = () => {
         this.setState({
             filterModalOpen: !this.state.filterModalOpen
         })
+    }
+
+    toggleProductModalOpen = (productEntry) => {
+        if (this.state.productModalOpen) {
+            this.setState({
+                productModalOpen: false,
+                modalProductEntry: null
+            })
+        } else {
+            this.setState({
+                productModalOpen: true,
+                modalProductEntry: productEntry
+            })
+        }
     }
 
     render() {
@@ -61,7 +79,6 @@ class Category extends React.Component {
                         const activeRegistry = entity.active_registry;
                         const showOldPrice = activeRegistry.offer_price !== activeRegistry.normal_price
 
-                        console.log(productEntry);
                         const product = productEntry.product;
                         const lgData = productEntry.customFields;
 
@@ -88,7 +105,7 @@ class Category extends React.Component {
                                     }
                                 </div>
                                 <div className="d-flex flex-column pt-4">
-                                    <Button className="card-button product">Ver producto</Button>
+                                    <Button className="card-button product" onClick={() => this.toggleProductModalOpen(productEntry)}>Ver producto</Button>
                                     <Button className="card-button want">Lo quiero</Button>
                                 </div>
                             </CardBody>
@@ -96,11 +113,8 @@ class Category extends React.Component {
                     })}
                 </Container>
             </div>
-            <Modal centered isOpen={this.state.filterModalOpen} toggle={this.toggleFilterModalOpen}>
-                <ModalBody>
-                    Modal de Filtros
-                </ModalBody>
-            </Modal>
+            <FiltersModal isOpen={this.state.filterModalOpen} toggle={this.toggleFilterModalOpen}/>
+            <ProductDetailModal isOpen={this.state.productModalOpen} toggle={() => this.toggleProductModalOpen(null)} productEntry={this.state.modalProductEntry}/>
         </React.Fragment>
     }
 }
