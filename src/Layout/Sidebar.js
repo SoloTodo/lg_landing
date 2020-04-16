@@ -3,7 +3,7 @@ import { slide as Menu } from 'react-burger-menu'
 import { Link, withRouter } from 'react-router-dom';
 
 import navigation from './_nav'
-import { ArrowSvg } from '../Icons';
+import { ArrowWhiteSvg } from '../Icons';
 
 
 class Sidebar extends React.Component{
@@ -15,7 +15,7 @@ class Sidebar extends React.Component{
                     const selected_class = item.url === pathname? "menu-item-selected": "";
                     return <Link to={item.url} key={item.url} className="menu-item d-flex justify-content-between" onClick={this.props.toggleSidebarOpen}>
                         <span className={selected_class}>{item.name}</span>
-                        <span><ArrowSvg/></span>
+                        <span><ArrowWhiteSvg/></span>
                     </Link>
                 })
             }

@@ -19,6 +19,7 @@ class Category extends React.Component {
             filterModalOpen: false,
             productModalOpen: false,
             modalProductEntry: null,
+            appliedFilters: {}
         }
     }
 
@@ -40,6 +41,12 @@ class Category extends React.Component {
                 modalProductEntry: productEntry
             })
         }
+    }
+
+    addFilter = (filter) => {
+        this.setState({
+            appliedFilters: [...this.state.appliedFilters, filter]
+        })
     }
 
     render() {
@@ -113,7 +120,7 @@ class Category extends React.Component {
                     })}
                 </Container>
             </div>
-            <FiltersModal isOpen={this.state.filterModalOpen} toggle={this.toggleFilterModalOpen}/>
+            <FiltersModal isOpen={this.state.filterModalOpen} toggle={this.toggleFilterModalOpen} categoryName={this.props.name}/>
             <ProductDetailModal isOpen={this.state.productModalOpen} toggle={() => this.toggleProductModalOpen(null)} productEntry={this.state.modalProductEntry}/>
         </React.Fragment>
     }

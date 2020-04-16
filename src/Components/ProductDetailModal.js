@@ -1,6 +1,8 @@
 import React from 'react'
 import {Modal, ModalBody, ModalHeader, Button} from "reactstrap";
 
+import { CloseModalSvg, ArrowSvg } from "../Icons";
+
 
 class ProductDetailModal extends React.Component {
     render() {
@@ -15,7 +17,10 @@ class ProductDetailModal extends React.Component {
 
         return <Modal centered isOpen={this.props.isOpen} toggle={this.props.toggle}>
             <ModalHeader className="d-flex align-items-center product-modal-header">
-                Estás viendo
+                <div className="d-flex align-items-center justify-content-between">
+                    <span>Estás viendo</span>
+                    <span onClick={this.props.toggle}><CloseModalSvg/></span>
+                </div>
             </ModalHeader>
             <ModalBody className="product-modal">
                 <div className="d-flex align-content-between">
@@ -33,8 +38,14 @@ class ProductDetailModal extends React.Component {
                 <div className="d-flex product-modal-subtitle justify-content-center">COMPRALO DESDE</div>
                 <div>
                     {entities.map(entity => {
-                        return <div className="d-flex align-items-center product-modal-retailer">
-                            <span>{entity.active_registry.offer_price}</span>
+                        console.log(entity)
+                        return <div>
+                            <a href={entity.external_url} className="d-flex align-items-center justify-content-between product-modal-retailer">
+                                <div>
+                                    <span>{entity.active_registry.offer_price}</span>
+                                </div>
+                                <span><ArrowSvg/></span>
+                            </a>
                         </div>
                     })}
                 </div>
