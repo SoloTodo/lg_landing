@@ -10,6 +10,7 @@ import LgCarousel from "../Components/LgCarousel";
 import LgCategoryButtons from "../Components/LgCategoryButtons";
 import FiltersModal from "../Components/FiltersModal";
 import ProductDetailModal from "../Components/ProductDetailModal";
+import {settings} from "../settings";
 
 
 class Category extends React.Component {
@@ -19,7 +20,7 @@ class Category extends React.Component {
             filterModalOpen: false,
             productModalOpen: false,
             modalProductEntry: null,
-            appliedFilters: {}
+            appliedFilters: []
         }
     }
 
@@ -43,9 +44,19 @@ class Category extends React.Component {
         }
     }
 
-    addFilter = (filter) => {
+    addFilter = (filter_add) => {
         this.setState({
-            appliedFilters: [...this.state.appliedFilters, filter]
+            appliedFilters: [...this.state.appliedFilters, filter_add]
+        })
+    }
+
+    removeFilter = (filter_remove) => {
+        const new_filters = this.state.appliedFilters.filter(filter_compare => {
+            return filter_remove.option !== filter_compare.option;
+        })
+
+        this.setState({
+            appliedFilters: new_filters
         })
     }
 
@@ -57,7 +68,7 @@ class Category extends React.Component {
             return productEntry.customFields.pageCategories.includes(this.props.name)
         })
 
-        const showFilters = this.props.name !== "Home"
+        const filters = settings.categoryFilters[this.props.name];
 
         return <React.Fragment>
             <LgCarousel/>
@@ -65,7 +76,7 @@ class Category extends React.Component {
                 <Container fluid>
                     <div className="d-flex justify-content-center content-title pt-3">PRODUCTOS</div>
                     <LgCategoryButtons/>
-                    {showFilters ?
+                    {filters?
                         <ButtonGroup
                             className="d-flex justify-content-center">
                             <Button className="filter-button"
@@ -120,7 +131,15 @@ class Category extends React.Component {
                     })}
                 </Container>
             </div>
-            <FiltersModal isOpen={this.state.filterModalOpen} toggle={this.toggleFilterModalOpen} categoryName={this.props.name}/>
+            {filters?
+                <FiltersModal
+                    isOpen={this.state.filterModalOpen}
+                    toggle={this.toggleFilterModalOpen}
+                    filters={filters}
+                    appliedFilters = {this.state.appliedFilters}
+                    addFilter={this.addFilter}
+                    removeFilter={this.removeFilter}/>
+                    : null }
             <ProductDetailModal isOpen={this.state.productModalOpen} toggle={() => this.toggleProductModalOpen(null)} productEntry={this.state.modalProductEntry}/>
         </React.Fragment>
     }

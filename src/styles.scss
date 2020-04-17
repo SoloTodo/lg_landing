@@ -211,6 +211,12 @@ body {
   margin-bottom: 30px;
 }
 
+.filter-button:focus {
+  box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
+  color:black;
+  background-color: white;
+}
+
 .order-button {
   background: white;
   color: black;
@@ -222,6 +228,12 @@ body {
   border-radius: 10px;
   box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
   margin-bottom: 30px;
+}
+
+.order-button:focus {
+  box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
+  color:black;
+  background-color: white;
 }
 
 /* Product Cards */
@@ -350,8 +362,7 @@ body {
 
 .product-modal-text {
   width: 70%;
-  padding: 10px;
-  padding-left: 30px;
+  padding: 10px 10px 10px 30px;
 }
 
 .product-modal-sku {
@@ -420,3 +431,60 @@ body {
 }
 
 /* Filter modal */
+
+.filter-modal .modal-content{
+  border: none;
+  border-radius: 10px;
+}
+
+.filter-modal .modal-body {
+  padding-top: 0;
+}
+
+.filter-modal-header {
+
+  color: #BF0C3F;
+  border: none
+}
+
+.filter-modal-header h5 {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.filter-name {
+  font-size: 12px;
+}
+
+.filter-modal-button {
+  width: 30%;
+  height: 35px;
+  font-size: 12px;
+  border: 1px solid #B4BDC3;
+  border-radius: 20px;
+  background: white;
+  color: #737373;
+  box-shadow: none;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.filter-modal-button:focus{
+  border: 1px solid #B4BDC3;
+  color: #737373;
+  background-color: white;
+  box-shadow: none;
+}
+
+.filter-modal-button.selected {
+  border: 1px solid #BF0C3F;
+  color:black;
+}
+
+.filter-modal-button.selected:focus{
+  color: black;
+  background-color: white;
+  box-shadow: none;
+}
