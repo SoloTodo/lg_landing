@@ -9,17 +9,28 @@ export const settings = {
             {
                 name: "Serie",
                 options: ["Serie K", "Serie G"],
-                source: "customFields"
+                type: "exact",
+                source: "customFields",
+                source_key: "serie"
             },
             {
                 name: "Tipo de pantalla",
                 options: ["HD", "Full HD"],
-                source: "customFields"
+                type: "exact",
+                source: "customFields",
+                source_key: "screen_type"
             },
             {
                 name: "Batería",
                 options: ["3000 MAH", "3500 MAH", "4000 MAH"],
-                source: "specs"
+                type: "range",
+                range_data: {
+                    "3000 MAH": [3000, 3499],
+                    "3500 MAH": [3500, 3999],
+                    "4000 MAH": [4000, 99999]
+                },
+                source: "specs",
+                source_key: "battery_mah"
             }
         ]
     }

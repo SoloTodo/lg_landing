@@ -20,8 +20,21 @@ class Category extends React.Component {
             filterModalOpen: false,
             productModalOpen: false,
             modalProductEntry: null,
-            appliedFilters: []
+            appliedFilters: {}
         }
+    }
+
+    componentDidMount() {
+        const filters = settings.categoryFilters[this.props.name];
+        const appliedFilters = {}
+
+        if (filters) {
+            for (const filter of filters) {
+                appliedFilters[filter.name] = []
+            }
+        }
+
+        this.setState({appliedFilters})
     }
 
     toggleFilterModalOpen = () => {
@@ -44,14 +57,19 @@ class Category extends React.Component {
         }
     }
 
-    addFilter = (filter_add) => {
+    addFilter = (filter_name, filter_add) => {
+        const new_filters = this.state.appliedFilters;
+        new_filters[filter_name] = [...new_filters[filter_name], filter_add];
+
         this.setState({
-            appliedFilters: [...this.state.appliedFilters, filter_add]
+            appliedFilters: new_filters
         })
     }
 
-    removeFilter = (filter_remove) => {
-        const new_filters = this.state.appliedFilters.filter(filter_compare => {
+    removeFilter = (filter_name, filter_remove) => {
+        const new_filters = this.state.appliedFilters;
+
+        new_filters[filter_name] = new_filters[filter_name].filter(filter_compare => {
             return filter_remove.option !== filter_compare.option;
         })
 
@@ -68,7 +86,38 @@ class Category extends React.Component {
             return productEntry.customFields.pageCategories.includes(this.props.name)
         })
 
+        let filteredProducts = productList;
         const filters = settings.categoryFilters[this.props.name];
+        const appliedFilters = this.state.appliedFilters;
+
+        for (const filterKey in appliedFilters) {
+            const filterData = filters.filter(filterData => filterData.name === filterKey)[0];
+            const filterList = appliedFilters[filterKey];
+            if (filterList.length) {
+                filteredProducts = filteredProducts.filter(productEntry => {
+                    let result = false;
+                    for (const appliedFilter of filterList){
+                        let productValue = null;
+                        if (filterData.source === "specs") {
+                             productValue = productEntry.product.specs[filterData.source_key];
+                        } else {
+                            productValue = productEntry.customFields["filters"][filterData.source_key];
+                        }
+
+                        if (filterData.type === "exact") {
+                            result = productValue === appliedFilter.option;
+                        } else if (filterData.type === "range") {
+                            const range = filterData.range_data[appliedFilter.option];
+                            result = productValue >= range[0] && productValue <= range[1];
+                        }
+                        if (result) {
+                            return true;
+                        }
+                    }
+                    return false;
+                })
+            }
+        }
 
         return <React.Fragment>
             <LgCarousel/>
@@ -86,8 +135,8 @@ class Category extends React.Component {
                                 POR</Button>
                         </ButtonGroup> : null
                     }
-                    {productList.map(productEntry => {
-                        let entity = productEntry.entities[0]
+                    {filteredProducts.map(productEntry => {
+                        let entity = productEntry.entities[0];
                         for (const e of productEntry.entities){
                             if (e.active_registry.offer_price < entity.active_registry.offer_price) {
                                 entity = e
