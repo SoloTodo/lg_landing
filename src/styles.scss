@@ -15,7 +15,7 @@ body {
 .header.sidebar {
   background: #C00E40;
   border-bottom: 1px #FFFFFF;
-  z-index: 8000;
+  z-index: 1010;
 }
 
 .header.sidebar .header-separator{
@@ -34,20 +34,37 @@ body {
 }
 
 .bm-burger-button.visible {
-  display: block;
+  display: flex;
   position: absolute;
   background: transparent;
+  height: 38px;
   right: 18px;
   top: 25px;
-  z-index: 9000;
+  z-index: 1010;
 }
 
 .header-search-button {
+  display: flex;
   position: absolute;
   background: transparent;
+  height: 38px;
   right: 59px;
   top: 25px;
-  z-index: 9000;
+  z-index: 1010;
+}
+
+.header-search-input {
+  border: none;
+  border-radius: 30px 0 0 30px;
+  margin-left: 130px;
+}
+
+.header-button-input {
+  background: white;
+  height: 38px;
+
+  border-radius: 0 30px 30px 0;
+  padding: 0;
 }
 
 .header-button{
@@ -87,7 +104,7 @@ body {
 
 .bm-overlay{
   top: 86px;
-  z-index: 8000;
+  z-index: 1010;
 }
 
 .bm-menu-wrap {
@@ -169,6 +186,10 @@ body {
   padding-top: 220px;
   padding-bottom: 122px;
   clip-path: polygon(0 13px, 0 100%, 100% 100%, 100% 0);
+}
+
+.content-container.search {
+  padding-top: 40px;
 }
 
 .content-title {

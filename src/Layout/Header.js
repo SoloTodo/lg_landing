@@ -3,6 +3,7 @@ import { Button } from 'reactstrap'
 
 import Logo from '../logo.png'
 import { SbSvg, CloseSvg, SearchSvg, SearchWhiteSvg } from '../Icons';
+import SearchButton from "../Components/SearchButton";
 
 
 class Header extends React.Component{
@@ -15,15 +16,13 @@ class Header extends React.Component{
             <div className="header-logo">
                 <img alt= "LG Logo" src={Logo}/>
             </div>
-            <div className="header-search-button">
-                <Button className="header-button" color="link">
-                    <SearchIcon/>
-                </Button>
-            </div>
+            <div className="d-flex align-items-center">
+            <SearchButton icon={SearchIcon}/>
             <div className="bm-burger-button visible">
                 <Button className="header-button" color="link" onClick={this.props.toggleSidebarOpen}>
                     <Icon/>
                 </Button>
+            </div>
             </div>
             <div className="header-separator"/>
         </div>

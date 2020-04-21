@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container, ButtonGroup, Button, Card, CardBody } from 'reactstrap';
+import { Container, ButtonGroup, Button } from 'reactstrap';
 
 import {
     filterApiResourceObjectsByType
@@ -9,8 +9,8 @@ import {lgStateToPropsUtils} from "../utils";
 import LgCarousel from "../Components/LgCarousel";
 import LgCategoryButtons from "../Components/LgCategoryButtons";
 import FiltersModal from "../Components/FiltersModal";
-import ProductDetailModal from "../Components/ProductDetailModal";
 import {settings} from "../settings";
+import ProductList from "../Components/ProductList";
 
 
 class Category extends React.Component {
@@ -18,8 +18,6 @@ class Category extends React.Component {
         super(props);
         this.state = {
             filterModalOpen: false,
-            productModalOpen: false,
-            modalProductEntry: null,
             appliedFilters: {}
         }
     }
@@ -41,20 +39,6 @@ class Category extends React.Component {
         this.setState({
             filterModalOpen: !this.state.filterModalOpen
         })
-    }
-
-    toggleProductModalOpen = (productEntry) => {
-        if (this.state.productModalOpen) {
-            this.setState({
-                productModalOpen: false,
-                modalProductEntry: null
-            })
-        } else {
-            this.setState({
-                productModalOpen: true,
-                modalProductEntry: productEntry
-            })
-        }
     }
 
     addFilter = (filter_name, filter_add) => {
@@ -82,11 +66,11 @@ class Category extends React.Component {
         if (!this.props.productEntries) {
             return null
         }
-        const productList = this.props.productEntries.filter(productEntry => {
-            return productEntry.customFields.pageCategories.includes(this.props.name)
-        })
 
-        let filteredProducts = productList;
+        let filteredProducts = this.props.productEntries.filter(productEntry => {
+            return productEntry.customFields.pageCategories.includes(this.props.name)
+        });
+
         const filters = settings.categoryFilters[this.props.name];
         const appliedFilters = this.state.appliedFilters;
 
@@ -135,49 +119,7 @@ class Category extends React.Component {
                                 POR</Button>
                         </ButtonGroup> : null
                     }
-                    {filteredProducts.map(productEntry => {
-                        let entity = productEntry.entities[0];
-                        for (const e of productEntry.entities){
-                            if (e.active_registry.offer_price < entity.active_registry.offer_price) {
-                                entity = e
-                            }
-                        }
-
-                        const activeRegistry = entity.active_registry;
-                        const showOldPrice = activeRegistry.offer_price !== activeRegistry.normal_price
-
-                        const product = productEntry.product;
-                        const lgData = productEntry.customFields;
-
-                        return <Card key={product.id} className="product-card">
-                            <CardBody>
-                                <div className="d-flex justify-content-between">
-                                    <div className="d-flex product-card-category justify-content-center align-items-center">{lgData.showCategory}</div>
-                                    <div className="d-flex product-card-sku align-items-center"><span>SKU:</span>{lgData.lgSku}</div>
-                                </div>
-                                <div className="d-flex product-card-name justify-content-center align-items-center">
-                                    <h2>{lgData.customTitle}</h2>
-                                </div>
-                                <div className="d-flex product-card-image justify-content-center align-items-center">
-                                    <img alt={product.name} src={product.picture_url}/>
-                                </div>
-                                <div className="product-card-price">
-                                    <div className="d-flex justify-content-center price-text">Precio desde:</div>
-                                    <div className="d-flex justify-content-center price">{this.props.formatCurrency(entity.active_registry.offer_price)}</div>
-                                    {showOldPrice?
-                                        <div className="d-flex justify-content-center old-price">
-                                            Precio normal: <span>{this.props.formatCurrency(entity.active_registry.normal_price)}</span>
-                                        </div>:
-                                        null
-                                    }
-                                </div>
-                                <div className="d-flex flex-column pt-4">
-                                    <Button className="card-button product" onClick={() => this.toggleProductModalOpen(productEntry)}>Ver producto</Button>
-                                    <Button className="card-button want">Lo quiero</Button>
-                                </div>
-                            </CardBody>
-                        </Card>
-                    })}
+                    <ProductList productList={filteredProducts}/>
                 </Container>
             </div>
             {filters?
@@ -189,7 +131,6 @@ class Category extends React.Component {
                     addFilter={this.addFilter}
                     removeFilter={this.removeFilter}/>
                     : null }
-            <ProductDetailModal isOpen={this.state.productModalOpen} toggle={() => this.toggleProductModalOpen(null)} productEntry={this.state.modalProductEntry}/>
         </React.Fragment>
     }
 }
