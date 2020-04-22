@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Container } from 'reactstrap';
+import {withRouter} from 'react-router-dom';
+import {parse} from 'query-string';
 
 import ProductList from "../Components/ProductList";
 
@@ -10,6 +12,10 @@ class Search extends React.Component {
         if (!this.props.productEntries) {
             return null
         }
+        const queryParams = this.props.location.search;
+        const keyword = parse(queryParams)['keyword'];
+        console.log(keyword);
+
         const productList = this.props.productEntries;
 
         return <React.Fragment>
@@ -29,4 +35,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Search);
+export default withRouter(connect(mapStateToProps)(Search));

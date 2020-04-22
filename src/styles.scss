@@ -51,6 +51,24 @@ body {
   right: 59px;
   top: 25px;
   z-index: 1010;
+  width: 33px;
+  transition: width 1s;
+}
+
+.header-search-button.active {
+  display: flex;
+  position: absolute;
+  background: transparent;
+  height: 38px;
+  right: 59px;
+  top: 25px;
+  z-index: 1010;
+  width: 80%;
+  transition: width 1s;
+}
+
+.header-search-button:focus-within {
+  width: 80%;
 }
 
 .header-search-input {
@@ -62,7 +80,6 @@ body {
 .header-button-input {
   background: white;
   height: 38px;
-
   border-radius: 0 30px 30px 0;
   padding: 0;
 }
