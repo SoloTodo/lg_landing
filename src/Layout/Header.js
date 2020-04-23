@@ -17,12 +17,12 @@ class Header extends React.Component{
                 <img alt= "LG Logo" src={Logo}/>
             </div>
             <div className="d-flex align-items-center">
-            <SearchButton icon={SearchIcon}/>
-            <div className="bm-burger-button visible">
-                <Button className="header-button" color="link" onClick={this.props.toggleSidebarOpen}>
-                    <Icon/>
-                </Button>
-            </div>
+                <SearchButton icon={SearchIcon}/>
+                <div className="bm-burger-button visible">
+                    <Button className="header-button" color="link" onClick={this.props.toggleSidebarOpen}>
+                        <Icon/>
+                    </Button>
+                </div>
             </div>
             <div className="header-separator"/>
         </div>

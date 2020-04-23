@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button} from "reactstrap";
 import Input from "reactstrap/es/Input";
-import {Link} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
 import { SearchWhiteSvg } from '../Icons';
 
@@ -38,13 +38,24 @@ class SearchButton extends React.Component {
         })
     }
 
+    performSearch = () => {
+        this.props.history.push(`/search?keyword=${this.state.keyword}`);
+    }
+
+    keyPerformSearch = (e) => {
+        if (e.key === 'Enter') {
+            this.performSearch();
+        }
+    }
+
     render() {
         const Icon = this.props.icon;
         const buttonClass = this.state.keyword? "header-search-button active d-flex justify-content-end":"header-search-button d-flex justify-content-end"
+
         return <div className={buttonClass}>
             { this.state.isOpen? <div className="d-flex align-items-center">
-                    <Input className="header-search-input" innerRef={(input) => this.searchInput = input} onChange={this.updateKeyword} onBlur={this.toggleSearchBar}/>
-                    <Link to={`/search?keyword=${this.state.keyword}`}><Button className="header-button-input" color="link"><SearchWhiteSvg/></Button></Link>
+                    <Input className="header-search-input" innerRef={(input) => this.searchInput = input} onChange={this.updateKeyword} onBlur={this.toggleSearchBar} onKeyPress={this.keyPerformSearch}/>
+                    <Button className="header-button-input" color="link" onClick={this.performSearch}><SearchWhiteSvg/></Button>
                 </div>:
                 <Button className="header-button" color="link" onClick={this.toggleSearchBar}>
                     <Icon/>
@@ -54,4 +65,4 @@ class SearchButton extends React.Component {
     }
 }
 
-export default SearchButton;
+export default withRouter(SearchButton);
