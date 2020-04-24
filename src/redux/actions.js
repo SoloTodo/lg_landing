@@ -1,4 +1,4 @@
-import { fetchJson} from '../react-utils/utils';
+import { fetchJson } from '../react-utils/utils';
 
 export const loadRequiredProducts = dispatch => {
   let endPointUrl = 'lg_pricing/product_entries/';

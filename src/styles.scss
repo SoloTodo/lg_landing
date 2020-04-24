@@ -468,6 +468,31 @@ body {
   font-weight: bold;
 }
 
+/* Gallery Modal */
+
+.gallery-modal-card {
+  height: 510px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(56, 20, 81, 0.15);
+}
+
+.gallery-modal-button button {
+  background: white;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: black !important;
+}
+
+.gallery-modal-slider {
+  max-height: 600px;
+}
+
+.gallery-modal-img{
+  max-width: 100%;
+  max-height: 400px;
+}
+
 /* Filter modal */
 
 .filter-modal .modal-content{
