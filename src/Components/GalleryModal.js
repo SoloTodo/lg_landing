@@ -61,7 +61,7 @@ class GalleryModal extends React.Component {
                         <div className="gallery-modal-button"><Button><ArrowLeftSvg className/> <span className="pl-2">Volver atrás</span></Button></div>
                         <Slider {...sliderSettings} className="gallery-modal-slider">
                             {images.map(image => {
-                                return <div className="d-flex justify-content-center"><img className="gallery-modal-img" alt="" src={image.file}/></div>
+                                return <div className="d-flex justify-content-center align-items-center"><img className="gallery-modal-img" alt="" src={image.file}/></div>
                             })}
                         </Slider>
                     </CardBody>

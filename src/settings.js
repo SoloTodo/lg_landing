@@ -33,5 +33,21 @@ export const settings = {
                 source_key: "battery_mah"
             }
         ]
-    }
+    },
+
+    banners: [
+        {
+            src: "/banners/slide-1.png",
+            url: "/"
+        },
+        {
+            src: "/banners/slide-2.png",
+            url: "/"
+        },
+        {
+            src: "/banners/slide-3.png",
+            url: "/"
+        }
+    ]
+
 }

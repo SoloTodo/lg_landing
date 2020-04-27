@@ -3,6 +3,8 @@ import {Modal, ModalBody, ModalHeader, Button} from "reactstrap";
 
 import { CloseModalSvg, ArrowSvg } from "../Icons";
 import GalleryModal from "./GalleryModal";
+import {filterApiResourceObjectsByType} from "../react-utils/ApiResource";
+import {connect} from "react-redux";
 
 
 class ProductDetailModal extends React.Component {
@@ -53,9 +55,11 @@ class ProductDetailModal extends React.Component {
                     <div className="d-flex product-modal-subtitle justify-content-center">COMPRALO DESDE</div>
                     <div>
                         {entities.map(entity => {
+                            const store = this.props.stores.filter(store => store.url === entity.store)[0]
                             return <div>
                                 <a href={entity.external_url} className="d-flex align-items-center justify-content-between product-modal-retailer">
-                                    <div>
+                                    <div className="d-flex align-items-center product-modal-retailer-text">
+                                        <div className="product-modal-img"><img alt="retailer logo" src={`/logo-${store.name.toLowerCase()}.png`}/></div>
                                         <span>{entity.active_registry.offer_price}</span>
                                     </div>
                                     <span><ArrowSvg/></span>
@@ -71,4 +75,10 @@ class ProductDetailModal extends React.Component {
     }
 }
 
-export default ProductDetailModal;
+function mapStateToProps(state) {
+    return {
+        stores: filterApiResourceObjectsByType(state.apiResourceObjects, 'stores'),
+    }
+}
+
+export default connect(mapStateToProps)(ProductDetailModal);
