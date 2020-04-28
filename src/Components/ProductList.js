@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Card, CardBody } from 'reactstrap';
+import { withRouter } from "react-router-dom";
 
 import ProductDetailModal from "../Components/ProductDetailModal";
-import {lgStateToPropsUtils} from "../utils";
+import { lgStateToPropsUtils } from "../utils";
+import {parse} from "query-string";
 
 
 class ProductList extends React.Component {
@@ -12,6 +14,19 @@ class ProductList extends React.Component {
         this.state = {
             productModalOpen: false,
             modalProductEntry: null,
+        }
+    }
+
+    componentDidMount() {
+        const queryParams = this.props.location.search;
+        const productId = parse(queryParams)['product'];
+
+        if (productId) {
+            const productEntry = this.props.productList.filter(entry => {console.log(entry.product.id); return entry.product.id === parseInt(productId)})[0]
+            this.setState({
+                productModalOpen: true,
+                modalProductEntry: productEntry
+            })
         }
     }
 
@@ -89,4 +104,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(ProductList);
+export default withRouter(connect(mapStateToProps)(ProductList));

@@ -8,7 +8,7 @@ export const settings = {
         "Cell": [
             {
                 name: "Serie",
-                options: ["Serie K", "Serie G"],
+                options: ["Serie K", "Serie G", "Serie Q"],
                 type: "exact",
                 source: "customFields",
                 source_key: "serie"
@@ -35,14 +35,30 @@ export const settings = {
         ]
     },
 
+    orderOptions: [
+        {   name: "recommended",
+            display: "RECOMENDADO",
+            sortFunction: (a,b) => {console.log("recomendado"); return 0}
+        },
+        {   name: "highToLow",
+            display: "PRECIO DE MAYOR A MENOR",
+            sortFunction: (a, b) => {console.log("mayor a menor"); return 0}
+        },
+        {   name: "lowToHigh",
+            display: "PRECIO DE MENOR A MAYOR",
+            sortFunction: (a, b) => {console.log("menor a mayor"); return 0}
+        },
+
+    ],
+
     banners: [
         {
             src: "/banners/slide-1.png",
-            url: "/"
+            url: "/celulares?product=63424"
         },
         {
             src: "/banners/slide-2.png",
-            url: "/"
+            url: "/televisores"
         },
         {
             src: "/banners/slide-3.png",

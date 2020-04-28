@@ -5,18 +5,21 @@ import { Container, ButtonGroup, Button } from 'reactstrap';
 import {
     filterApiResourceObjectsByType
 } from '../react-utils/ApiResource';
-import {lgStateToPropsUtils} from "../utils";
+import { lgStateToPropsUtils } from "../utils";
 import LgCarousel from "../Components/LgCarousel";
 import LgCategoryButtons from "../Components/LgCategoryButtons";
 import FiltersModal from "../Components/FiltersModal";
-import {settings} from "../settings";
+import { settings } from "../settings";
 import ProductList from "../Components/ProductList";
+import OrderModal from "../Components/OrderModal";
 
 
 class Category extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            orderModalOpen: false,
+            appliedOrder: settings.orderOptions[0],
             filterModalOpen: false,
             appliedFilters: {}
         }
@@ -41,6 +44,12 @@ class Category extends React.Component {
         })
     }
 
+    toggleOrderModalOpen = () => {
+        this.setState({
+            orderModalOpen: !this.state.orderModalOpen
+        })
+    }
+
     addFilter = (filter_name, filter_add) => {
         const new_filters = this.state.appliedFilters;
         new_filters[filter_name] = [...new_filters[filter_name], filter_add];
@@ -62,6 +71,12 @@ class Category extends React.Component {
         })
     }
 
+    changeOrder = newOrder => {
+        this.setState({
+            appliedOrder: newOrder
+        })
+    }
+
     render() {
         if (!this.props.productEntries) {
             return null
@@ -72,6 +87,8 @@ class Category extends React.Component {
         });
 
         const filters = settings.categoryFilters[this.props.name];
+        const orderOptions = settings.orderOptions;
+        const appliedOrder = this.state.appliedOrder;
         const appliedFilters = this.state.appliedFilters;
 
         for (const filterKey in appliedFilters) {
@@ -103,6 +120,9 @@ class Category extends React.Component {
             }
         }
 
+        console.log(appliedOrder)
+        filteredProducts = filteredProducts.sort(appliedOrder.sortFunction)
+
         return <React.Fragment>
             <LgCarousel/>
             <div className="content-container">
@@ -115,13 +135,20 @@ class Category extends React.Component {
                             <Button className="filter-button"
                                     onClick={this.toggleFilterModalOpen}>FILTRAR
                                 POR</Button>
-                            <Button className="order-button">ORDENAR
+                            <Button className="order-button"
+                                    onClick={this.toggleOrderModalOpen}>ORDENAR
                                 POR</Button>
                         </ButtonGroup> : null
                     }
                     <ProductList productList={filteredProducts}/>
                 </Container>
             </div>
+            <OrderModal
+                isOpen={this.state.orderModalOpen}
+                toggle={this.toggleOrderModalOpen}
+                orderOptions={orderOptions}
+                appliedOrder={this.state.appliedOrder}
+                changeOrder={this.changeOrder}/>
             {filters?
                 <FiltersModal
                     isOpen={this.state.filterModalOpen}
