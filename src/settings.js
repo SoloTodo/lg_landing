@@ -1,4 +1,5 @@
 import {apiSettings} from "./react-utils/settings";
+import {setModalProduct} from "./redux/actions";
 
 export const settings = {
     ...apiSettings,
@@ -32,21 +33,60 @@ export const settings = {
                 source: "specs",
                 source_key: "battery_mah"
             }
+        ],
+        "Television": [
+            {
+                name: "TECNOLOGIA",
+                options: ["LED", "OLED", "NanoCell"],
+                type: "exact",
+                source: "specs",
+                source_key: "technology"
+            }
         ]
     },
 
     orderOptions: [
         {   name: "recommended",
             display: "RECOMENDADO",
-            sortFunction: (a,b) => {console.log("recomendado"); return 0}
+            sortFunction: (a,b) => {return 0}
         },
         {   name: "highToLow",
             display: "PRECIO DE MAYOR A MENOR",
-            sortFunction: (a, b) => {console.log("mayor a menor"); return 0}
+            sortFunction: (a, b) => {
+                let entity1 = a.entities[0];
+                for (const e of a.entities){
+                    if (e.active_registry.offer_price < entity1.active_registry.offer_price) {
+                        entity1 = e
+                    }
+                }
+                let entity2 = b.entities[0];
+                for (const e of b.entities){
+                    if (e.active_registry.offer_price < entity2.active_registry.offer_price) {
+                        entity2 = e
+                    }
+                }
+
+                return entity1.active_registry.offer_price - entity2.active_registry.offer_price
+            }
         },
         {   name: "lowToHigh",
             display: "PRECIO DE MENOR A MAYOR",
-            sortFunction: (a, b) => {console.log("menor a mayor"); return 0}
+            sortFunction: (a, b) => {
+                let entity1 = a.entities[0];
+                for (const e of a.entities){
+                    if (e.active_registry.offer_price < entity1.active_registry.offer_price) {
+                        entity1 = e
+                    }
+                }
+                let entity2 = b.entities[0];
+                for (const e of b.entities){
+                    if (e.active_registry.offer_price < entity2.active_registry.offer_price) {
+                        entity2 = e
+                    }
+                }
+
+                return entity2.active_registry.offer_price - entity1.active_registry.offer_price
+            }
         },
 
     ],
@@ -54,7 +94,8 @@ export const settings = {
     banners: [
         {
             src: "/banners/slide-1.png",
-            url: "/celulares?product=63424"
+            actionName: "setModalProduct",
+            action: setModalProduct(63424)
         },
         {
             src: "/banners/slide-2.png",

@@ -13,6 +13,7 @@ import {
 } from '../react-utils/redux/reducers';
 
 import {
+    modalProductReducer,
     productEntriesReducer
 } from './reducers';
 
@@ -23,6 +24,7 @@ export function initializeStore () {
             loadedResources: loadedResourcesReducer,
             loadedBundle: loadedBundleReducer,
             productEntries: productEntriesReducer,
+            modalProduct: modalProductReducer,
             browser: createResponsiveStateReducer({
                 extraSmall: 575,
                 small: 767,
