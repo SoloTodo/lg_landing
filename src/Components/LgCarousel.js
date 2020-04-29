@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 
@@ -28,7 +29,11 @@ class LgCarousel extends React.Component {
             <div className="slider-container">
                 <Slider {...sliderSettings}>
                     {banners.map(banner => {
-                        return <Link to={banner.url} className="d-flex justify-content-center align-items-center slider-card"><img alt="" src={banner.src}/></Link>
+                        if (banner.action){
+                            return <div href="#" onClick={this.props[banner.actionName]} className="d-flex justify-content-center align-items-center slider-card"><img alt="" src={banner.src}/></div>
+                        } else {
+                            return <Link to={banner.url} className="d-flex justify-content-center align-items-center slider-card"><img alt="" src={banner.src}/></Link>
+                        }
                     })}
                 </Slider>
             </div>
@@ -36,4 +41,22 @@ class LgCarousel extends React.Component {
     }
 }
 
-export default LgCarousel;
+const mapDispatchToProps = dispatch => {
+    const result = {}
+    const banners = settings.banners;
+    for (const banner of banners) {
+        if (banner.action) {
+            result[banner.actionName] = () => dispatch(banner.action)
+        }
+    }
+    return result
+}
+
+const mapStateToProps = state => {
+    return {
+        modalProduct: state.modalProduct
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(LgCarousel);

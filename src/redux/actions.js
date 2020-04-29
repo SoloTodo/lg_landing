@@ -25,3 +25,10 @@ export const loadRequiredProducts = dispatch => {
       });
   });
 };
+
+export const setModalProduct = product => {
+    return {
+        type: 'setModalProduct',
+        modalProduct: product
+    }
+}

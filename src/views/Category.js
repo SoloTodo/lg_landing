@@ -12,6 +12,8 @@ import FiltersModal from "../Components/FiltersModal";
 import { settings } from "../settings";
 import ProductList from "../Components/ProductList";
 import OrderModal from "../Components/OrderModal";
+import {setModalProduct} from "../redux/actions";
+import ProductDetailModal from "../Components/ProductDetailModal";
 
 
 class Category extends React.Component {
@@ -82,6 +84,13 @@ class Category extends React.Component {
             return null
         }
 
+        let modalProductEntry = null;
+        if (this.props.modalProduct) {
+            modalProductEntry = this.props.productEntries.filter(productEntry => {
+                return productEntry.product.id === this.props.modalProduct
+            })[0]
+        }
+
         let filteredProducts = this.props.productEntries.filter(productEntry => {
             return productEntry.customFields.pageCategories.includes(this.props.name)
         });
@@ -120,7 +129,6 @@ class Category extends React.Component {
             }
         }
 
-        console.log(appliedOrder)
         filteredProducts = filteredProducts.sort(appliedOrder.sortFunction)
 
         return <React.Fragment>
@@ -158,7 +166,16 @@ class Category extends React.Component {
                     addFilter={this.addFilter}
                     removeFilter={this.removeFilter}/>
                     : null }
+            {this.props.modalProduct?
+                <ProductDetailModal isOpen={true} toggle={this.props.deleteModalProduct} productEntry={modalProductEntry}/>: null
+            }
         </React.Fragment>
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        deleteModalProduct: () => dispatch(setModalProduct(null))
     }
 }
 
@@ -169,8 +186,9 @@ function mapStateToProps(state) {
         formatCurrency,
         productEntries: state.productEntries,
         stores: filterApiResourceObjectsByType(state.apiResourceObjects, 'stores'),
-        categories: filterApiResourceObjectsByType(state.apiResourceObjects, 'categories')
+        categories: filterApiResourceObjectsByType(state.apiResourceObjects, 'categories'),
+        modalProduct: state.modalProduct
     }
 }
 
-export default connect(mapStateToProps)(Category);
+export default connect(mapStateToProps, mapDispatchToProps)(Category);
