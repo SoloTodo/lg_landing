@@ -1,0 +1,24 @@
+@font-face {
+    font-family: "LG Smart Light";
+    src: url(/public/fonts/LG_Smart_Light.eot);
+    src: url(/public/fonts/LG_Smart_Light.eot?#iefix) format("embedded-opentype"), url(/public/fonts/LG_Smart_Light.woff) format("woff"), url(/public/fonts/LG_Smart_Light.ttf) format("truetype"), url("/public/fonts/LG_Smart_Light.svg#LG Smart Light") format("svg");
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "LG Smart";
+    src: url(/public/fonts/LG_Smart_Regular.eot);
+    src: url(/public/fonts/LG_Smart_Regular.eot?#iefix) format("embedded-opentype"), url(/public/fonts/LG_Smart_Regular.woff) format("woff"), url(/public/fonts/LG_Smart_Regular.ttf) format("truetype"), url("/public/fonts/LG_Smart_Regular.svg#LG Smart Light") format("svg");
+    font-weight: 700;
+    font-style: normal
+}
+
+@font-face{
+    font-family:"LG Smart SemiBold";
+    src:url(/public/fonts/LG_Smart_SemiBold.eot);
+    src:url(/public/fonts/LG_Smart_SemiBold.eot?#iefix) format("embedded-opentype"),url(/public/fonts/LG_Smart_SemiBold.woff) format("woff"),url(/public/fonts/LG_Smart_SemiBold.ttf) format("truetype"),url("/public/fonts/LG_Smart_SemiBold.svg#LG Smart SemiBold") format("svg");
+    font-weight:400;
+    font-style:normal
+}
+
