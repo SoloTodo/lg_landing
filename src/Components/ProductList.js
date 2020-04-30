@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 
 import ProductDetailModal from "../Components/ProductDetailModal";
 import { lgStateToPropsUtils } from "../utils";
-import {parse} from "query-string";
+import { parse } from "query-string";
 
 
 class ProductList extends React.Component {

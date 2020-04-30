@@ -513,6 +513,19 @@ body {
   font-weight: bold;
 }
 
+.product-modal-badge {
+  padding-right: 10px;
+}
+
+.product-modal-badge-text {
+  font-size: 7px !important;
+  line-height: 8px;
+  color: #737373;
+  padding: 4px 0 0 !important;
+  max-width: 35px;
+  text-align: center;
+}
+
 /* Gallery Modal */
 
 .gallery-modal-card {
@@ -598,4 +611,36 @@ body {
   color: black;
   background-color: white;
   box-shadow: none;
+}
+
+/* Order modal */
+
+.order-modal-button {
+  font-size: 12px;
+  color: black;
+  background: white;
+  border: none;
+  border-bottom: 1px solid #BCBCBC;
+  text-align: left;
+}
+
+.order-modal-button:focus{
+  color: black;
+  background-color: white;
+  box-shadow: none;
+  border-bottom: 1px solid #BCBCBC;
+}
+
+.order-modal-button:active{
+  color: black !important;
+  background-color: white !important;
+  box-shadow: none;
+  border-bottom: 1px solid #BCBCBC;
+}
+
+.order-modal-button:hover{
+  color: black !important;
+  background-color: white !important;
+  box-shadow: none;
+  border-bottom: 1px solid #BCBCBC;
 }

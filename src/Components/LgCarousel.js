@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 
-import {settings} from "../settings";
+import { settings } from "../settings";
 
 class LgCarousel extends React.Component {
     constructor(props) {

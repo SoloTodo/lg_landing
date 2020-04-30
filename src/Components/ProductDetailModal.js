@@ -5,6 +5,8 @@ import { CloseModalSvg, ArrowSvg } from "../Icons";
 import GalleryModal from "./GalleryModal";
 import {filterApiResourceObjectsByType} from "../react-utils/ApiResource";
 import {connect} from "react-redux";
+import {lgStateToPropsUtils} from "../utils";
+import { settings } from "../settings";
 
 
 class ProductDetailModal extends React.Component {
@@ -55,12 +57,23 @@ class ProductDetailModal extends React.Component {
                     <div className="d-flex product-modal-subtitle justify-content-center">COMPRALO DESDE</div>
                     <div>
                         {entities.map(entity => {
-                            const store = this.props.stores.filter(store => store.url === entity.store)[0]
+                            const store = this.props.stores.filter(store => store.url === entity.store)[0];
+                            const badges = settings.storeBadges[store.id];
+                            console.log(badges);
                             return <div>
                                 <a href={entity.external_url} className="d-flex align-items-center justify-content-between product-modal-retailer">
                                     <div className="d-flex align-items-center product-modal-retailer-text">
                                         <div className="product-modal-img"><img alt="retailer logo" src={`/logo-${store.name.toLowerCase()}.png`}/></div>
-                                        <span>{entity.active_registry.offer_price}</span>
+                                        <span>{this.props.formatCurrency(entity.active_registry.offer_price)}</span>
+                                        {badges?
+                                            badges.map(badge => {
+                                                return <div className="d-flex flex-column product-modal-badge">
+                                                    <img alt="" src={badge.icon}/>
+                                                    <span className="product-modal-badge-text">{badge.text}</span>
+                                                </div>
+                                            })
+                                            :null
+                                        }
                                     </div>
                                     <span><ArrowSvg/></span>
                                 </a>
@@ -76,7 +89,10 @@ class ProductDetailModal extends React.Component {
 }
 
 function mapStateToProps(state) {
+    const {formatCurrency} = lgStateToPropsUtils(state);
+
     return {
+        formatCurrency,
         stores: filterApiResourceObjectsByType(state.apiResourceObjects, 'stores'),
     }
 }

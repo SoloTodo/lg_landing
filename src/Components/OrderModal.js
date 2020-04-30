@@ -1,5 +1,6 @@
 import React from 'react'
 import {Modal, ModalHeader, ModalBody, Button} from "reactstrap";
+import {CheckSvg} from "../Icons";
 
 
 class OrderModal extends React.Component {
@@ -11,7 +12,19 @@ class OrderModal extends React.Component {
             <ModalBody>
                 <div className="d-flex flex-column">
                     {this.props.orderOptions.map(orderOption => {
-                        return <Button onClick={() => this.props.changeOrder(orderOption)}>{orderOption.display}</Button>
+                        return <Button className="order-modal-button" onClick={() => this.props.changeOrder(orderOption)}>
+                            <div className="d-flex justify-content-between">
+                                <span>
+                                    {orderOption.display}
+                                </span>
+                                {this.props.appliedOrder.name === orderOption.name?
+                                    <span>
+                                        <CheckSvg/>
+                                    </span>:null
+                                }
+
+                            </div>
+                        </Button>
                     })}
                 </div>
             </ModalBody>
