@@ -22,7 +22,7 @@ class ProductList extends React.Component {
         const productId = parse(queryParams)['product'];
 
         if (productId) {
-            const productEntry = this.props.productList.filter(entry => {console.log(entry.product.id); return entry.product.id === parseInt(productId)})[0]
+            const productEntry = this.props.productList.filter(entry => {return entry.product.id === parseInt(productId)})[0];
             this.setState({
                 productModalOpen: true,
                 modalProductEntry: productEntry
@@ -50,7 +50,7 @@ class ProductList extends React.Component {
         }
 
         const availableBadges = {
-            includesInstallation: <img src="/badges/includes_installation.png" alt="Incluye instalación" width="101" height="41" />
+            includesInstallation: <img key="includes_installation" src="/badges/includes_installation.png" alt="Incluye instalación" width="101" height="41" />
         };
 
         return <React.Fragment>

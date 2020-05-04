@@ -47,7 +47,7 @@ class ProductDetailModal extends React.Component {
                         <div className="d-flex flex-column product-modal-text">
                             <span className="product-modal-sku"><span>SKU</span>: {lgData.lgSku}</span>
                             <span className="product-modal-name">{lgData.customTitle}</span>
-                            <span className="product-modal-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                            <span className="product-modal-description">{lgData.customDescription}.</span>
                         </div>
                     </div>
                     <div className="d-flex justify-content-center">
@@ -59,7 +59,6 @@ class ProductDetailModal extends React.Component {
                         {entities.map(entity => {
                             const store = this.props.stores.filter(store => store.url === entity.store)[0];
                             const badges = settings.storeBadges[store.id];
-                            console.log(badges);
                             return <div>
                                 <a href={entity.external_url} className="d-flex align-items-center justify-content-between product-modal-retailer">
                                     <div className="d-flex align-items-center product-modal-retailer-text">

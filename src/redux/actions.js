@@ -31,20 +31,20 @@ export const setModalProduct = product => {
         type: 'setModalProduct',
         modalProduct: product
     }
-}
+};
 
 export const initializeFilters = category => {
     return {
         type: 'initializeFilters',
         category
     }
-}
+};
 
 export const emptyFilters = () => {
     return {
         type: 'emptyFilters'
     }
-}
+};
 
 export const toggleFilter = (filterName, filter) => {
     return {
@@ -52,4 +52,4 @@ export const toggleFilter = (filterName, filter) => {
         filterName,
         filter
     }
-}
+};

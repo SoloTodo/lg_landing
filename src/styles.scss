@@ -334,6 +334,7 @@ body {
   line-height: 32px;
   font-weight: bold;
   color: #CB2853;
+  text-align: center;
 }
 
 .product-card-image {
@@ -422,7 +423,7 @@ body {
 }
 
 .product-modal {
-  padding: 30px;
+  padding: 15px;
 }
 
 .product-modal-image {
@@ -493,6 +494,11 @@ body {
   text-decoration: none;
 }
 
+.product-modal-retailer:active {
+  color: black;
+  text-decoration: none;
+}
+
 .product-modal-retailer-text {
   height: 100%;
 }
@@ -507,8 +513,8 @@ body {
 }
 
 .product-modal-retailer span {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
   font-size: 24px;
   font-weight: bold;
 }

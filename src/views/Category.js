@@ -37,19 +37,19 @@ class Category extends React.Component {
         this.setState({
             filterModalOpen: !this.state.filterModalOpen
         })
-    }
+    };
 
     toggleOrderModalOpen = () => {
         this.setState({
             orderModalOpen: !this.state.orderModalOpen
         })
-    }
+    };
 
     changeOrder = newOrder => {
         this.setState({
             appliedOrder: newOrder
         })
-    }
+    };
 
     render() {
         if (!this.props.productEntries) {
@@ -86,10 +86,12 @@ class Category extends React.Component {
                             productValue = productEntry.customFields["filters"][filterData.source_key];
                         }
 
+                        const filterValue = Array.isArray(filterData.options) ? appliedFilter.option : filterData.options[appliedFilter.option];
+
                         if (filterData.type === "exact") {
-                            result = productValue === appliedFilter.option;
+                            result = productValue === filterValue;
                         } else if (filterData.type === "range") {
-                            const range = filterData.range_data[appliedFilter.option];
+                            const range = filterData.range_data[filterValue];
                             result = productValue >= range[0] && productValue <= range[1];
                         }
                         if (result) {
@@ -101,7 +103,7 @@ class Category extends React.Component {
             }
         }
 
-        filteredProducts = filteredProducts.sort(appliedOrder.sortFunction)
+        filteredProducts = filteredProducts.sort(appliedOrder.sortFunction);
 
         return <React.Fragment>
             <LgCarousel/>
@@ -147,10 +149,10 @@ const mapDispatchToProps = dispatch => {
         deleteModalProduct: () => dispatch(setModalProduct(null)),
         initializeFilters: (category) => dispatch(initializeFilters(category))
     }
-}
+};
 
 function mapStateToProps(state) {
-    const {formatCurrency} = lgStateToPropsUtils(state)
+    const {formatCurrency} = lgStateToPropsUtils(state);
 
     return {
         formatCurrency,

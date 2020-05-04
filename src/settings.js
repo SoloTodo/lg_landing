@@ -9,21 +9,32 @@ export const settings = {
         "Cell": [
             {
                 name: "Serie",
-                options: ["Serie K", "Serie G", "Serie Q"],
+                options: [
+                  "Serie K",
+                    "Serie G",
+                    "Serie Q"
+                ],
                 type: "exact",
                 source: "customFields",
                 source_key: "serie"
             },
             {
                 name: "Tipo de pantalla",
-                options: ["HD", "Full HD"],
+                options: [
+                  "HD",
+                  "Full HD"
+                ],
                 type: "exact",
                 source: "customFields",
                 source_key: "screen_type"
             },
             {
                 name: "Batería",
-                options: ["3000 MAH", "3500 MAH", "4000 MAH"],
+                options: [
+                  "3000 MAH",
+                    "3500 MAH",
+                    "4000 MAH"
+                ],
                 type: "range",
                 range_data: {
                     "3000 MAH": [3000, 3499],
@@ -37,10 +48,24 @@ export const settings = {
         "Television": [
             {
                 name: "TECNOLOGIA",
-                options: ["LED", "OLED", "NanoCell"],
+                options: {
+                    'LED': 281170,
+                    'NanoCell': 958742,
+                    'OLED': 281176
+                },
                 type: "exact",
                 source: "specs",
-                source_key: "technology"
+                source_key: "display_id"
+            },
+            {
+                name: "RESOLUCION",
+                options: {
+                    "FULL HD": 1,
+                    "UHD 4K": 2
+                },
+                type: "exact",
+                source: "specs",
+                source_key: "panel_type_unicode"
             }
         ]
     },
@@ -90,7 +115,6 @@ export const settings = {
         },
 
     ],
-
     banners: [
         {
             src: "/banners/slide-1.png",
@@ -124,5 +148,4 @@ export const settings = {
             }
         ]
     }
-
-}
+};

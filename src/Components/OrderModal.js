@@ -12,7 +12,7 @@ class OrderModal extends React.Component {
             <ModalBody>
                 <div className="d-flex flex-column">
                     {this.props.orderOptions.map(orderOption => {
-                        return <Button className="order-modal-button" onClick={() => this.props.changeOrder(orderOption)}>
+                        return <Button key={orderOption.display} className="order-modal-button" onClick={() => this.props.changeOrder(orderOption)}>
                             <div className="d-flex justify-content-between">
                                 <span>
                                     {orderOption.display}
