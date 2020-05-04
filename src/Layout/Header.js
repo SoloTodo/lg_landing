@@ -1,12 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Button } from 'reactstrap'
-import { Link } from 'react-router-dom'
 
+import CategoryLink from "../Components/CategoryLink";
 import Logo from '../logo.png'
 import { SbSvg, CloseSvg, SearchSvg, SearchWhiteSvg } from '../Icons';
 import SearchButton from "../Components/SearchButton";
-import {emptyFilters} from "../redux/actions";
+
 
 
 class Header extends React.Component{
@@ -17,9 +16,9 @@ class Header extends React.Component{
 
         return <div className={header_class}>
                 <div className="header-logo">
-                    <Link to="/" onClick={this.props.emptyFilters}>
+                    <CategoryLink to="/">
                         <img alt= "LG Logo" src={Logo}/>
-                    </Link>
+                    </CategoryLink>
                 </div>
             <div className="d-flex align-items-center">
                 <SearchButton icon={SearchIcon}/>
@@ -34,10 +33,4 @@ class Header extends React.Component{
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        emptyFilters: () => dispatch(emptyFilters()),
-    }
-}
-
-export default connect(null, mapDispatchToProps)(Header)
+export default Header
