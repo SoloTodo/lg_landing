@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Slider from 'react-slick';
-import { Link } from 'react-router-dom';
 
+import CategoryLink from "./CategoryLink";
 import { settings } from "../settings";
+
 
 class LgCarousel extends React.Component {
     constructor(props) {
@@ -32,9 +33,9 @@ class LgCarousel extends React.Component {
                         if (banner.action){
                             return <div key={banner.src} href="#" onClick={this.props[banner.actionName]} className="d-flex justify-content-center align-items-center slider-card"><img alt="" src={banner.src}/></div>
                         } else if (banner.actions) {
-                            return <Link key={banner.src} to={banner.url} className="d-flex justify-content-center align-items-center slider-card" onClick={this.props[banner.actionName]}><img alt="" src={banner.src}/></Link>
+                            return <CategoryLink key={banner.src} to={banner.url} className="d-flex justify-content-center align-items-center slider-card" onClick={this.props[banner.actionName]}><img alt="" src={banner.src}/></CategoryLink>
                         } else {
-                            return <Link key={banner.src} to={banner.url} className="d-flex justify-content-center align-items-center slider-card"><img alt="" src={banner.src}/></Link>
+                            return <CategoryLink key={banner.src} to={banner.url} className="d-flex justify-content-center align-items-center slider-card"><img alt="" src={banner.src}/></CategoryLink>
                         }
                     })}
                 </Slider>
