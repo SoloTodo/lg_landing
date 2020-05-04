@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import Slider from 'react-slick';
 
 import navigation from '../Layout/_nav'
+import {emptyFilters} from "../redux/actions";
 
 class LgCategoryButtons extends React.Component {
     render() {
@@ -36,7 +38,7 @@ class LgCategoryButtons extends React.Component {
                         return null
                     }
 
-                    return <Link to={item.url} key={item.url} className={selected_class}>
+                    return <Link to={item.url} key={item.url} className={selected_class} onClick={this.props.emptyFilters}>
                         {item.button_name}
                     </Link>
                 })
@@ -45,5 +47,11 @@ class LgCategoryButtons extends React.Component {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        emptyFilters: () => dispatch(emptyFilters()),
+    }
+}
 
-export default withRouter(LgCategoryButtons);
+
+export default withRouter(connect(null, mapDispatchToProps)(LgCategoryButtons));

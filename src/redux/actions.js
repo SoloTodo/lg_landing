@@ -32,3 +32,24 @@ export const setModalProduct = product => {
         modalProduct: product
     }
 }
+
+export const initializeFilters = category => {
+    return {
+        type: 'initializeFilters',
+        category
+    }
+}
+
+export const emptyFilters = () => {
+    return {
+        type: 'emptyFilters'
+    }
+}
+
+export const toggleFilter = (filterName, filter) => {
+    return {
+        type: 'toggleFilter',
+        filterName,
+        filter
+    }
+}

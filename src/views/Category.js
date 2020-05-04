@@ -12,7 +12,7 @@ import FiltersModal from "../Components/FiltersModal";
 import { settings } from "../settings";
 import ProductList from "../Components/ProductList";
 import OrderModal from "../Components/OrderModal";
-import {setModalProduct} from "../redux/actions";
+import {initializeFilters, setModalProduct} from "../redux/actions";
 import ProductDetailModal from "../Components/ProductDetailModal";
 
 
@@ -23,21 +23,14 @@ class Category extends React.Component {
             orderModalOpen: false,
             appliedOrder: settings.orderOptions[0],
             filterModalOpen: false,
-            appliedFilters: {}
         }
     }
 
     componentDidMount() {
-        const filters = settings.categoryFilters[this.props.name];
-        const appliedFilters = {}
-
-        if (filters) {
-            for (const filter of filters) {
-                appliedFilters[filter.name] = []
-            }
+        const appliedFilters = this.props.appliedFilters;
+        if (!appliedFilters) {
+            this.props.initializeFilters(this.props.name)
         }
-
-        this.setState({appliedFilters})
     }
 
     toggleFilterModalOpen = () => {
@@ -49,27 +42,6 @@ class Category extends React.Component {
     toggleOrderModalOpen = () => {
         this.setState({
             orderModalOpen: !this.state.orderModalOpen
-        })
-    }
-
-    addFilter = (filter_name, filter_add) => {
-        const new_filters = this.state.appliedFilters;
-        new_filters[filter_name] = [...new_filters[filter_name], filter_add];
-
-        this.setState({
-            appliedFilters: new_filters
-        })
-    }
-
-    removeFilter = (filter_name, filter_remove) => {
-        const new_filters = this.state.appliedFilters;
-
-        new_filters[filter_name] = new_filters[filter_name].filter(filter_compare => {
-            return filter_remove.option !== filter_compare.option;
-        })
-
-        this.setState({
-            appliedFilters: new_filters
         })
     }
 
@@ -98,7 +70,7 @@ class Category extends React.Component {
         const filters = settings.categoryFilters[this.props.name];
         const orderOptions = settings.orderOptions;
         const appliedOrder = this.state.appliedOrder;
-        const appliedFilters = this.state.appliedFilters;
+        const appliedFilters = this.props.appliedFilters;
 
         for (const filterKey in appliedFilters) {
             const filterData = filters.filter(filterData => filterData.name === filterKey)[0];
@@ -157,14 +129,11 @@ class Category extends React.Component {
                 orderOptions={orderOptions}
                 appliedOrder={this.state.appliedOrder}
                 changeOrder={this.changeOrder}/>
-            {filters?
+            {filters && appliedFilters?
                 <FiltersModal
                     isOpen={this.state.filterModalOpen}
                     toggle={this.toggleFilterModalOpen}
-                    filters={filters}
-                    appliedFilters = {this.state.appliedFilters}
-                    addFilter={this.addFilter}
-                    removeFilter={this.removeFilter}/>
+                    filters={filters}/>
                     : null }
             {this.props.modalProduct?
                 <ProductDetailModal isOpen={true} toggle={this.props.deleteModalProduct} productEntry={modalProductEntry}/>: null
@@ -175,7 +144,8 @@ class Category extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        deleteModalProduct: () => dispatch(setModalProduct(null))
+        deleteModalProduct: () => dispatch(setModalProduct(null)),
+        initializeFilters: (category) => dispatch(initializeFilters(category))
     }
 }
 
@@ -184,6 +154,7 @@ function mapStateToProps(state) {
 
     return {
         formatCurrency,
+        appliedFilters: state.appliedFilters,
         productEntries: state.productEntries,
         stores: filterApiResourceObjectsByType(state.apiResourceObjects, 'stores'),
         categories: filterApiResourceObjectsByType(state.apiResourceObjects, 'categories'),

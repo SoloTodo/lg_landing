@@ -1,5 +1,5 @@
 import {apiSettings} from "./react-utils/settings";
-import {setModalProduct} from "./redux/actions";
+import {initializeFilters, toggleFilter, setModalProduct} from "./redux/actions";
 
 export const settings = {
     ...apiSettings,
@@ -99,7 +99,12 @@ export const settings = {
         },
         {
             src: "/banners/slide-2.png",
-            url: "/televisores"
+            url: "/televisores",
+            actionName: "initializeFilters",
+            actions: [
+                initializeFilters('Television'),
+                toggleFilter('TECNOLOGIA', {option: "OLED"})
+            ]
         },
         {
             src: "/banners/slide-3.png",

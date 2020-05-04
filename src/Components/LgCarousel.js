@@ -31,6 +31,8 @@ class LgCarousel extends React.Component {
                     {banners.map(banner => {
                         if (banner.action){
                             return <div href="#" onClick={this.props[banner.actionName]} className="d-flex justify-content-center align-items-center slider-card"><img alt="" src={banner.src}/></div>
+                        } else if (banner.actions) {
+                            return <Link to={banner.url} className="d-flex justify-content-center align-items-center slider-card" onClick={this.props[banner.actionName]}><img alt="" src={banner.src}/></Link>
                         } else {
                             return <Link to={banner.url} className="d-flex justify-content-center align-items-center slider-card"><img alt="" src={banner.src}/></Link>
                         }
@@ -47,6 +49,13 @@ const mapDispatchToProps = dispatch => {
     for (const banner of banners) {
         if (banner.action) {
             result[banner.actionName] = () => dispatch(banner.action)
+        }
+        if (banner.actions) {
+            result[banner.actionName] = () => {
+                for (const action of banner.actions){
+                    dispatch(action)
+                }
+            }
         }
     }
     return result
