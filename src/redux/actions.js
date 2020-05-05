@@ -53,3 +53,11 @@ export const toggleFilter = (filterName, filter) => {
         filter
     }
 };
+
+
+export const setScroll = (scroll) => {
+    return {
+        type: 'setScroll',
+        scroll
+    }
+}

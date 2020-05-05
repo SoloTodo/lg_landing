@@ -15,7 +15,7 @@ import {
 import {
     filterReducer,
     modalProductReducer,
-    productEntriesReducer
+    productEntriesReducer, scrollReducer
 } from './reducers';
 
 export function initializeStore () {
@@ -27,6 +27,7 @@ export function initializeStore () {
             productEntries: productEntriesReducer,
             modalProduct: modalProductReducer,
             appliedFilters: filterReducer,
+            scroll: scrollReducer,
             browser: createResponsiveStateReducer({
                 extraSmall: 575,
                 small: 767,

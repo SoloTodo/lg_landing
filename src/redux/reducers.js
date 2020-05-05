@@ -54,3 +54,10 @@ export function filterReducer(state=null, action) {
 
     return state
 }
+
+export function scrollReducer(state=null, action) {
+    if (action.type === 'setScroll') {
+        return action.scroll;
+    }
+    return state
+}

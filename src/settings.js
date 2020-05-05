@@ -1,5 +1,5 @@
 import {apiSettings} from "./react-utils/settings";
-import {initializeFilters, toggleFilter, setModalProduct} from "./redux/actions";
+import {initializeFilters, toggleFilter, setModalProduct, setScroll} from "./redux/actions";
 
 export const settings = {
     ...apiSettings,
@@ -152,7 +152,8 @@ export const settings = {
             actionName: "initializeFilters",
             actions: [
                 initializeFilters('Television'),
-                toggleFilter('TECNOLOGIA', {option: "OLED"})
+                toggleFilter('TECNOLOGIA', {option: "OLED"}),
+                setScroll(true)
             ]
         },
         {

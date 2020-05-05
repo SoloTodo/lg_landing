@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Container, ButtonGroup, Button } from 'reactstrap';
+import scrollToComponent from 'react-scroll-to-component';
 
 import {
     filterApiResourceObjectsByType
@@ -12,7 +13,7 @@ import FiltersModal from "../Components/FiltersModal";
 import { settings } from "../settings";
 import ProductList from "../Components/ProductList";
 import OrderModal from "../Components/OrderModal";
-import {initializeFilters, setModalProduct} from "../redux/actions";
+import {initializeFilters, setModalProduct, setScroll} from "../redux/actions";
 import ProductDetailModal from "../Components/ProductDetailModal";
 
 
@@ -30,6 +31,22 @@ class Category extends React.Component {
         const appliedFilters = this.props.appliedFilters;
         if (!appliedFilters) {
             this.props.initializeFilters(this.props.name)
+        }
+
+        const scroll = this.props.scroll;
+
+        if (scroll) {
+            scrollToComponent(this.productList, {offset: 0, align: "top", duration: 500});
+            this.props.deleteScroll();
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const scroll = this.props.scroll;
+
+        if (scroll) {
+            scrollToComponent(this.productList);
+            this.props.deleteScroll();
         }
     }
 
@@ -122,7 +139,9 @@ class Category extends React.Component {
                                 POR</Button>
                         </ButtonGroup> : null
                     }
-                    <ProductList productList={filteredProducts}/>
+                    <div ref={(e) => { this.productList = e; }}>
+                        <ProductList productList={filteredProducts}/>
+                    </div>
                 </Container>
             </div>
             <OrderModal
@@ -147,7 +166,8 @@ class Category extends React.Component {
 const mapDispatchToProps = dispatch => {
     return {
         deleteModalProduct: () => dispatch(setModalProduct(null)),
-        initializeFilters: (category) => dispatch(initializeFilters(category))
+        initializeFilters: (category) => dispatch(initializeFilters(category)),
+        deleteScroll: () => dispatch(setScroll(false))
     }
 };
 
@@ -156,6 +176,7 @@ function mapStateToProps(state) {
 
     return {
         formatCurrency,
+        scroll: state.scroll,
         appliedFilters: state.appliedFilters,
         productEntries: state.productEntries,
         stores: filterApiResourceObjectsByType(state.apiResourceObjects, 'stores'),
