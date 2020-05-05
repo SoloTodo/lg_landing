@@ -1,5 +1,5 @@
 import React from 'react'
-import {Modal, ModalBody, ModalHeader, Button} from "reactstrap";
+import {Modal, ModalBody, ModalHeader} from "reactstrap";
 
 import { CloseModalSvg, ArrowSvg } from "../Icons";
 import GalleryModal from "./GalleryModal";
@@ -7,6 +7,7 @@ import {filterApiResourceObjectsByType} from "../react-utils/ApiResource";
 import {connect} from "react-redux";
 import {lgStateToPropsUtils} from "../utils";
 import { settings } from "../settings";
+import ProductSpecs from "./ProductSpecs";
 
 
 class ProductDetailModal extends React.Component {
@@ -51,7 +52,7 @@ class ProductDetailModal extends React.Component {
                         </div>
                     </div>
                     <div className="d-flex justify-content-center">
-                        <Button className="product-modal-button">Ver detalles técnicos</Button>
+                        <ProductSpecs productEntry={productEntry}/>
                     </div>
                     <div className="product-modal-separator"/>
                     <div className="d-flex product-modal-subtitle justify-content-center">COMPRALO DESDE</div>

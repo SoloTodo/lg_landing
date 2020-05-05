@@ -70,6 +70,19 @@ export const settings = {
         ]
     },
 
+    categorySpecs: {
+        'Celulares': [
+            {'key': 'color_name', 'name': 'Color'},
+            {'key': 'operating_system_unicode', 'name': 'Sistema Operativo'},
+            {'key': 'internal_storage_unicode', 'name': 'Almacenamiento'},
+            {'key': 'ram_unicode', 'name': 'RAM'}
+        ],
+        'Televisores': [
+            {'key': 'display_backlight', 'name': 'Tecnología'},
+            {'key': 'resolution_commercial_name', 'name': 'Resolución'}
+        ]
+    },
+
     orderOptions: [
         {   name: "recommended",
             display: "RECOMENDADO",

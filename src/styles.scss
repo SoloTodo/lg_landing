@@ -532,6 +532,43 @@ body {
   text-align: center;
 }
 
+/* Product specs */
+
+.product-specs {
+  width: 100%;
+}
+
+.product-specs-card {
+  border: none;
+}
+
+.product-specs-card-body {
+  padding-top: 0;
+}
+
+.product-specs-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #BF0C3F;
+  background: none;
+
+}
+
+.product-specs-item {
+  width: 50%;
+  padding-top: 15px;
+}
+
+.product-specs-item-title{
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.product-spects-item-content{
+  font-size: 16px;
+  color: #737373;
+}
+
 /* Gallery Modal */
 
 .gallery-modal-card {
