@@ -116,7 +116,7 @@ export const settings = {
                     }
                 }
 
-                return entity1.active_registry.offer_price - entity2.active_registry.offer_price
+                return entity2.active_registry.offer_price - entity1.active_registry.offer_price
             }
         },
         {   name: "lowToHigh",
@@ -135,7 +135,7 @@ export const settings = {
                     }
                 }
 
-                return entity2.active_registry.offer_price - entity1.active_registry.offer_price
+                return entity1.active_registry.offer_price - entity2.active_registry.offer_price
             }
         },
 
