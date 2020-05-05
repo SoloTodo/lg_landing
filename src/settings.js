@@ -58,14 +58,26 @@ export const settings = {
                 source_key: "display_id"
             },
             {
-                name: "RESOLUCION",
+                name: "TAMAÑO",
                 options: {
-                    "FULL HD": 1,
-                    "UHD 4K": 2
+                    '43"': 281366,
+                    '49"': 281396,
+                    '55"': 281423,
+                    '65"': 281447,
                 },
                 type: "exact",
                 source: "specs",
-                source_key: "panel_type_unicode"
+                source_key: "size_id"
+            },
+            {
+                name: "RESOLUCION",
+                options: {
+                    "FULL HD": 281535,
+                    "UHD 4K": 281518
+                },
+                type: "exact",
+                source: "specs",
+                source_key: "resolution_id"
             }
         ]
     },
