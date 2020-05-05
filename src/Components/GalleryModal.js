@@ -31,7 +31,12 @@ class GalleryModal extends React.Component {
 
     render() {
         const productEntry = this.props.productEntry;
-        const images = this.state.images;
+
+        if (!this.state.images) {
+            return null
+        }
+        
+        const images = [{file: this.props.mainImage}, ...this.state.images];
 
         if (!productEntry || !images) {
             return null
