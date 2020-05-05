@@ -35,8 +35,8 @@ class GalleryModal extends React.Component {
         if (!this.state.images) {
             return null
         }
-        
-        const images = [{file: this.props.mainImage}, ...this.state.images];
+
+        const images = [{file: productEntry.product.picture_url}, ...this.state.images];
 
         if (!productEntry || !images) {
             return null
@@ -63,7 +63,7 @@ class GalleryModal extends React.Component {
             <ModalBody className="gallery-modal">
                 <Card className="gallery-modal-card">
                     <CardBody>
-                        <div className="gallery-modal-button"><Button><ArrowLeftSvg className/> <span className="pl-2">Volver atrás</span></Button></div>
+                        <div className="gallery-modal-button"><Button onClick={this.props.toggle}><ArrowLeftSvg/> <span className="pl-2">Volver atrás</span></Button></div>
                         <Slider {...sliderSettings} className="gallery-modal-slider">
                             {images.map(image => {
                                 return <div className="d-flex justify-content-center align-items-center"><img className="gallery-modal-img" alt="" src={image.file}/></div>

@@ -83,7 +83,7 @@ class ProductDetailModal extends React.Component {
 
                 </ModalBody>
             </Modal>
-            <GalleryModal isOpen={this.state.galleryOpen} toggle={this.toggleGallery} productEntry={productEntry} toggleParent={this.props.toggle} mainImage={product.picture_url}/>
+            <GalleryModal isOpen={this.state.galleryOpen} toggle={this.toggleGallery} productEntry={productEntry} toggleParent={this.props.toggle}/>
         </React.Fragment>
     }
 }
