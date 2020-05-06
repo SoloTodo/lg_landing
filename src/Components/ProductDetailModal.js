@@ -1,13 +1,14 @@
 import React from 'react'
+import {connect} from "react-redux";
 import {Modal, ModalBody, ModalHeader} from "reactstrap";
 
-import { CloseModalSvg, ArrowSvg } from "../Icons";
+import ProductSpecs from "./ProductSpecs";
 import GalleryModal from "./GalleryModal";
+import { CloseModalSvg, ArrowSvg } from "../Icons";
 import {filterApiResourceObjectsByType} from "../react-utils/ApiResource";
-import {connect} from "react-redux";
 import {lgStateToPropsUtils} from "../utils";
 import { settings } from "../settings";
-import ProductSpecs from "./ProductSpecs";
+
 
 
 class ProductDetailModal extends React.Component {
