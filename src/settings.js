@@ -97,27 +97,8 @@ export const settings = {
 
     orderOptions: [
         {   name: "recommended",
-            display: "RECOMENDADO",
+            display: "RECOMENDADOS",
             sortFunction: (a,b) => {return 0}
-        },
-        {   name: "highToLow",
-            display: "PRECIO DE MAYOR A MENOR",
-            sortFunction: (a, b) => {
-                let entity1 = a.entities[0];
-                for (const e of a.entities){
-                    if (e.active_registry.offer_price < entity1.active_registry.offer_price) {
-                        entity1 = e
-                    }
-                }
-                let entity2 = b.entities[0];
-                for (const e of b.entities){
-                    if (e.active_registry.offer_price < entity2.active_registry.offer_price) {
-                        entity2 = e
-                    }
-                }
-
-                return entity2.active_registry.offer_price - entity1.active_registry.offer_price
-            }
         },
         {   name: "lowToHigh",
             display: "PRECIO DE MENOR A MAYOR",
@@ -138,6 +119,25 @@ export const settings = {
                 return entity1.active_registry.offer_price - entity2.active_registry.offer_price
             }
         },
+        {   name: "highToLow",
+            display: "PRECIO DE MAYOR A MENOR",
+            sortFunction: (a, b) => {
+                let entity1 = a.entities[0];
+                for (const e of a.entities){
+                    if (e.active_registry.offer_price < entity1.active_registry.offer_price) {
+                        entity1 = e
+                    }
+                }
+                let entity2 = b.entities[0];
+                for (const e of b.entities){
+                    if (e.active_registry.offer_price < entity2.active_registry.offer_price) {
+                        entity2 = e
+                    }
+                }
+
+                return entity2.active_registry.offer_price - entity1.active_registry.offer_price
+            }
+        }
 
     ],
     banners: [
