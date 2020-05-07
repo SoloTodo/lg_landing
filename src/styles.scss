@@ -281,6 +281,12 @@ body {
   background-color: white;
 }
 
+.filter-button:active {
+  box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
+  color:black !important;
+  background-color: white !important;
+}
+
 .filter-button:hover {
   box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
   color:black;
@@ -304,6 +310,12 @@ body {
   box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
   color:black;
   background-color: white;
+}
+
+.order-button:active {
+  box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
+  color:black !important;
+  background-color: white !important;
 }
 
 .order-button:hover {
@@ -433,10 +445,37 @@ body {
   border: 2px solid #000000;
 }
 
+.card-button.product:focus {
+  color: black;
+  background: white;
+}
+
+.card-button.product:active {
+  color: black !important;
+  background: white !important;
+}
+
+.card-button.product:hover {
+  color: black;
+  background: white;
+}
+
 .card-button.want {
   background: #CB2853;
   margin-bottom: 10px;
   border: none;
+}
+
+.card-button.want:focus {
+  background: #CB2853;
+}
+
+.card-button.want:active {
+  background: #CB2853 !important;
+}
+
+.card-button.want:hover {
+  background: #CB2853;
 }
 
 /* Product Modal */
@@ -696,6 +735,16 @@ body {
   box-shadow: none;
 }
 
+.filter-modal-button:active{
+  color: #737373  !important;
+  background-color: white !important;
+}
+
+.filter-modal-button:hover{
+  color: #737373;
+  background-color: white;
+}
+
 .filter-modal-button.selected {
   border: 1px solid #BF0C3F;
   color:black;
@@ -718,6 +767,16 @@ body {
 }
 
 .filter-modal-ready:focus {
+  background: white;
+  color: black;
+}
+
+.filter-modal-ready:active {
+  background: white !important;
+  color: black !important;
+}
+
+.filter-modal-ready:hover {
   background: white;
   color: black;
 }
