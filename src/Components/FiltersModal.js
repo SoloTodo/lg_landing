@@ -28,12 +28,8 @@ class FiltersModal extends React.Component {
                                 if (!appliedFilters[filter.name]) {
                                     return null;
                                 }
-                                let isApplied = false;
-                                for (const appliedFilter of appliedFilters[filter.name]) {
-                                    if (appliedFilter.option === option) {
-                                        isApplied = true
-                                    }
-                                }
+
+                                const isApplied = appliedFilters[filter.name].filter(appliedFilter => appliedFilter.option === option).length
 
                                 return <Button
                                     key={option}
