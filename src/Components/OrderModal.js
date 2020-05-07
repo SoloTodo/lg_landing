@@ -6,7 +6,7 @@ import {CheckSvg} from "../Icons";
 
 class OrderModal extends React.Component {
     render() {
-        return <Modal className="filter-modal" centered isOpen={this.props.isOpen} toggle={this.props.toggle}>
+        return <Modal className="order-modal" centered isOpen={this.props.isOpen} toggle={this.props.toggle}>
             <ModalHeader className="filter-modal-header">
                 ORDENAR POR
             </ModalHeader>
@@ -26,6 +26,7 @@ class OrderModal extends React.Component {
                         </Button>
                     })}
                 </div>
+                <Button className="filter-modal-ready d-flex justify-content-center align-items-center" onClick={this.props.toggle}><span className="pr-1">LISTO</span><span><CheckSvg/></span></Button>
             </ModalBody>
         </Modal>
     }

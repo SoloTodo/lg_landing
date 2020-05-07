@@ -45,7 +45,7 @@ class Category extends React.Component {
         const scroll = this.props.scroll;
 
         if (scroll) {
-            scrollToComponent(this.productList);
+            scrollToComponent(this.productList, {offset: 0, align: "top", duration: 500});
             this.props.deleteScroll();
         }
     }

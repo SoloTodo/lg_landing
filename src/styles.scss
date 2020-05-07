@@ -15,6 +15,8 @@ body {
 }
 
 .header.sidebar {
+  position: fixed;
+  width: 100%;
   background: #C00E40;
   border-bottom: 1px #FFFFFF;
   z-index: 1010;
@@ -110,6 +112,27 @@ body {
   font-size: 14px;
   padding-top: 10px;
 }
+
+.footer-button{
+  position: absolute;
+  height: 39px;
+  width: 39px;
+  border: none;
+  right: 16px;
+  margin-top: -139px;
+  background: #CB2853;
+  z-index: 1000;
+  border-radius: 20px;
+}
+
+.footer-button:focus{
+  background: #CB2853;
+}
+
+.footer-button:hover{
+  background: #CB2853;
+}
+
 
 /* Layout */
 
@@ -258,6 +281,12 @@ body {
   background-color: white;
 }
 
+.filter-button:hover {
+  box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
+  color:black;
+  background-color: white;
+}
+
 .order-button {
   background: white;
   color: black;
@@ -272,6 +301,12 @@ body {
 }
 
 .order-button:focus {
+  box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
+  color:black;
+  background-color: white;
+}
+
+.order-button:hover {
   box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
   color:black;
   background-color: white;
@@ -471,6 +506,21 @@ body {
   font-weight: bold;
 }
 
+.product-modal-button:focus {
+  color:black;
+  background-color: white;
+}
+
+.product-modal-button:active {
+  color:black !important;
+  background-color: white !important;
+}
+
+.product-modal-button:hover {
+  color:black;
+  background-color: white;
+}
+
 .product-modal-separator {
   margin-top: 20px;
   width: 100%;
@@ -606,6 +656,7 @@ body {
 
 .filter-modal .modal-body {
   padding-top: 0;
+  padding-bottom: 0;
 }
 
 .filter-modal-header {
@@ -656,7 +707,31 @@ body {
   box-shadow: none;
 }
 
+.filter-modal-ready {
+  width: 100%;
+  height: 40px;
+  background: white;
+  color: black;
+  border: none;
+  font-size: 13px;
+  line-height: 14px;
+}
+
+.filter-modal-ready:focus {
+  background: white;
+  color: black;
+}
+
 /* Order modal */
+.order-modal .modal-content{
+  border: none;
+  border-radius: 10px;
+}
+
+.order-modal .modal-body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
 .order-modal-button {
   font-size: 12px;
