@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import {Modal, ModalHeader, ModalBody, Button} from "reactstrap";
+import classNames from "classnames"
+
 import {toggleFilter} from "../redux/actions";
 
 
@@ -23,27 +25,26 @@ class FiltersModal extends React.Component {
                     <div>
                         {
                             filterOptionsKeys(filter.options).map(option => {
-                                let filterClass = "filter-modal-button";
-                                let filterFunction = () => this.props.toggleFilter(filter.name, {
-                                    option: option,
-                                });
-
                                 if (!appliedFilters[filter.name]) {
                                     return null;
                                 }
-
+                                let isApplied = false;
                                 for (const appliedFilter of appliedFilters[filter.name]) {
                                     if (appliedFilter.option === option) {
-                                        filterClass = "filter-modal-button selected"
+                                        isApplied = true
                                     }
                                 }
 
-                                return <Button key={option} className={filterClass} onClick={filterFunction}>{option}</Button>
+                                return <Button
+                                    key={option}
+                                    className={classNames('filter-modal-button', {selected:isApplied})}
+                                    onClick={() => this.props.toggleFilter(filter.name, { option: option })}>
+                                    {option}
+                                </Button>
                         })}
                     </div>
                 </div>
             )}
-
             </ModalBody>
         </Modal>
     }

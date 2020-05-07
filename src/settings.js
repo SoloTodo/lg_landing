@@ -10,13 +10,12 @@ export const settings = {
             {
                 name: "Serie",
                 options: [
-                  "Serie K",
+                    "Serie K",
                     "Serie G",
                     "Serie Q"
                 ],
                 type: "exact",
-                source: "customFields",
-                source_key: "serie"
+                key: "serie"
             },
             {
                 name: "Tipo de pantalla",
@@ -25,8 +24,7 @@ export const settings = {
                   "Full HD"
                 ],
                 type: "exact",
-                source: "customFields",
-                source_key: "screen_type"
+                key: "screen_type"
             },
             {
                 name: "Batería",
@@ -41,8 +39,7 @@ export const settings = {
                     "3500 MAH": [3500, 3999],
                     "4000 MAH": [4000, 99999]
                 },
-                source: "specs",
-                source_key: "battery_mah"
+                key: "battery_mah"
             }
         ],
         "Television": [
@@ -54,8 +51,7 @@ export const settings = {
                     'OLED': 281176
                 },
                 type: "exact",
-                source: "specs",
-                source_key: "display_id"
+                key: "display_id"
             },
             {
                 name: "TAMAÑO",
@@ -66,8 +62,7 @@ export const settings = {
                     '65"': 281447,
                 },
                 type: "exact",
-                source: "specs",
-                source_key: "size_id"
+                key: "size_id"
             },
             {
                 name: "RESOLUCION",
@@ -76,8 +71,7 @@ export const settings = {
                     "UHD 4K": 281518
                 },
                 type: "exact",
-                source: "specs",
-                source_key: "resolution_id"
+                key: "resolution_id"
             }
         ]
     },
@@ -155,11 +149,13 @@ export const settings = {
     banners: [
         {
             src: "/banners/slide-1.png",
+            type: "div",
             actionName: "setModalProduct",
-            action: setModalProduct(63424)
+            actions: [setModalProduct(63424)]
         },
         {
             src: "/banners/slide-2.png",
+            type: "actionLink",
             url: "/televisores",
             actionName: "initializeFilters",
             actions: [
@@ -170,6 +166,7 @@ export const settings = {
         },
         {
             src: "/banners/slide-3.png",
+            type: "link",
             url: "/"
         }
     ],

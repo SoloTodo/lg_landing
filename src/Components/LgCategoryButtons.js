@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Slider from 'react-slick';
+import classNames from "classnames"
 
 import CategoryLink from "./CategoryLink";
 import navigation from '../Layout/_nav'
@@ -30,15 +31,12 @@ class LgCategoryButtons extends React.Component {
         return <Slider {...sliderSettings} className="slider-buttons">
             {
                 navigation.items.map(item => {
-                    const selected_class = item.url === pathname?
-                        "slider-button selected d-flex justify-content-center align-items-center":
-                        "slider-button d-flex justify-content-center align-items-center";
-
+                    const isSelected = item.url === pathname;
                     if (!item.button) {
                         return null
                     }
 
-                    return <CategoryLink to={item.url} key={item.url} className={selected_class}>
+                    return <CategoryLink to={item.url} key={item.url} className={classNames('slider-button d-flex justify-content-center align-items-center', {selected:isSelected})}>
                         {item.button_name}
                     </CategoryLink>
                 })

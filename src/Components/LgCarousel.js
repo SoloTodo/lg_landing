@@ -30,12 +30,13 @@ class LgCarousel extends React.Component {
             <div className="slider-container">
                 <Slider {...sliderSettings}>
                     {banners.map(banner => {
-                        if (banner.action){
-                            return <div key={banner.src} href="#" onClick={this.props[banner.actionName]} className="d-flex justify-content-center align-items-center slider-card"><img alt="" src={banner.src}/></div>
-                        } else if (banner.actions) {
-                            return <CategoryLink key={banner.src} to={banner.url} className="d-flex justify-content-center align-items-center slider-card" onClick={this.props[banner.actionName]}><img alt="" src={banner.src}/></CategoryLink>
+                        const className = "d-flex justify-content-center align-items-center slider-card"
+                        if (banner.type === "div"){
+                            return <div key={banner.src} className={className} onClick={this.props[banner.actionName]}><img alt="" src={banner.src}/></div>
+                        } else if (banner.type === "actionLink") {
+                            return <CategoryLink key={banner.src} to={banner.url} className={className} onClick={this.props[banner.actionName]}><img alt="" src={banner.src}/></CategoryLink>
                         } else {
-                            return <CategoryLink key={banner.src} to={banner.url} className="d-flex justify-content-center align-items-center slider-card"><img alt="" src={banner.src}/></CategoryLink>
+                            return <CategoryLink key={banner.src} to={banner.url} className={className}><img alt="" src={banner.src}/></CategoryLink>
                         }
                     })}
                 </Slider>
@@ -48,9 +49,6 @@ const mapDispatchToProps = dispatch => {
     const result = {}
     const banners = settings.banners;
     for (const banner of banners) {
-        if (banner.action) {
-            result[banner.actionName] = () => dispatch(banner.action)
-        }
         if (banner.actions) {
             result[banner.actionName] = () => {
                 for (const action of banner.actions){

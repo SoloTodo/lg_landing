@@ -2,6 +2,7 @@ import React from 'react'
 import {Button} from "reactstrap";
 import Input from "reactstrap/es/Input";
 import {withRouter} from 'react-router-dom'
+import classNames from "classnames"
 
 import { SearchWhiteSvg } from '../Icons';
 
@@ -50,9 +51,7 @@ class SearchButton extends React.Component {
 
     render() {
         const Icon = this.props.icon;
-        const buttonClass = this.state.keyword? "header-search-button active d-flex justify-content-end":"header-search-button d-flex justify-content-end"
-
-        return <div className={buttonClass}>
+        return <div className={classNames("header-search-button d-flex justify-content-end", {active:this.state.keyword})}>
             { this.state.isOpen? <div className="d-flex align-items-center">
                     <Input className="header-search-input" innerRef={(input) => this.searchInput = input} onChange={this.updateKeyword} onBlur={this.toggleSearchBar} onKeyPress={this.keyPerformSearch}/>
                     <Button className="header-button-input" color="link" onClick={this.performSearch}><SearchWhiteSvg/></Button>

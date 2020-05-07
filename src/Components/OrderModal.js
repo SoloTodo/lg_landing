@@ -1,5 +1,6 @@
 import React from 'react'
 import {Modal, ModalHeader, ModalBody, Button} from "reactstrap";
+
 import {CheckSvg} from "../Icons";
 
 
@@ -20,9 +21,7 @@ class OrderModal extends React.Component {
                                 {this.props.appliedOrder.name === orderOption.name?
                                     <span>
                                         <CheckSvg/>
-                                    </span>:null
-                                }
-
+                                    </span>:null}
                             </div>
                         </Button>
                     })}

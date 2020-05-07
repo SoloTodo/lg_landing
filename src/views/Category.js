@@ -96,13 +96,8 @@ class Category extends React.Component {
                 filteredProducts = filteredProducts.filter(productEntry => {
                     let result = false;
                     for (const appliedFilter of filterList){
-                        let productValue = null;
-                        if (filterData.source === "specs") {
-                             productValue = productEntry.product.specs[filterData.source_key];
-                        } else {
-                            productValue = productEntry.customFields["filters"][filterData.source_key];
-                        }
-
+                        const filtersDict = Object.assign({}, productEntry.product.specs, productEntry.customFields["filters"])
+                        const productValue = filtersDict[filterData.key]
                         const filterValue = Array.isArray(filterData.options) ? appliedFilter.option : filterData.options[appliedFilter.option];
 
                         if (filterData.type === "exact") {
@@ -111,6 +106,7 @@ class Category extends React.Component {
                             const range = filterData.range_data[filterValue];
                             result = productValue >= range[0] && productValue <= range[1];
                         }
+
                         if (result) {
                             return true;
                         }
