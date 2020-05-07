@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button } from 'reactstrap'
+import classNames from "classnames"
+import scrollToComponent from 'react-scroll-to-component';
 
 import CategoryLink from "../Components/CategoryLink";
 import Logo from '../logo.png'
@@ -9,12 +11,17 @@ import SearchButton from "../Components/SearchButton";
 
 
 class Header extends React.Component{
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.isOpen !== prevProps.isOpen) {
+            scrollToComponent(this.header, {offset: 0, align: "top", duration: 1});
+        }
+    }
+
     render() {
         const Icon = this.props.isOpen? CloseSvg : SbSvg;
         const SearchIcon = this.props.isOpen? SearchWhiteSvg: SearchSvg;
-        const header_class = this.props.isOpen? "header sidebar" : "header";
 
-        return <div className={header_class}>
+        return <div className={classNames("header", {sidebar:this.props.isOpen})} ref={(e) => { this.header = e; }}>
                 <div className="header-logo">
                     <CategoryLink to="/">
                         <img alt= "LG Logo" src={Logo}/>
