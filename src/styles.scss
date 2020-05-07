@@ -113,6 +113,27 @@ body {
   padding-top: 10px;
 }
 
+.footer-button{
+  position: absolute;
+  height: 39px;
+  width: 39px;
+  border: none;
+  right: 16px;
+  margin-top: -139px;
+  background: #CB2853;
+  z-index: 1000;
+  border-radius: 20px;
+}
+
+.footer-button:focus{
+  background: #CB2853;
+}
+
+.footer-button:hover{
+  background: #CB2853;
+}
+
+
 /* Layout */
 
 .bm-burger-button {

@@ -4,10 +4,9 @@ import classNames from "classnames"
 import scrollToComponent from 'react-scroll-to-component';
 
 import CategoryLink from "../Components/CategoryLink";
-import Logo from '../logo.png'
-import { SbSvg, CloseSvg, SearchSvg, SearchWhiteSvg } from '../Icons';
 import SearchButton from "../Components/SearchButton";
-
+import { SbSvg, CloseSvg, SearchSvg, SearchWhiteSvg } from '../Icons';
+import Logo from '../logo.png'
 
 
 class Header extends React.Component{
