@@ -4,6 +4,7 @@ import {Modal, ModalHeader, ModalBody, Button} from "reactstrap";
 import classNames from "classnames"
 
 import {toggleFilter} from "../redux/actions";
+import {CheckSvg} from "../Icons";
 
 
 class FiltersModal extends React.Component {
@@ -21,26 +22,28 @@ class FiltersModal extends React.Component {
             </ModalHeader>
             <ModalBody>
                 {filters.map(filter => <div key={filter.name}>
-                    <span className="filter-name">{filter.name.toUpperCase()}</span>
-                    <div>
-                        {
-                            filterOptionsKeys(filter.options).map(option => {
-                                if (!appliedFilters[filter.name]) {
-                                    return null;
-                                }
+                        <span className="filter-name">{filter.name.toUpperCase()}</span>
+                        <div>
+                            {
+                                filterOptionsKeys(filter.options).map(option => {
+                                    if (!appliedFilters[filter.name]) {
+                                        return null;
+                                    }
 
-                                const isApplied = appliedFilters[filter.name].filter(appliedFilter => appliedFilter.option === option).length
+                                    const isApplied = appliedFilters[filter.name].filter(appliedFilter => appliedFilter.option === option).length
 
-                                return <Button
-                                    key={option}
-                                    className={classNames('filter-modal-button', {selected:isApplied})}
-                                    onClick={() => this.props.toggleFilter(filter.name, { option: option })}>
-                                    {option}
-                                </Button>
-                        })}
+                                    return <Button
+                                        key={option}
+                                        className={classNames('filter-modal-button', {selected:isApplied})}
+                                        onClick={() => this.props.toggleFilter(filter.name, { option: option })}>
+                                        {option}
+                                    </Button>
+                                })}
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
+                <div className="product-modal-separator"/>
+                <Button className="filter-modal-ready d-flex justify-content-center align-items-center" onClick={this.props.toggle}><span className="pr-1">LISTO</span><span><CheckSvg/></span></Button>
             </ModalBody>
         </Modal>
     }

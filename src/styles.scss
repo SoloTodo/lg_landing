@@ -656,6 +656,7 @@ body {
 
 .filter-modal .modal-body {
   padding-top: 0;
+  padding-bottom: 0;
 }
 
 .filter-modal-header {
@@ -706,7 +707,31 @@ body {
   box-shadow: none;
 }
 
+.filter-modal-ready {
+  width: 100%;
+  height: 40px;
+  background: white;
+  color: black;
+  border: none;
+  font-size: 13px;
+  line-height: 14px;
+}
+
+.filter-modal-ready:focus {
+  background: white;
+  color: black;
+}
+
 /* Order modal */
+.order-modal .modal-content{
+  border: none;
+  border-radius: 10px;
+}
+
+.order-modal .modal-body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
 .order-modal-button {
   font-size: 12px;
