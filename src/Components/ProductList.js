@@ -57,7 +57,7 @@ class ProductList extends React.Component {
             {this.props.productList.map(productEntry => {
                 let entity = productEntry.entities[0];
                 for (const e of productEntry.entities){
-                    if (e.active_registry.offer_price < entity.active_registry.offer_price) {
+                    if (parseFloat(e.active_registry.offer_price) < parseFloat(entity.active_registry.offer_price)) {
                         entity = e
                     }
                 }

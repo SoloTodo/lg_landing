@@ -1,7 +1,7 @@
 import { fetchJson } from '../react-utils/utils';
 
 export const loadRequiredProducts = dispatch => {
-  let endPointUrl = 'lg_pricing/product_entries/?v=4';
+  let endPointUrl = 'lg_pricing/product_entries/?v=5';
 
   return fetchJson(endPointUrl).then(values => {
       const productEntries = [];
