@@ -260,6 +260,12 @@ body {
   background-color: white;
 }
 
+.filter-button:hover {
+  box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
+  color:black;
+  background-color: white;
+}
+
 .order-button {
   background: white;
   color: black;
@@ -274,6 +280,12 @@ body {
 }
 
 .order-button:focus {
+  box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
+  color:black;
+  background-color: white;
+}
+
+.order-button:hover {
   box-shadow: 0 2px 22px rgba(134, 134, 134, 0.3);
   color:black;
   background-color: white;
@@ -471,6 +483,21 @@ body {
   color: black;
   font-size: 18px;
   font-weight: bold;
+}
+
+.product-modal-button:focus {
+  color:black;
+  background-color: white;
+}
+
+.product-modal-button:active {
+  color:black !important;
+  background-color: white !important;
+}
+
+.product-modal-button:hover {
+  color:black;
+  background-color: white;
 }
 
 .product-modal-separator {
