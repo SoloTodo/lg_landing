@@ -92,7 +92,19 @@ export const settings = {
         'Televisores': [
             {'key': 'display_backlight', 'name': 'Tecnología'},
             {'key': 'resolution_commercial_name', 'name': 'Resolución'}
-        ]
+        ],
+        'Refrigeradores': [
+            {'key': 'pretty_refrigerator_capacity', 'name': 'Capacidad refrigerador'},
+            {'key': 'pretty_freezer_capacity', 'name': 'Capacidad freezer'},
+            {'key': 'r_format_unicode', 'name': 'Tipo'},
+            {'key': 'energy_efficiency_unicode', 'name': 'Eficiencia energética'}
+        ],
+        'Lavadoras y Secadoras': [
+            {'key': 'w_type_unicode', 'name': 'Categoría'},
+            {'key': 'w_format_unicode', 'name': 'Tipo carga'},
+            {'key': 'capacity_unicode', 'name': 'Capacidad lavado'},
+            {'key': 'drying_capacity_unicode', 'name': 'Capacidad secado'},
+        ],
     },
 
     orderOptions: [

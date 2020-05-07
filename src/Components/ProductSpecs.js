@@ -25,7 +25,9 @@ class ProductSpecs extends React.Component {
 
         const specsDict = this.props.productEntry.product.specs;
         const categorySpecs = settings.categorySpecs[category.name];
-        
+        console.log(settings.categorySpecs)
+        console.log(category.name)
+
         if (!categorySpecs) {
             return null
         }
