@@ -6,7 +6,7 @@ import scrollToComponent from 'react-scroll-to-component';
 import Sidebar from "./Sidebar";
 import Header from './Header'
 import Footer from "./Footer";
-import {ArrowUpSvg} from "../Icons";
+import {ArrowUpSvg} from "../../Icons";
 import routes from "./routes";
 
 

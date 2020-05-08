@@ -3,10 +3,10 @@ import { Button } from 'reactstrap'
 import classNames from "classnames"
 import scrollToComponent from 'react-scroll-to-component';
 
-import CategoryLink from "../Components/CategoryLink";
-import SearchButton from "../Components/SearchButton";
-import { SbSvg, CloseSvg, SearchSvg, SearchWhiteSvg } from '../Icons';
-import Logo from '../logo.png'
+import CategoryLink from "../../Components/Mobile/CategoryLink";
+import SearchButton from "../../Components/Mobile/SearchButton";
+import { SbSvg, CloseSvg, SearchSvg, SearchWhiteSvg } from '../../Icons';
+import Logo from '../../logo.png'
 
 
 class Header extends React.Component{

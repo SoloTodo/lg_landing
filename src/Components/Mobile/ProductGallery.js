@@ -1,5 +1,5 @@
 import React from "react";
-import { fetchJson } from "../react-utils/utils";
+import { fetchJson } from "../../react-utils/utils";
 import Slider from "react-slick";
 
 

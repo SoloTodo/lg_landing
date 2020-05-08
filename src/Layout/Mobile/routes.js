@@ -1,6 +1,6 @@
 import React from 'react';
-import Category from "../views/Category";
-import Search from "../views/Search";
+import Category from "../../views/Category";
+import Search from "../../views/Search";
 
 const routes = [
     { path: '/', exact: true, name: 'Inicio', render: props => <Category name='Home'/> },

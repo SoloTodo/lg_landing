@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { Container, ButtonGroup, Button } from "reactstrap";
 import scrollToComponent from "react-scroll-to-component";
 
-import LgCarousel from "../Components/LgCarousel";
-import LgCategoryButtons from "../Components/LgCategoryButtons";
-import FiltersModal from "../Components/FiltersModal";
-import OrderModal from "../Components/OrderModal";
-import ProductList from "../Components/ProductList";
-import ProductDetailModal from "../Components/ProductDetailModal";
+import LgCarousel from "../Components/Mobile/LgCarousel";
+import LgCategoryButtons from "../Components/Mobile/LgCategoryButtons";
+import FiltersModal from "../Components/Mobile/FiltersModal";
+import OrderModal from "../Components/Mobile/OrderModal";
+import ProductList from "../Components/Mobile/ProductList";
+import ProductDetailModal from "../Components/Mobile/ProductDetailModal";
 
 import { initializeFilters, setModalProduct, setScroll } from "../redux/actions";
 import { filterApiResourceObjectsByType } from "../react-utils/ApiResource";

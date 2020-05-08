@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Button, Card, CardBody } from "reactstrap";
 
-import { lgStateToPropsUtils } from "../utils";
+import { lgStateToPropsUtils } from "../../utils";
 
 
 class ProductListCard extends React.Component {

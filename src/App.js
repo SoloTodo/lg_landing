@@ -3,7 +3,7 @@ import './styles.scss';
 import { Provider } from 'react-redux';
 import {BrowserRouter} from "react-router-dom";
 
-import Layout from "./Layout/Layout";
+import Layout from "./Layout/Mobile/Layout";
 
 import RequiredBundle from './react-utils/components/RequiredBundle';
 import { initializeStore } from './redux/store';

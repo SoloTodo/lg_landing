@@ -5,7 +5,7 @@ import {withRouter} from 'react-router-dom';
 import {parse} from 'query-string';
 import Fuse from 'fuse.js'
 
-import ProductList from "../Components/ProductList";
+import ProductList from "../Components/Mobile/ProductList";
 
 
 class Search extends React.Component {

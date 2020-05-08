@@ -4,9 +4,9 @@ import { Modal, ModalBody, ModalHeader } from "reactstrap";
 
 import ProductModalCommon from "./ProductModalCommon";
 import GalleryModal from "./GalleryModal";
-import { CloseModalSvg } from "../Icons";
-import { filterApiResourceObjectsByType } from "../react-utils/ApiResource";
-import { lgStateToPropsUtils } from "../utils";
+import { CloseModalSvg } from "../../Icons";
+import { filterApiResourceObjectsByType } from "../../react-utils/ApiResource";
+import { lgStateToPropsUtils } from "../../utils";
 
 
 class ProductWantModal extends React.Component {

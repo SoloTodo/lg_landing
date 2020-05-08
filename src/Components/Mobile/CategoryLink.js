@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {emptyFilters} from "../redux/actions";
+import {emptyFilters} from "../../redux/actions";
 import {connect} from "react-redux";
 
 

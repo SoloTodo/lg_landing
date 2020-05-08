@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import {Modal, ModalHeader, ModalBody, Button} from "reactstrap";
 import classNames from "classnames"
 
-import {toggleFilter} from "../redux/actions";
-import {CheckSvg} from "../Icons";
+import {toggleFilter} from "../../redux/actions";
+import {CheckSvg} from "../../Icons";
 
 
 class FiltersModal extends React.Component {

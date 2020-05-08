@@ -4,7 +4,7 @@ import Input from "reactstrap/es/Input";
 import {withRouter} from 'react-router-dom'
 import classNames from "classnames"
 
-import { SearchWhiteSvg } from '../Icons';
+import { SearchWhiteSvg } from '../../Icons';
 
 
 class SearchButton extends React.Component {

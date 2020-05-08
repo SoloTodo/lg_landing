@@ -2,9 +2,9 @@ import React from 'react';
 import { slide as Menu } from 'react-burger-menu'
 import { withRouter } from 'react-router-dom';
 
-import CategoryLink from "../Components/CategoryLink";
-import navigation from './_nav'
-import { ArrowWhiteSvg } from '../Icons';
+import CategoryLink from "../../Components/Mobile/CategoryLink";
+import navigation from '../_nav'
+import { ArrowWhiteSvg} from "../../Icons";
 
 
 class Sidebar extends React.Component{

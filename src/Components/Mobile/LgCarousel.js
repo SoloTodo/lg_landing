@@ -1,9 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Slider from 'react-slick';
+import React from "react";
+import { connect } from "react-redux";
+import Slider from "react-slick";
 
 import CategoryLink from "./CategoryLink";
-import { settings } from "../settings";
+import { settings } from "../../settings";
 
 
 class LgCarousel extends React.Component {
