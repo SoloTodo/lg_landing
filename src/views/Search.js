@@ -22,7 +22,8 @@ class Search extends React.Component {
                 "product.name",
                 "customFields.customTitle",
                 "customFields.showCategory"
-            ]
+            ],
+            threshold: 0.3
         }
 
         const fuse = new Fuse(productList, options);
