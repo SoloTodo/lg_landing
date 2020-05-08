@@ -1,29 +1,11 @@
-import React from 'react'
-import {Modal, ModalBody, ModalHeader, Card, CardBody, Button } from "reactstrap";
-import { fetchJson } from "../react-utils/utils";
-import Slider from 'react-slick';
+import React from "react";
+import { Modal, ModalBody, ModalHeader, Card, CardBody, Button } from "reactstrap";
 
 import { CloseModalSvg, ArrowLeftSvg } from "../Icons";
+import ProductGallery from "./ProductGallery";
 
 
 class GalleryModal extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            images: null
-        }
-    }
-
-    componentDidMount() {
-        const product = this.props.productEntry.product;
-        fetchJson(`product_pictures/?products=${product.id}`).then(images => {
-            this.setState({
-                images: images.results
-            })
-        })
-    }
-
-
     closeAll = () => {
         this.props.toggle();
         this.props.toggleParent();
@@ -31,27 +13,6 @@ class GalleryModal extends React.Component {
 
     render() {
         const productEntry = this.props.productEntry;
-
-        if (!this.state.images) {
-            return null
-        }
-
-        const images = [{file: productEntry.product.picture_url}, ...this.state.images];
-
-        if (!productEntry || !images) {
-            return null
-        }
-
-        const sliderSettings = {
-            dots: true,
-            arrows: false,
-            infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            customPaging: i => {
-                return <div className="custom-dot"/>
-            }
-        };
 
         return <Modal centered isOpen={this.props.isOpen} toggle={this.props.toggle}>
             <ModalHeader className="d-flex align-items-center product-modal-header">
@@ -64,11 +25,7 @@ class GalleryModal extends React.Component {
                 <Card className="gallery-modal-card">
                     <CardBody>
                         <div className="gallery-modal-button"><Button onClick={this.props.toggle}><ArrowLeftSvg/> <span className="pl-2">Volver atrás</span></Button></div>
-                        <Slider {...sliderSettings} className="gallery-modal-slider">
-                            {images.map(image => {
-                                return <div className="d-flex justify-content-center align-items-center"><img className="gallery-modal-img" alt="" src={image.file}/></div>
-                            })}
-                        </Slider>
+                        <ProductGallery productEntry={productEntry}/>
                     </CardBody>
                 </Card>
             </ModalBody>

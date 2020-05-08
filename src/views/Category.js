@@ -1,20 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Container, ButtonGroup, Button } from 'reactstrap';
-import scrollToComponent from 'react-scroll-to-component';
+import React from "react";
+import { connect } from "react-redux";
+import { Container, ButtonGroup, Button } from "reactstrap";
+import scrollToComponent from "react-scroll-to-component";
 
-import {
-    filterApiResourceObjectsByType
-} from '../react-utils/ApiResource';
-import { lgStateToPropsUtils } from "../utils";
 import LgCarousel from "../Components/LgCarousel";
 import LgCategoryButtons from "../Components/LgCategoryButtons";
 import FiltersModal from "../Components/FiltersModal";
-import { settings } from "../settings";
-import ProductList from "../Components/ProductList";
 import OrderModal from "../Components/OrderModal";
-import {initializeFilters, setModalProduct, setScroll} from "../redux/actions";
+import ProductList from "../Components/ProductList";
 import ProductDetailModal from "../Components/ProductDetailModal";
+
+import { initializeFilters, setModalProduct, setScroll } from "../redux/actions";
+import { filterApiResourceObjectsByType } from "../react-utils/ApiResource";
+import { lgStateToPropsUtils } from "../utils";
+import { settings } from "../settings";
 
 
 class Category extends React.Component {
@@ -151,10 +150,9 @@ class Category extends React.Component {
                     isOpen={this.state.filterModalOpen}
                     toggle={this.toggleFilterModalOpen}
                     filters={filters}/>
-                    : null }
+                    : null}
             {this.props.modalProduct?
-                <ProductDetailModal isOpen={true} toggle={this.props.deleteModalProduct} productEntry={modalProductEntry}/>: null
-            }
+                <ProductDetailModal isOpen={true} toggle={this.props.deleteModalProduct} productEntry={modalProductEntry}/>: null}
         </React.Fragment>
     }
 }

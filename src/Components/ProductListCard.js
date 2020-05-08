@@ -1,8 +1,8 @@
-import React from 'react'
-import {connect} from "react-redux";
-import {Button, Card, CardBody} from "reactstrap";
+import React from "react";
+import { connect } from "react-redux";
+import { Button, Card, CardBody } from "reactstrap";
 
-import {lgStateToPropsUtils} from "../utils";
+import { lgStateToPropsUtils } from "../utils";
 
 
 class ProductListCard extends React.Component {
@@ -74,8 +74,8 @@ class ProductListCard extends React.Component {
                     </div>}
                 </div>
                 <div className="d-flex flex-column pt-4">
-                    <Button className="card-button product" onClick={() => this.props.toggleProductModalOpen(productEntry)}>Ver producto</Button>
-                    <Button className="card-button want">Lo quiero</Button>
+                    <Button className="card-button product" onClick={() => this.props.toggleProductDetailModal(productEntry)}>Ver producto</Button>
+                    <Button className="card-button want" onClick={() => this.props.toggleProductWantModal(productEntry)}>Lo quiero</Button>
                 </div>
             </CardBody>
         </Card>

@@ -3,19 +3,33 @@ import { connect } from "react-redux";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 
 import ProductModalCommon from "./ProductModalCommon";
-import ProductGallery from "./ProductGallery";
+import GalleryModal from "./GalleryModal";
 import { CloseModalSvg } from "../Icons";
 import { filterApiResourceObjectsByType } from "../react-utils/ApiResource";
 import { lgStateToPropsUtils } from "../utils";
 
 
-class ProductDetailModal extends React.Component {
+class ProductWantModal extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            galleryOpen: false
+        }
+    }
+
+    toggleGallery = () => {
+        this.setState({
+            galleryOpen: !this.state.galleryOpen
+        })
+    }
+
     render() {
         const productEntry = this.props.productEntry;
         if (!productEntry) {
             return null
         }
 
+        const product = productEntry.product;
         const lgData = productEntry.customFields;
 
         return <React.Fragment>
@@ -27,19 +41,18 @@ class ProductDetailModal extends React.Component {
                     </div>
                 </ModalHeader>
                 <ModalBody className="product-modal">
-                    <div className="d-flex align-content-between align-items-center">
-                        <span className="product-modal-name flex-fill">{lgData.customTitle}</span>
-                        <span className="product-modal-sku"><span>SKU</span>: {lgData.lgSku}</span>
-                    </div>
-                    <div>
-                        <ProductGallery productEntry={productEntry}/>
-                    </div>
-                    <div className="d-flex justify-content-center pb-2">
-                        <span className="product-modal-description">{lgData.customDescription}.</span>
+                    <div className="d-flex align-content-between">
+                        <div className="d-flex align-items-center product-modal-image"><img alt={product.name} src={product.picture_url} onClick={this.toggleGallery}/></div>
+                        <div className="d-flex flex-column product-modal-text">
+                            <span className="product-modal-sku"><span>SKU</span>: {lgData.lgSku}</span>
+                            <span className="product-modal-name">{lgData.customTitle}</span>
+                            <span className="product-modal-description">{lgData.customDescription}.</span>
+                        </div>
                     </div>
                     <ProductModalCommon productEntry={productEntry}/>
                 </ModalBody>
             </Modal>
+            <GalleryModal isOpen={this.state.galleryOpen} toggle={this.toggleGallery} productEntry={productEntry} toggleParent={this.props.toggle}/>
         </React.Fragment>
     }
 }
@@ -53,4 +66,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(ProductDetailModal);
+export default connect(mapStateToProps)(ProductWantModal);

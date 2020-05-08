@@ -1,42 +1,43 @@
-import React from 'react';
-import { withRouter } from "react-router-dom";
+import React from "react";
 
-import ProductDetailModal from "../Components/ProductDetailModal";
-import { parse } from "query-string";
 import ProductListCard from "./ProductListCard";
+import ProductWantModal from "./ProductWantModal";
+import ProductDetailModal from "./ProductDetailModal";
 
 
 class ProductList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            productModalOpen: false,
+            productWantModalOpen: false,
+            productDetailModalOpen: false,
             modalProductEntry: null,
         }
     }
 
-    componentDidMount() {
-        const queryParams = this.props.location.search;
-        const productId = parse(queryParams)['product'];
-
-        if (productId) {
-            const productEntry = this.props.productList.filter(entry => {return entry.product.id === parseInt(productId)})[0];
+    toggleWantModalOpen = (productEntry) => {
+        if (this.state.productWantModalOpen) {
             this.setState({
-                productModalOpen: true,
-                modalProductEntry: productEntry
-            })
-        }
-    }
-
-    toggleProductModalOpen = (productEntry) => {
-        if (this.state.productModalOpen) {
-            this.setState({
-                productModalOpen: false,
+                productWantModalOpen: false,
                 modalProductEntry: null
             })
         } else {
             this.setState({
-                productModalOpen: true,
+                productWantModalOpen: true,
+                modalProductEntry: productEntry
+            })
+        }
+    };
+
+    toggleDetailModalOpen = (productEntry) => {
+        if (this.state.productDetailModalOpen) {
+            this.setState({
+                productDetailModalOpen: false,
+                modalProductEntry: null
+            })
+        } else {
+            this.setState({
+                productDetailModalOpen: true,
                 modalProductEntry: productEntry
             })
         }
@@ -48,11 +49,18 @@ class ProductList extends React.Component {
         }
         return <React.Fragment>
             {this.props.productList.map(productEntry => {
-                return <ProductListCard key={productEntry.product.id} productEntry={productEntry} toggleProductModalOpen={this.toggleProductModalOpen}/>
+                return <ProductListCard
+                    key={productEntry.product.id}
+                    productEntry={productEntry}
+                    toggleProductWantModal={this.toggleWantModalOpen}
+                    toggleProductDetailModal={this.toggleDetailModalOpen}
+                />
             })}
-            <ProductDetailModal isOpen={this.state.productModalOpen} toggle={() => this.toggleProductModalOpen(null)} productEntry={this.state.modalProductEntry}/>
+            <ProductWantModal isOpen={this.state.productWantModalOpen} toggle={() => this.toggleWantModalOpen(null)} productEntry={this.state.modalProductEntry}/>
+            <ProductDetailModal isOpen={this.state.productDetailModalOpen} toggle={() => this.toggleDetailModalOpen(null)} productEntry={this.state.modalProductEntry}/>
+
         </React.Fragment>
     }
 }
 
-export default withRouter(ProductList);
+export default ProductList;
