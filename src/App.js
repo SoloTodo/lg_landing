@@ -1,13 +1,14 @@
 import React from 'react';
-import './styles.scss';
 import { Provider } from 'react-redux';
-import {BrowserRouter} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
-import Layout from "./Layout/Mobile/Layout";
+import MobileLayout from "./Layout/Mobile/MobileLayout";
 
 import RequiredBundle from './react-utils/components/RequiredBundle';
 import { initializeStore } from './redux/store';
 import { loadRequiredProducts } from './redux/actions';
+import './styles.scss';
+import DesktopLayout from "./Layout/Desktop/DesktopLayout";
 
 
 class App extends React.Component{
@@ -18,10 +19,14 @@ class App extends React.Component{
   }
 
   render() {
+    const state = this.store.getState();
+    const isMobile = state.browser.lessThan['large']
     return <Provider store={ this.store }>
       <RequiredBundle resources={['stores', 'categories', 'currencies', 'countries']} loading={ null }>
         <BrowserRouter>
-          <Layout/>
+          {isMobile?
+              <MobileLayout/>:
+              <DesktopLayout/>}
         </BrowserRouter>
       </RequiredBundle>
     </Provider>;
