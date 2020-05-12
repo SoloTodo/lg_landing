@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Container, ButtonGroup, Button } from "reactstrap";
 import scrollToComponent from "react-scroll-to-component";
+import classNames from "classnames"
 
 import LgCarousel from "../Components/Mobile/LgCarousel";
 import LgCategoryButtons from "../Components/Mobile/LgCategoryButtons";
@@ -68,6 +69,7 @@ class Category extends React.Component {
     };
 
     render() {
+        console.log(this.props.isMobile)
         if (!this.props.productEntries) {
             return null
         }
@@ -116,13 +118,14 @@ class Category extends React.Component {
         }
 
         filteredProducts = filteredProducts.sort(appliedOrder.sortFunction);
+        const justifyClass = this.props.isMobile? 'justify-content-center':'justify-content-between';
 
         return <React.Fragment>
-            <LgCarousel/>
+            <LgCarousel isMobile={this.props.isMobile}/>
             <div className="content-container">
-                <Container fluid>
+                <Container>
                     <div className="d-flex justify-content-center content-title pt-3">PRODUCTOS</div>
-                    <LgCategoryButtons/>
+                    <LgCategoryButtons isMobile={this.props.isMobile}/>
                     {filters?
                         <ButtonGroup
                             className="d-flex justify-content-center">
@@ -134,8 +137,9 @@ class Category extends React.Component {
                                 POR</Button>
                         </ButtonGroup> : null
                     }
-                    <div ref={(e) => { this.productList = e; }}>
+                    <div className={classNames("d-flex flex-wrap", justifyClass)} ref={(e) => { this.productList = e; }}>
                         <ProductList productList={filteredProducts}/>
+                        <div className="dummy-product-card"/>
                     </div>
                 </Container>
             </div>

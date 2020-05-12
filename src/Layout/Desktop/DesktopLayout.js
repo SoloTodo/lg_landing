@@ -30,7 +30,7 @@ class DesktopLayout extends React.Component{
 
     render() {
         return <React.Fragment>
-            <Sidebar isDesktop={true} isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen}/>
+            <Sidebar isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen}/>
             <Header isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen} ref={(e) => { this.header = e; }}/>
             <Switch>
                 {routes.map((route, idx) => {

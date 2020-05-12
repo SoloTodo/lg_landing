@@ -29,6 +29,7 @@ class MobileLayout extends React.Component{
     }
 
     render() {
+        const categoryProps = {isMobile: true}
         return <React.Fragment>
             <Sidebar isMobile={true} isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen}/>
             <Header isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen} ref={(e) => { this.header = e; }}/>
@@ -39,7 +40,7 @@ class MobileLayout extends React.Component{
                         path={route.path}
                         exact={route.exact}
                         name={route.name}
-                        render={route.render}/>})}
+                        render={() => route.render(categoryProps)}/>})}
             </Switch>
             <Button className="footer-button" onClick={this.footerButtonClick}><ArrowUpSvg/></Button>
             <Footer/>
