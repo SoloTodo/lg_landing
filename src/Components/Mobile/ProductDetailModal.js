@@ -34,7 +34,7 @@ class ProductDetailModal extends React.Component {
                     <div>
                         <ProductGallery productEntry={productEntry}/>
                     </div>
-                    <div className="d-flex justify-content-center pb-2">
+                    <div className="d-flex justify-content-center pt-3 pb-2">
                         <span className="product-modal-description">{lgData.customDescription}.</span>
                     </div>
                     <ProductModalCommon productEntry={productEntry}/>

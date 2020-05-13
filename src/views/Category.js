@@ -69,7 +69,6 @@ class Category extends React.Component {
     };
 
     render() {
-        console.log(this.props.isMobile)
         if (!this.props.productEntries) {
             return null
         }
@@ -118,14 +117,14 @@ class Category extends React.Component {
         }
 
         filteredProducts = filteredProducts.sort(appliedOrder.sortFunction);
-        const justifyClass = this.props.isMobile? 'justify-content-center':'justify-content-between';
+        const justifyClass = window.innerWidth < 700? 'justify-content-center':'justify-content-between';
 
         return <React.Fragment>
-            <LgCarousel isMobile={this.props.isMobile}/>
+            <LgCarousel/>
             <div className="content-container">
                 <Container>
                     <div className="d-flex justify-content-center content-title pt-3">PRODUCTOS</div>
-                    <LgCategoryButtons isMobile={this.props.isMobile}/>
+                    <LgCategoryButtons/>
                     {filters?
                         <ButtonGroup
                             className="d-flex justify-content-center">

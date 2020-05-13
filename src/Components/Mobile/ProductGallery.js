@@ -40,7 +40,7 @@ class ProductGallery extends React.Component {
             slidesToShow: 1,
             slidesToScroll: 1,
             customPaging: i => {
-                return <div className="custom-dot"/>
+                return <div className="custom-dot gallery"/>
             }
         };
 

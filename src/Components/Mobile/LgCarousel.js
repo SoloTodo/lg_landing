@@ -25,7 +25,7 @@ class LgCarousel extends React.Component {
         };
 
         const banners = settings.banners;
-        const bannersRoute = this.props.isMobile? '/banners/mobile/' : '/banners/desktop/'
+        const bannersRoute = window.innerWidth < 700? '/banners/mobile/' : '/banners/desktop/'
 
         return <div className="slider-limits">
             <div className="slider-container">

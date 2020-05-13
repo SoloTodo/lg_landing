@@ -18,7 +18,7 @@ class Sidebar extends React.Component{
 
     render() {
         const pathname = this.props.location.pathname;
-        const menuClass = this.props.isMobile? "mobile-menu": "desktop-menu"
+        const menuClass = window.innerWidth < 700? "mobile-menu": "desktop-menu"
 
         return <Menu className={menuClass} right isOpen={this.props.isOpen}>
             <div className={classNames("header d-flex justify-content-between", {sidebar:this.props.isOpen})} ref={(e) => { this.header = e; }}>

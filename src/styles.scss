@@ -701,7 +701,24 @@ body {
 
 .gallery-modal-img{
   max-width: 100%;
-  max-height: 100%;
+  max-height: 85%;
+}
+
+.custom-dot.gallery {
+  margin-top: 0;
+  margin-right: 0;
+  height: 14px;
+  width: 14px;
+  background: #CECECE;
+  border-radius: 7px;
+}
+
+.slick-active .custom-dot.gallery {
+    background: #CB2853;
+}
+
+.gallery-modal-slider .slick-dots {
+  margin-bottom: 14px;
 }
 
 /* Filter modal */

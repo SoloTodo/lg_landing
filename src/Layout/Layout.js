@@ -3,14 +3,14 @@ import {Route, Switch} from 'react-router-dom'
 import {Button} from "reactstrap";
 import scrollToComponent from 'react-scroll-to-component';
 
-import Sidebar from "../Sidebar";
-import Header from '../Header'
+import Header from "./Header";
+import Sidebar from "./Sidebar";
 import Footer from "./Footer";
-import {ArrowUpSvg} from "../../Icons";
-import routes from "../routes";
+import {ArrowUpSvg} from "../Icons";
+import routes from "./routes";
 
 
-class MobileLayout extends React.Component{
+class Layout extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -29,9 +29,8 @@ class MobileLayout extends React.Component{
     }
 
     render() {
-        const categoryProps = {isMobile: true}
         return <React.Fragment>
-            <Sidebar isMobile={true} isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen}/>
+            <Sidebar isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen}/>
             <Header isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen} ref={(e) => { this.header = e; }}/>
             <Switch>
                 {routes.map((route, idx) => {
@@ -40,7 +39,7 @@ class MobileLayout extends React.Component{
                         path={route.path}
                         exact={route.exact}
                         name={route.name}
-                        render={() => route.render(categoryProps)}/>})}
+                        render={route.render}/>})}
             </Switch>
             <Button className="footer-button" onClick={this.footerButtonClick}><ArrowUpSvg/></Button>
             <Footer/>
@@ -48,4 +47,4 @@ class MobileLayout extends React.Component{
     }
 }
 
-export default MobileLayout
+export default Layout

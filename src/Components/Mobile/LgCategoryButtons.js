@@ -9,7 +9,7 @@ import navigation from '../../Layout/_nav'
 
 class LgCategoryButtons extends React.Component {
     render() {
-        const slidesNumber = this.props.isMobile? 3 : 5;
+        const slidesNumber = window.innerWidth < 700? 3 : 5;
         const sliderSettings = {
             dots: false,
             arrows: false,
