@@ -176,6 +176,97 @@ body {
   padding-right: 25px;
 }
 
+/* Filter Buttons */
+.desktop-filter-button {
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+  background: none;
+  border: none;
+  height: 35px;
+  width: 150px;
+  border-right: 1px solid #CECECE;
+  margin-bottom: 30px;
+}
+
+.desktop-filter-button:focus{
+  color: black;
+  background: none;
+  border-right: 1px solid #CECECE;
+  box-shadow: none;
+}
+
+.desktop-filter-button:active {
+  color: black !important;
+  background: none !important;
+  border-right: 1px solid #CECECE;
+}
+
+.desktop-filter-button:hover {
+  color: black;
+  background: none;
+  border-right: 1px solid #CECECE;
+}
+
+.filter-remove-button {
+  background: none;
+  color: black;
+  width: 90px;
+  border: 1px solid #BF0C3F;
+  margin-left: 15px;
+  border-radius: 20px;
+  height: 30px;
+  font-size: 12px;
+}
+
+.filter-remove-button:focus {
+  background: none;
+  color: black;
+  border: 1px solid #BF0C3F;
+}
+
+.filter-remove-button:active {
+  background: none !important;
+  color: black;
+  border: 1px solid #BF0C3F;
+}
+
+.filter-remove-button:hover {
+  background: none;
+  color: black;
+  border: 1px solid #BF0C3F;
+}
+
+.desktop-order-button {
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+  background: none;
+  border: none;
+  height: 35px;
+  width: 150px;
+  border-right: 1px solid #CECECE;
+}
+
+.desktop-order-button:focus{
+  color: black;
+  background: none;
+  border-right: 1px solid #CECECE;
+  box-shadow: none;
+}
+
+.desktop-order-button:active {
+  color: black !important;
+  background: none !important;
+  border-right: 1px solid #CECECE;
+}
+
+.desktop-order-button:hover {
+  color: black;
+  background: none;
+  border-right: 1px solid #CECECE;
+}
+
 /***  MOBILE ***/
 /* Sidebar */
 
@@ -187,7 +278,6 @@ body {
   background: #C00E40;
   padding-right: 25px;
 }
-
 
 /* Footer */
 
@@ -229,8 +319,6 @@ body {
 .footer-button:hover{
   background: #CB2853;
 }
-
-
 
 /* Content */
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Modal, ModalBody, ModalHeader, Card, CardBody, Button } from "reactstrap";
 
 import { CloseModalSvg, ArrowLeftSvg } from "../../Icons";
-import ProductGallery from "./ProductGallery";
+import ProductGallery from "../ProductGallery";
 
 
 class GalleryModal extends React.Component {

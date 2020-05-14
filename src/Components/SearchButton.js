@@ -1,10 +1,9 @@
 import React from 'react'
-import {Button} from "reactstrap";
-import Input from "reactstrap/es/Input";
-import {withRouter} from 'react-router-dom'
+import { Button, Input } from "reactstrap";
+import { withRouter } from 'react-router-dom'
 import classNames from "classnames"
 
-import { SearchWhiteSvg } from '../../Icons';
+import { SearchWhiteSvg } from '../Icons';
 
 
 class SearchButton extends React.Component {

@@ -1,9 +1,11 @@
-import React from 'react'
-import { connect } from 'react-redux';
-import {Button, Collapse, Card, CardHeader, CardBody} from "reactstrap";
-import {SpecsSvg} from "../../Icons";
-import {settings} from "../../settings";
-import {filterApiResourceObjectsByType} from "../../react-utils/ApiResource";
+import React from "react";
+import { connect } from "react-redux";
+import { Button, Collapse, Card, CardHeader, CardBody } from "reactstrap";
+import { SpecsSvg } from "../Icons";
+
+import { filterApiResourceObjectsByType } from "../react-utils/ApiResource";
+import { settings } from "../settings";
+
 
 class ProductSpecs extends React.Component {
     constructor(props) {

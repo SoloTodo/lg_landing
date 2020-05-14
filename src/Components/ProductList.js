@@ -1,8 +1,8 @@
 import React from "react";
 
 import ProductListCard from "./ProductListCard";
-import ProductWantModal from "./ProductWantModal";
-import ProductDetailModal from "./ProductDetailModal";
+import ProductWantModal from "./Mobile/ProductWantModal";
+import ProductDetailModal from "./Mobile/ProductDetailModal";
 
 
 class ProductList extends React.Component {

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 
 import ProductModalCommon from "./ProductModalCommon";
-import ProductGallery from "./ProductGallery";
+import ProductGallery from "../ProductGallery";
 import { CloseModalSvg } from "../../Icons";
 import { filterApiResourceObjectsByType } from "../../react-utils/ApiResource";
 import { lgStateToPropsUtils } from "../../utils";

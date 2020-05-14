@@ -1,6 +1,7 @@
 import React from "react";
-import { fetchJson } from "../../react-utils/utils";
 import Slider from "react-slick";
+
+import { fetchJson } from "../react-utils/utils";
 
 
 class ProductGallery extends React.Component {

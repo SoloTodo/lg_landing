@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
 
-import { CheckSvg } from "../../Icons";
+import { CheckSvg } from "../Icons";
 
 
 class OrderModal extends React.Component {

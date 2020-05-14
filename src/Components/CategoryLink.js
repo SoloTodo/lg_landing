@@ -1,7 +1,8 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import {emptyFilters} from "../../redux/actions";
-import {connect} from "react-redux";
+import React from "react";
+import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
+
+import { emptyFilters } from "../redux/actions";
 
 
 class CategoryLink extends React.Component{

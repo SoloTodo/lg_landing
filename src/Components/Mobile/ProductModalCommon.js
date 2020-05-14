@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import ProductSpecs from "./ProductSpecs";
+import ProductSpecs from "../ProductSpecs";
 import { ArrowSvg } from "../../Icons";
 import { filterApiResourceObjectsByType } from "../../react-utils/ApiResource";
 import { lgStateToPropsUtils } from "../../utils";

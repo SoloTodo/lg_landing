@@ -3,11 +3,11 @@ import { slide as Menu } from 'react-burger-menu'
 import { withRouter } from 'react-router-dom';
 import classNames from "classnames"
 
-import CategoryLink from "../Components/Mobile/CategoryLink";
+import CategoryLink from "../Components/CategoryLink";
 import navigation from './_nav'
 import {ArrowWhiteSvg, CloseSvg, SearchWhiteSvg} from "../Icons";
 import Logo from "../logo.png";
-import SearchButton from "../Components/Mobile/SearchButton";
+import SearchButton from "../Components/SearchButton";
 import {Button} from "reactstrap";
 
 

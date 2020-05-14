@@ -1,20 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Container, ButtonGroup, Button } from "reactstrap";
+import { Container } from "reactstrap";
 import scrollToComponent from "react-scroll-to-component";
 import classNames from "classnames"
 
-import LgCarousel from "../Components/Mobile/LgCarousel";
-import LgCategoryButtons from "../Components/Mobile/LgCategoryButtons";
-import FiltersModal from "../Components/Mobile/FiltersModal";
-import OrderModal from "../Components/Mobile/OrderModal";
-import ProductList from "../Components/Mobile/ProductList";
+import LgCarousel from "../Components/LgCarousel";
+import LgCategoryButtons from "../Components/LgCategoryButtons";
+import FilterButtons from "../Components/FilterButtons";
+import FiltersModal from "../Components/FiltersModal";
+import OrderModal from "../Components/OrderModal";
+import ProductList from "../Components/ProductList";
 import ProductDetailModal from "../Components/Mobile/ProductDetailModal";
 
 import { initializeFilters, setModalProduct, setScroll } from "../redux/actions";
 import { filterApiResourceObjectsByType } from "../react-utils/ApiResource";
 import { lgStateToPropsUtils } from "../utils";
 import { settings } from "../settings";
+
 
 
 class Category extends React.Component {
@@ -126,15 +128,9 @@ class Category extends React.Component {
                     <div className="d-flex justify-content-center content-title pt-3">PRODUCTOS</div>
                     <LgCategoryButtons/>
                     {filters?
-                        <ButtonGroup
-                            className="d-flex justify-content-center">
-                            <Button className="filter-button"
-                                    onClick={this.toggleFilterModalOpen}>FILTRAR
-                                POR</Button>
-                            <Button className="order-button"
-                                    onClick={this.toggleOrderModalOpen}>ORDENAR
-                                POR</Button>
-                        </ButtonGroup> : null
+                        <FilterButtons
+                            toggleOrderModalOpen={this.toggleOrderModalOpen}
+                            toggleFilterModalOpen={this.toggleFilterModalOpen}/>:null
                     }
                     <div className={classNames("d-flex flex-wrap", justifyClass)} ref={(e) => { this.productList = e; }}>
                         <ProductList productList={filteredProducts}/>

@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import classNames from "classnames"
 
 import CategoryLink from "./CategoryLink";
-import navigation from '../../Layout/_nav'
+import navigation from '../Layout/_nav'
 
 
 class LgCategoryButtons extends React.Component {
