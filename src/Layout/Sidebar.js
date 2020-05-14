@@ -16,17 +16,23 @@ class Sidebar extends React.Component{
         this.props.toggleSidebarOpen();
     }
 
+    isMenuOpen = (state) => {
+        if (this.props.isOpen !== state.isOpen){
+            this.props.toggleSidebarOpen();
+        }
+    };
+
     render() {
         const pathname = this.props.location.pathname;
         const menuClass = window.innerWidth < 700? "mobile-menu": "desktop-menu"
 
-        return <Menu className={menuClass} right isOpen={this.props.isOpen}>
+        return <Menu className={menuClass} right isOpen={this.props.isOpen} onStateChange={this.isMenuOpen}>
             <div className={classNames("header d-flex justify-content-between", {sidebar:this.props.isOpen})} ref={(e) => { this.header = e; }}>
                 <div className="header-logo">
                         <img alt= "LG Logo" src={Logo}/>
                 </div>
                 <div className="d-flex align-items-center justify-content-end flex-fill">
-                    <SearchButton icon={SearchWhiteSvg}/>
+                    <SearchButton icon={SearchWhiteSvg} callback={this.props.toggleSidebarOpen}/>
                     <div className="header-sidebar-button d-flex align-items-center">
                         <Button className="header-button" color="link" onClick={this.props.toggleSidebarOpen}>
                             <CloseSvg/>

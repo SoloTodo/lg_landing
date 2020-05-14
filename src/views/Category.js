@@ -5,7 +5,7 @@ import scrollToComponent from "react-scroll-to-component";
 import classNames from "classnames"
 
 import LgCarousel from "../Components/LgCarousel";
-import LgCategoryButtons from "../Components/LgCategoryButtons";
+import LgCategoryButtons from "../Components/Mobile/LgCategoryButtons";
 import FilterButtons from "../Components/FilterButtons";
 import FiltersModal from "../Components/FiltersModal";
 import OrderModal from "../Components/OrderModal";

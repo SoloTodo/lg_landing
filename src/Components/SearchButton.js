@@ -45,6 +45,9 @@ class SearchButton extends React.Component {
     keyPerformSearch = (e) => {
         if (e.key === 'Enter') {
             this.performSearch();
+            if (this.props.callback) {
+                this.props.callback();
+            }
         }
     }
 

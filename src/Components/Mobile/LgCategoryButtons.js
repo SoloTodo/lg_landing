@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom';
 import Slider from 'react-slick';
 import classNames from "classnames"
 
-import CategoryLink from "./CategoryLink";
-import navigation from '../Layout/_nav'
+import CategoryLink from "../CategoryLink";
+import navigation from '../../Layout/_nav'
 
 
 class LgCategoryButtons extends React.Component {
