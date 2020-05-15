@@ -16,6 +16,9 @@ import { initializeFilters, setModalProduct, setScroll } from "../redux/actions"
 import { filterApiResourceObjectsByType } from "../react-utils/ApiResource";
 import { lgStateToPropsUtils } from "../utils";
 import { settings } from "../settings";
+import ProductWantModal from "../Components/Mobile/ProductWantModal";
+import ProductWantSidebar from "../Components/Desktop/ProductWantSidebar";
+import ProductDetailSidebar from "../Components/Desktop/ProductDetailSidebar";
 
 
 
@@ -24,12 +27,23 @@ class Category extends React.Component {
         super(props);
         this.state = {
             orderModalOpen: false,
-            appliedOrder: settings.orderOptions[0],
             filterModalOpen: false,
+            detailModalOpen: false,
+            wantModalOpen: false,
+            appliedOrder: settings.orderOptions[0],
+            modalProduct: null
         }
     }
 
     componentDidMount() {
+        if (this.props.modalProduct) {
+            this.setState({
+                modalProduct: this.props.modalProduct,
+                detailModalOpen: true
+            })
+            this.props.deleteModalProduct()
+        }
+
         const appliedFilters = this.props.appliedFilters;
         if (!appliedFilters) {
             this.props.initializeFilters(this.props.name)
@@ -44,8 +58,15 @@ class Category extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        const scroll = this.props.scroll;
+        if (this.props.modalProduct) {
+            this.setState({
+                modalProduct: this.props.modalProduct,
+                detailModalOpen: true
+            })
+            this.props.deleteModalProduct()
+        }
 
+        const scroll = this.props.scroll;
         if (scroll) {
             scrollToComponent(this.productList, {offset: 0, align: "top", duration: 500});
             this.props.deleteScroll();
@@ -64,6 +85,24 @@ class Category extends React.Component {
         })
     };
 
+    setModalProduct = (modalProduct) => {
+        this.setState({
+            modalProduct
+        })
+    }
+
+    toggleDetailModalOpen = () => {
+        this.setState({
+            detailModalOpen: !this.state.detailModalOpen
+        })
+    }
+
+    toggleWantModalOpen = () => {
+        this.setState({
+            wantModalOpen: !this.state.wantModalOpen
+        })
+    }
+
     changeOrder = newOrder => {
         this.setState({
             appliedOrder: newOrder
@@ -75,12 +114,15 @@ class Category extends React.Component {
             return null
         }
 
+        /* TODO: Make to modal filter the product entry */
         let modalProductEntry = null;
-        if (this.props.modalProduct) {
+        if (this.state.modalProduct) {
             modalProductEntry = this.props.productEntries.filter(productEntry => {
-                return productEntry.product.id === this.props.modalProduct
+                return productEntry.product.id === this.state.modalProduct
             })[0]
         }
+        const ProductWant = window.innerWidth < 700? ProductWantModal: ProductWantSidebar;
+        const ProductDetail = window.innerWidth < 700? ProductDetailModal: ProductDetailSidebar;
 
         let filteredProducts = this.props.productEntries.filter(productEntry => {
             return productEntry.customFields.pageCategories.includes(this.props.name)
@@ -119,21 +161,31 @@ class Category extends React.Component {
         }
 
         filteredProducts = filteredProducts.sort(appliedOrder.sortFunction);
-        const justifyClass = window.innerWidth < 700? 'justify-content-center':'justify-content-between';
 
         return <React.Fragment>
             <LgCarousel/>
+            <ProductDetail
+                isOpen={this.state.detailModalOpen}
+                toggle={this.toggleDetailModalOpen}
+                productEntry={modalProductEntry}/>
+             <ProductWant
+                 isOpen={this.state.wantModalOpen}
+                 toggle={this.toggleWantModalOpen}
+                 productEntry={modalProductEntry}/>
             <div className="content-container">
                 <Container>
                     <div className="d-flex justify-content-center content-title pt-3">PRODUCTOS</div>
                     <LgCategoryButtons/>
-                    {filters?
+                    {filters &&
                         <FilterButtons
                             toggleOrderModalOpen={this.toggleOrderModalOpen}
-                            toggleFilterModalOpen={this.toggleFilterModalOpen}/>:null
-                    }
-                    <div className={classNames("d-flex flex-wrap", justifyClass)} ref={(e) => { this.productList = e; }}>
-                        <ProductList productList={filteredProducts}/>
+                            toggleFilterModalOpen={this.toggleFilterModalOpen}/>}
+                    <div className={classNames("d-flex flex-wrap justify-content-between")} ref={(e) => { this.productList = e; }}>
+                        <ProductList
+                            productList={filteredProducts}
+                            setModalProduct={this.setModalProduct}
+                            toggleDetailModalOpen={this.toggleDetailModalOpen}
+                            toggleWantModalOpen={this.toggleWantModalOpen}/>
                         <div className="dummy-product-card"/>
                     </div>
                 </Container>
@@ -149,9 +201,8 @@ class Category extends React.Component {
                     isOpen={this.state.filterModalOpen}
                     toggle={this.toggleFilterModalOpen}
                     filters={filters}/>
-                    : null}
-            {this.props.modalProduct?
-                <ProductDetailModal isOpen={true} toggle={this.props.deleteModalProduct} productEntry={modalProductEntry}/>: null}
+                    : null
+            }
         </React.Fragment>
     }
 }

@@ -5,7 +5,6 @@ import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import ProductModalCommon from "./ProductModalCommon";
 import GalleryModal from "./GalleryModal";
 import { CloseModalSvg } from "../../Icons";
-import { filterApiResourceObjectsByType } from "../../react-utils/ApiResource";
 import { lgStateToPropsUtils } from "../../utils";
 
 
@@ -62,7 +61,6 @@ function mapStateToProps(state) {
 
     return {
         formatCurrency,
-        stores: filterApiResourceObjectsByType(state.apiResourceObjects, 'stores'),
     }
 }
 

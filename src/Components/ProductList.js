@@ -1,64 +1,33 @@
 import React from "react";
 
 import ProductListCard from "./ProductListCard";
-import ProductWantModal from "./Mobile/ProductWantModal";
-import ProductDetailModal from "./Mobile/ProductDetailModal";
 
 
 class ProductList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            productWantModalOpen: false,
-            productDetailModalOpen: false,
-            modalProductEntry: null,
-        }
-    }
-
-    toggleWantModalOpen = (productEntry) => {
-        if (this.state.productWantModalOpen) {
-            this.setState({
-                productWantModalOpen: false,
-                modalProductEntry: null
-            })
-        } else {
-            this.setState({
-                productWantModalOpen: true,
-                modalProductEntry: productEntry
-            })
-        }
+    toggleWantModalOpen = (productId) => {
+        this.props.toggleWantModalOpen();
+        this.props.setModalProduct(productId)
     };
 
-    toggleDetailModalOpen = (productEntry) => {
-        if (this.state.productDetailModalOpen) {
-            this.setState({
-                productDetailModalOpen: false,
-                modalProductEntry: null
-            })
-        } else {
-            this.setState({
-                productDetailModalOpen: true,
-                modalProductEntry: productEntry
-            })
-        }
+    toggleDetailModalOpen = (productId) => {
+        this.props.toggleDetailModalOpen();
+        this.props.setModalProduct(productId)
     };
 
     render() {
         if (!this.props.productList) {
             return null
         }
+
         return <React.Fragment>
             {this.props.productList.map(productEntry => {
                 return <ProductListCard
                     key={productEntry.product.id}
                     productEntry={productEntry}
-                    toggleProductWantModal={this.toggleWantModalOpen}
-                    toggleProductDetailModal={this.toggleDetailModalOpen}
+                    toggleProductWantModal={() => this.toggleWantModalOpen(productEntry.product.id)}
+                    toggleProductDetailModal={() => this.toggleDetailModalOpen(productEntry.product.id)}
                 />
             })}
-            <ProductWantModal isOpen={this.state.productWantModalOpen} toggle={() => this.toggleWantModalOpen(null)} productEntry={this.state.modalProductEntry}/>
-            <ProductDetailModal isOpen={this.state.productDetailModalOpen} toggle={() => this.toggleDetailModalOpen(null)} productEntry={this.state.modalProductEntry}/>
-
         </React.Fragment>
     }
 }

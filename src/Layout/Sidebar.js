@@ -1,6 +1,6 @@
-import React from 'react';
-import { slide as Menu } from 'react-burger-menu'
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import { slide as Menu } from "react-burger-menu";
+import { withRouter } from "react-router-dom";
 import classNames from "classnames"
 
 import CategoryLink from "../Components/CategoryLink";
