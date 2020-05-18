@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import { slide as Menu} from "react-burger-menu";
 
 import ProductModalCommon from "../Mobile/ProductModalCommon";
-import GalleryModal from "../Mobile/GalleryModal";
-import { CloseModalSvg } from "../../Icons";
+import {ArrowLeftSvg, CloseModalSvg} from "../../Icons";
 import { lgStateToPropsUtils } from "../../utils";
+import {Button, Card, CardBody} from "reactstrap";
+import ProductGallery from "../ProductGallery";
 
 
 class ProductWantSidebar extends React.Component {
@@ -22,6 +23,19 @@ class ProductWantSidebar extends React.Component {
         })
     }
 
+    closeSidebar = () => {
+        this.setState({
+            galleryOpen: false
+        })
+        this.props.toggle();
+    }
+
+    isMenuOpen = (state) => {
+        if (this.props.isOpen !== state.isOpen){
+            this.closeSidebar();
+        }
+    };
+
     render() {
         const productEntry = this.props.productEntry;
 
@@ -31,14 +45,15 @@ class ProductWantSidebar extends React.Component {
 
         const product = productEntry.product;
         const lgData = productEntry.customFields;
-        
-        return <Menu isOpen={ this.props.isOpen } right className="product-sidebar">
-            <div className="d-flex align-items-center product-modal-header">
-                <div className="d-flex align-items-center justify-content-between">
-                    <span>Estás viendo</span>
-                    <span onClick={this.props.toggle}><CloseModalSvg/></span>
-                </div>
-            </div>
+        const content = this.state.galleryOpen?
+            <div className="gallery-modal">
+                <Card className="gallery-modal-card">
+                    <CardBody>
+                        <div className="gallery-modal-button"><Button onClick={this.toggleGallery}><ArrowLeftSvg/> <span className="pl-2">Volver atrás</span></Button></div>
+                        <ProductGallery productEntry={productEntry}/>
+                    </CardBody>
+                </Card>
+            </div>:
             <div className="product-modal">
                 <div className="d-flex align-content-between">
                     <div className="d-flex align-items-center product-modal-image"><img alt={product.name} src={product.picture_url} onClick={this.toggleGallery}/></div>
@@ -50,7 +65,15 @@ class ProductWantSidebar extends React.Component {
                 </div>
                 <ProductModalCommon productEntry={productEntry}/>
             </div>
-            <GalleryModal isOpen={this.state.galleryOpen} toggle={this.toggleGallery} productEntry={productEntry} toggleParent={this.props.toggle}/>
+
+        return <Menu isOpen={ this.props.isOpen } right className="product-sidebar" onStateChange={this.isMenuOpen}>
+            <div className="d-flex align-items-center product-sidebar-header">
+                <div className="d-flex align-items-center flex-fill justify-content-between">
+                    <span>Estás viendo</span>
+                    <span onClick={this.closeSidebar}><CloseModalSvg/></span>
+                </div>
+            </div>
+            { content }
         </Menu>
     }
 }

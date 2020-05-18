@@ -164,6 +164,47 @@ body {
   background: #CB2853;
 }
 
+/* Footer */
+
+.footer{
+  position: absolute;
+  height: 122px;
+  width: 100%;
+  margin-top: -122px;
+  background: black;
+  clip-path: polygon(0 13px, 0 100%, 100% 100%, 100% 0);
+}
+
+.footer-logo {
+  padding-top: 33px;
+}
+
+.footer-text {
+  color: white;
+  font-size: 14px;
+  padding-top: 10px;
+}
+
+.footer-button{
+  position: absolute;
+  height: 39px;
+  width: 39px;
+  border: none;
+  right: 16px;
+  margin-top: -139px;
+  background: #CB2853;
+  z-index: 1000;
+  border-radius: 20px;
+}
+
+.footer-button:focus{
+  background: #CB2853;
+}
+
+.footer-button:hover{
+  background: #CB2853;
+}
+
 /*** DESKTOP ***/
 
 /* Sidebar */
@@ -290,6 +331,24 @@ body {
   background: white;
 }
 
+.product-sidebar-header {
+  height: 55px;
+  background: #BF0C3F;
+  border-radius: 0 0 8px 8px;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.bm-item.product-sidebar-header:focus{
+  outline: none;
+}
+
+.bm-item.product-modal:focus{
+  outline: none;
+}
+
 /***  MOBILE ***/
 /* Sidebar */
 
@@ -300,47 +359,6 @@ body {
 .mobile-menu .bm-menu {
   background: #C00E40;
   padding-right: 25px;
-}
-
-/* Footer */
-
-.footer{
-  position: absolute;
-  height: 122px;
-  width: 100%;
-  margin-top: -122px;
-  background: black;
-  clip-path: polygon(0 13px, 0 100%, 100% 100%, 100% 0);
-}
-
-.footer-logo {
-  padding-top: 33px;
-}
-
-.footer-text {
-  color: white;
-  font-size: 14px;
-  padding-top: 10px;
-}
-
-.footer-button{
-  position: absolute;
-  height: 39px;
-  width: 39px;
-  border: none;
-  right: 16px;
-  margin-top: -139px;
-  background: #CB2853;
-  z-index: 1000;
-  border-radius: 20px;
-}
-
-.footer-button:focus{
-  background: #CB2853;
-}
-
-.footer-button:hover{
-  background: #CB2853;
 }
 
 /* Content */
@@ -475,8 +493,6 @@ body {
     width: 31%;
   }
 }
-
-
 
 .product-card__discount-badge {
   position: absolute;
