@@ -1,7 +1,7 @@
-import React from 'react';
-import { Container, Button } from 'reactstrap'
-import classNames from "classnames"
-import scrollToComponent from 'react-scroll-to-component';
+import React from "react";
+import { Container, Button } from "reactstrap";
+import classNames from "classnames";
+import scrollToComponent from "react-scroll-to-component";
 
 import CategoryLink from "../Components/CategoryLink";
 import SearchButton from "../Components/SearchButton";

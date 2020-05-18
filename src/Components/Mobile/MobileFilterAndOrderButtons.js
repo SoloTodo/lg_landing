@@ -2,7 +2,7 @@ import React from "react"
 import { Button, ButtonGroup } from "reactstrap";
 
 
-class MobileFilterButtons extends React.Component {
+class MobileFilterAndOrderButtons extends React.Component {
     render() {
         return <ButtonGroup className="d-flex justify-content-center">
             <Button className="filter-button" onClick={this.props.toggleFilterModalOpen}>
@@ -15,4 +15,4 @@ class MobileFilterButtons extends React.Component {
     }
 }
 
-export default MobileFilterButtons
+export default MobileFilterAndOrderButtons

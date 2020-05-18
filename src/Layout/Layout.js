@@ -1,12 +1,10 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom'
-import {Button} from "reactstrap";
 import scrollToComponent from 'react-scroll-to-component';
 
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
-import {ArrowUpSvg} from "../Icons";
 import routes from "./routes";
 
 
@@ -41,8 +39,7 @@ class Layout extends React.Component{
                         name={route.name}
                         render={route.render}/>})}
             </Switch>
-            <Button className="footer-button" onClick={this.footerButtonClick}><ArrowUpSvg/></Button>
-            <Footer/>
+            <Footer footerButtonClick={this.footerButtonClick}/>
         </React.Fragment>
     }
 }

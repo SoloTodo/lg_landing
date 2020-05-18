@@ -185,13 +185,21 @@ body {
   padding-top: 10px;
 }
 
-.footer-button{
+.footer-button-container {
   position: absolute;
+  height: 39px;
+  width: 100%;
+  border: none;
+  right: 0;
+  left: 0;
+  margin-top: -139px;
+  z-index: 1000;
+}
+
+.footer-button{
   height: 39px;
   width: 39px;
   border: none;
-  right: 16px;
-  margin-top: -139px;
   background: #CB2853;
   z-index: 1000;
   border-radius: 20px;
@@ -536,6 +544,7 @@ body {
 }
 
 .product-card-name h2 {
+  height: 85px;
   padding-top: 20px;
   font-size:28px;
   line-height: 32px;

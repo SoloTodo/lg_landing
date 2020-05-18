@@ -5,8 +5,8 @@ import scrollToComponent from "react-scroll-to-component";
 import classNames from "classnames"
 
 import LgCarousel from "../Components/LgCarousel";
-import LgCategoryButtons from "../Components/Mobile/LgCategoryButtons";
-import FilterButtons from "../Components/FilterButtons";
+import LgCategoryButtons from "../Components/LgCategoryButtons";
+import FilterAndOrderButtons from "../Components/FilterAndOrderButtons";
 import FiltersModal from "../Components/FiltersModal";
 import OrderModal from "../Components/OrderModal";
 import ProductList from "../Components/ProductList";
@@ -14,7 +14,7 @@ import ProductDetailModal from "../Components/Mobile/ProductDetailModal";
 
 import { initializeFilters, setModalProduct, setScroll } from "../redux/actions";
 import { filterApiResourceObjectsByType } from "../react-utils/ApiResource";
-import { lgStateToPropsUtils } from "../utils";
+import { isMobile, lgStateToPropsUtils } from "../utils";
 import { settings } from "../settings";
 import ProductWantModal from "../Components/Mobile/ProductWantModal";
 import ProductWantSidebar from "../Components/Desktop/ProductWantSidebar";
@@ -121,8 +121,8 @@ class Category extends React.Component {
                 return productEntry.product.id === this.state.modalProduct
             })[0]
         }
-        const ProductWant = window.innerWidth < 700? ProductWantModal: ProductWantSidebar;
-        const ProductDetail = window.innerWidth < 700? ProductDetailModal: ProductDetailSidebar;
+        const ProductWant = isMobile()? ProductWantModal: ProductWantSidebar;
+        const ProductDetail = isMobile()? ProductDetailModal: ProductDetailSidebar;
 
         let filteredProducts = this.props.productEntries.filter(productEntry => {
             return productEntry.customFields.pageCategories.includes(this.props.name)
@@ -177,7 +177,7 @@ class Category extends React.Component {
                     <div className="d-flex justify-content-center content-title pt-3">PRODUCTOS</div>
                     <LgCategoryButtons/>
                     {filters &&
-                        <FilterButtons
+                        <FilterAndOrderButtons
                             toggleOrderModalOpen={this.toggleOrderModalOpen}
                             toggleFilterModalOpen={this.toggleFilterModalOpen}/>}
                     <div className={classNames("d-flex flex-wrap justify-content-between")} ref={(e) => { this.productList = e; }}>

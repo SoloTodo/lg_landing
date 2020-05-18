@@ -9,6 +9,7 @@ import {ArrowWhiteSvg, CloseSvg, SearchWhiteSvg} from "../Icons";
 import Logo from "../logo.png";
 import SearchButton from "../Components/SearchButton";
 import {Button} from "reactstrap";
+import { isMobile } from "../utils";
 
 
 class Sidebar extends React.Component{
@@ -24,10 +25,8 @@ class Sidebar extends React.Component{
 
     render() {
         const pathname = this.props.location.pathname;
-        const menuClass = window.innerWidth < 700? "mobile-menu": "desktop-menu"
-
-        return <Menu className={menuClass} right isOpen={this.props.isOpen} onStateChange={this.isMenuOpen}>
-            <div className={classNames("header d-flex justify-content-between", {sidebar:this.props.isOpen})} ref={(e) => { this.header = e; }}>
+        return <Menu className={classNames({"mobile-menu": isMobile()}, {"desktop-menu": !isMobile()})} right isOpen={this.props.isOpen} onStateChange={this.isMenuOpen}>
+            <div className={classNames("header d-flex justify-content-between", {sidebar:this.props.isOpen})}>
                 <div className="header-logo">
                         <img alt= "LG Logo" src={Logo}/>
                 </div>
@@ -43,9 +42,8 @@ class Sidebar extends React.Component{
             <div className="sidebar-separator"/>
             {
                 navigation.items.map(item => {
-                    const selected_class = item.url === pathname? "menu-item-selected": "";
                     return <CategoryLink to={item.url} key={item.url} className="menu-item d-flex justify-content-between" onClick={this.handleOnclick}>
-                        <span className={selected_class}>{item.name}</span>
+                        <span className={classNames({"menu-item-selected":item.url === pathname})}>{item.name}</span>
                         <span><ArrowWhiteSvg/></span>
                     </CategoryLink>
                 })

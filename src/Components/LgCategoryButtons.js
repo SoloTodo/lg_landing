@@ -1,19 +1,20 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import Slider from 'react-slick';
+import React from "react";
+import { withRouter } from "react-router-dom";
+import Slider from "react-slick";
 import classNames from "classnames"
 
-import CategoryLink from "../CategoryLink";
-import navigation from '../../Layout/_nav'
+import CategoryLink from "./CategoryLink";
+import navigation from "../Layout/_nav";
+import { isMobile } from "../utils";
 
 
 class LgCategoryButtons extends React.Component {
     render() {
-        const slidesNumber = window.innerWidth < 700? 3 : 5;
+        const slidesNumber = isMobile()? 3 : 5;
         const sliderSettings = {
             dots: false,
             arrows: false,
-            infinite: true,
+            infinite: false,
             slidesToShow: slidesNumber,
             slidesToScroll: slidesNumber,
         };
@@ -28,15 +29,14 @@ class LgCategoryButtons extends React.Component {
         }
 
         sliderSettings['initialSlide'] = initialSlide;
+        const items = navigation.items.filter(item => {
+            return item.button
+        })
 
         return <Slider {...sliderSettings} className="slider-buttons">
             {
-                navigation.items.map(item => {
+                items.map(item => {
                     const isSelected = item.url === pathname;
-                    if (!item.button) {
-                        return null
-                    }
-
                     return <CategoryLink to={item.url} key={item.url} className={classNames('slider-button d-flex justify-content-center align-items-center', {selected:isSelected})}>
                         {item.button_name}
                     </CategoryLink>

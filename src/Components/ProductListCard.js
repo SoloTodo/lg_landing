@@ -49,7 +49,7 @@ class ProductListCard extends React.Component {
                     <div className="d-flex product-card-sku align-items-center"><span className="mr-1">SKU:</span>{lgData.lgSku}</div>
                 </div>
                 <div className="d-flex product-card-name justify-content-center align-items-center">
-                    <h2>{lgData.customTitle}</h2>
+                    <h2 className="d-flex align-items-center">{lgData.customTitle}</h2>
                 </div>
                 <div className="d-flex product-card-image justify-content-center align-items-center">
                     <img alt={product.name} src={product.picture_url}/>

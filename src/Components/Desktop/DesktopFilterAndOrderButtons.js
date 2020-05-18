@@ -5,7 +5,7 @@ import { Button } from "reactstrap";
 import { toggleFilter } from "../../redux/actions";
 
 
-class DesktopFilterButtons extends React.Component {
+class DesktopFilterAndOrderButtons extends React.Component {
     render() {
         const filterList = []
         for (const type in this.props.appliedFilters) {
@@ -44,4 +44,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DesktopFilterButtons);
+export default connect(mapStateToProps, mapDispatchToProps)(DesktopFilterAndOrderButtons);

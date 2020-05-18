@@ -14,3 +14,7 @@ export function lgStateToPropsUtils(state) {
         }
     }
 }
+
+export function isMobile() {
+    return window.innerWidth < 700;
+}
