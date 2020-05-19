@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Button, Card, CardBody } from "reactstrap";
 
 import { lgStateToPropsUtils } from "../utils";
+import {filterApiResourceObjectsByType} from "../react-utils/ApiResource";
 
 
 class ProductListCard extends React.Component {
@@ -42,6 +43,8 @@ class ProductListCard extends React.Component {
             productBadges.push(availableBadges[badgeName])
         }
 
+        const store = this.props.stores.filter(store => store.url === entity.store)[0];
+
         return <Card className="product-card">
             <CardBody>
                 <div className="d-flex justify-content-between">
@@ -60,7 +63,10 @@ class ProductListCard extends React.Component {
                 </div>
                 <div className="product-card-price">
                     <div className="d-flex justify-content-center price-text">Precio desde:</div>
-                    <div className="d-flex justify-content-center price">{this.props.formatCurrency(entity.active_registry.offer_price)}</div>
+                    <div className="d-flex justify-content-center price">
+                        <span>{this.props.formatCurrency(entity.active_registry.offer_price)}</span>
+                        <img className="product-card-retailer" alt="retailer logo" src={`/logo-${store.name.toLowerCase()}.png`}/>
+                    </div>
                     {referencePrice ?
                         <div className="d-flex justify-content-center old-price">
                             Precio normal: <span className="ml-1">{this.props.formatCurrency(referencePrice)}</span>
@@ -86,6 +92,7 @@ function mapStateToProps(state) {
     const {formatCurrency} = lgStateToPropsUtils(state);
     return {
         formatCurrency,
+        stores: filterApiResourceObjectsByType(state.apiResourceObjects, 'stores')
     }
 }
 

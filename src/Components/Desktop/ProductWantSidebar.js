@@ -37,9 +37,12 @@ class ProductWantSidebar extends React.Component {
     };
 
     render() {
-        const productEntry = this.props.productEntry;
-
-        if (!productEntry) {
+        let productEntry = null;
+        if (this.props.productId) {
+            productEntry = this.props.productEntries.filter(productEntry => {
+                return productEntry.product.id === this.props.productId
+            })[0]
+        } else {
             return null
         }
 
@@ -55,11 +58,13 @@ class ProductWantSidebar extends React.Component {
                 </Card>
             </div>:
             <div className="product-modal">
-                <div className="d-flex align-content-between">
+                <div className="d-flex flex-column">
+                    <span className="product-modal-sku"><span>SKU</span>: {lgData.lgSku}</span>
+                    <span className="product-modal-name flex-fill">{lgData.customTitle}</span>
+                </div>
+                <div className="d-flex align-content-between pt-4">
                     <div className="d-flex align-items-center product-modal-image"><img alt={product.name} src={product.picture_url} onClick={this.toggleGallery}/></div>
                     <div className="d-flex flex-column product-modal-text">
-                        <span className="product-modal-sku"><span>SKU</span>: {lgData.lgSku}</span>
-                        <span className="product-modal-name">{lgData.customTitle}</span>
                         <span className="product-modal-description">{lgData.customDescription}.</span>
                     </div>
                 </div>
@@ -82,6 +87,7 @@ function mapStateToProps(state) {
     const {formatCurrency} = lgStateToPropsUtils(state);
 
     return {
+        productEntries: state.productEntries,
         formatCurrency,
     }
 }

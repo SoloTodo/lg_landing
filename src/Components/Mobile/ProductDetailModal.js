@@ -5,14 +5,17 @@ import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import ProductModalCommon from "./ProductModalCommon";
 import ProductGallery from "../ProductGallery";
 import { CloseModalSvg } from "../../Icons";
-import { filterApiResourceObjectsByType } from "../../react-utils/ApiResource";
 import { lgStateToPropsUtils } from "../../utils";
 
 
 class ProductDetailModal extends React.Component {
     render() {
-        const productEntry = this.props.productEntry;
-        if (!productEntry) {
+        let productEntry = null;
+        if (this.props.productId) {
+            productEntry = this.props.productEntries.filter(productEntry => {
+                return productEntry.product.id === this.props.productId
+            })[0]
+        } else {
             return null
         }
 
@@ -27,9 +30,9 @@ class ProductDetailModal extends React.Component {
                     </div>
                 </ModalHeader>
                 <ModalBody className="product-modal">
-                    <div className="d-flex align-content-between align-items-center">
-                        <span className="product-modal-name flex-fill">{lgData.customTitle}</span>
+                    <div className="d-flex flex-column">
                         <span className="product-modal-sku"><span>SKU</span>: {lgData.lgSku}</span>
+                        <span className="product-modal-name flex-fill">{lgData.customTitle}</span>
                     </div>
                     <div>
                         <ProductGallery productEntry={productEntry}/>
@@ -49,7 +52,7 @@ function mapStateToProps(state) {
 
     return {
         formatCurrency,
-        stores: filterApiResourceObjectsByType(state.apiResourceObjects, 'stores'),
+        productEntries: state.productEntries,
     }
 }
 

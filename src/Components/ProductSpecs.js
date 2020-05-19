@@ -50,7 +50,9 @@ class ProductSpecs extends React.Component {
                     </CardBody>
                 </Card>
             </Collapse>
-            <Button id="toggler" className="product-modal-button" onClick={this.toggleOpen}>{buttonText}</Button>
+            <div className="d-flex justify-content-center">
+                <Button id="toggler" className="product-modal-button" onClick={this.toggleOpen}>{buttonText}</Button>
+            </div>
         </div>
     }
 }

@@ -115,12 +115,7 @@ class Category extends React.Component {
         }
 
         /* TODO: Make to modal filter the product entry */
-        let modalProductEntry = null;
-        if (this.state.modalProduct) {
-            modalProductEntry = this.props.productEntries.filter(productEntry => {
-                return productEntry.product.id === this.state.modalProduct
-            })[0]
-        }
+
         const ProductWant = isMobile()? ProductWantModal: ProductWantSidebar;
         const ProductDetail = isMobile()? ProductDetailModal: ProductDetailSidebar;
 
@@ -167,11 +162,11 @@ class Category extends React.Component {
             <ProductDetail
                 isOpen={this.state.detailModalOpen}
                 toggle={this.toggleDetailModalOpen}
-                productEntry={modalProductEntry}/>
+                productId={this.state.modalProduct}/>
              <ProductWant
                  isOpen={this.state.wantModalOpen}
                  toggle={this.toggleWantModalOpen}
-                 productEntry={modalProductEntry}/>
+                 productId={this.state.modalProduct}/>
             <div className="content-container">
                 <Container>
                     <div className="d-flex justify-content-center content-title pt-3">PRODUCTOS</div>
