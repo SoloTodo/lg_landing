@@ -10,13 +10,11 @@ import { lgStateToPropsUtils } from "../../utils";
 
 class ProductDetailModal extends React.Component {
     render() {
-        let productEntry = null;
+        let productEntry = this.props.productEntries[0];
         if (this.props.productId) {
             productEntry = this.props.productEntries.filter(productEntry => {
                 return productEntry.product.id === this.props.productId
             })[0]
-        } else {
-            return null
         }
 
         const lgData = productEntry.customFields;
