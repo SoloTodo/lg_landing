@@ -4,14 +4,14 @@ import ProductListCard from "./ProductListCard";
 
 
 class ProductList extends React.Component {
-    toggleWantModalOpen = (productId) => {
-        this.props.toggleWantModalOpen();
-        this.props.setModalProduct(productId)
+    toggleWantOverlayOpen = (productId) => {
+        this.props.toggleWantOverlayOpen();
+        this.props.setOverlayProduct(productId)
     };
 
-    toggleDetailModalOpen = (productId) => {
-        this.props.toggleDetailModalOpen();
-        this.props.setModalProduct(productId)
+    toggleDetailOverlayOpen = (productId) => {
+        this.props.toggleDetailOverlayOpen();
+        this.props.setOverlayProduct(productId)
     };
 
     render() {
@@ -24,8 +24,8 @@ class ProductList extends React.Component {
                 return <ProductListCard
                     key={productEntry.product.id}
                     productEntry={productEntry}
-                    toggleProductWantModal={() => this.toggleWantModalOpen(productEntry.product.id)}
-                    toggleProductDetailModal={() => this.toggleDetailModalOpen(productEntry.product.id)}
+                    toggleProductWantModal={() => this.toggleWantOverlayOpen(productEntry.product.id)}
+                    toggleProductDetailModal={() => this.toggleDetailOverlayOpen(productEntry.product.id)}
                 />
             })}
         </React.Fragment>

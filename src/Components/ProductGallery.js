@@ -21,6 +21,17 @@ class ProductGallery extends React.Component {
         })
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.productEntry !== prevProps.productEntry) {
+            const product = this.props.productEntry.product;
+            fetchJson(`product_pictures/?products=${product.id}`).then(images => {
+                this.setState({
+                    images: images.results
+                })
+            })
+        }
+    }
+
     render() {
         const productEntry = this.props.productEntry;
 

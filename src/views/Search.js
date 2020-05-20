@@ -1,18 +1,47 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Container } from 'reactstrap';
-import {withRouter} from 'react-router-dom';
-import {parse} from 'query-string';
-import Fuse from 'fuse.js'
+import React from "react";
+import { connect } from "react-redux";
+import { Container } from "reactstrap";
+import { withRouter } from "react-router-dom";
+import { parse } from "query-string";
+import Fuse from "fuse.js";
 
 import ProductList from "../Components/ProductList";
+import ProductOverlays from "../Components/ProductOverlays";
 
 
 class Search extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            detailOverlayOpen: false,
+            wantOverlayOpen: false,
+            overlayProduct: null
+        }
+    }
+
+    toggleDetailOverlayOpen = () => {
+        this.setState({
+            detailOverlayOpen: !this.state.detailOverlayOpen
+        })
+    }
+
+    toggleWantOverlayOpen = () => {
+        this.setState({
+            wantOverlayOpen: !this.state.wantOverlayOpen
+        })
+    }
+
+    setOverlayProduct = (overlayProduct) => {
+        this.setState({
+            overlayProduct
+        })
+    }
+
     render() {
         if (!this.props.productEntries) {
             return null
         }
+
         const queryParams = this.props.location.search;
         const keyword = parse(queryParams)['keyword'];
         const productList = this.props.productEntries;
@@ -36,10 +65,23 @@ class Search extends React.Component {
         }
 
         return <React.Fragment>
+            <ProductOverlays
+                productId={this.state.overlayProduct}
+                toggleDetailOverlayOpen={this.toggleDetailOverlayOpen}
+                toggleWantOverlayOpen={this.toggleWantOverlayOpen}
+                detailOverlayOpen={this.state.detailOverlayOpen}
+                wantOverlayOpen={this.state.wantOverlayOpen}/>
             <div className="content-container search">
-                <Container fluid>
+                <Container>
                     <div className="d-flex justify-content-center content-title search pb-4">{searchResult.length} PRODUCTOS ENCONTRADOS</div>
-                    <ProductList productList={searchResult}/>
+                    <div className="d-flex flex-wrap justify-content-between" ref={(e) => { this.productList = e; }}>
+                        <ProductList
+                            productList={searchResult}
+                            setOverlayProduct={this.setOverlayProduct}
+                            toggleDetailOverlayOpen={this.toggleDetailOverlayOpen}
+                            toggleWantOverlayOpen={this.toggleWantOverlayOpen}/>
+                        <div className="dummy-product-card"/>
+                    </div>
                 </Container>
             </div>
         </React.Fragment>
