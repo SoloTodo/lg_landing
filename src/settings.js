@@ -5,6 +5,7 @@ export const settings = {
     ...apiSettings,
     country: 1,
     currency: apiSettings.endpoint + 'currencies/1/',
+    path: '/cl/landing',
     categoryFilters: {
         "Cell": [
             {

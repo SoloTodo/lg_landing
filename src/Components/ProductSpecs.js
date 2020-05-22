@@ -41,7 +41,7 @@ class ProductSpecs extends React.Component {
                     <CardBody className="product-specs-card-body">
                         <div className="d-flex flex-wrap">
                             {categorySpecs.map(spec => {
-                                return <div className="d-flex flex-column product-specs-item">
+                                return <div className="d-flex flex-column product-specs-item" key={spec.name}>
                                     <span className="product-specs-item-title">{spec.name}</span>
                                     <span className="product-specs-item-content">{specsDict[spec.key]}</span>
                                 </div>

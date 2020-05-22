@@ -24,7 +24,7 @@ class Layout extends React.Component{
 
     footerButtonClick = () => {
         scrollToComponent(this.header)
-    }
+    };
 
     render() {
         return <React.Fragment>

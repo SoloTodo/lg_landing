@@ -58,7 +58,7 @@ class ProductGallery extends React.Component {
 
         return <Slider {...sliderSettings} className="gallery-modal-slider">
             {images.map(image => {
-                return <div className="d-flex justify-content-center align-items-center"><img className="gallery-modal-img" alt="" src={image.file}/></div>
+                return <div className="d-flex justify-content-center align-items-center" key={image.file}><img className="gallery-modal-img" alt="" src={image.file}/></div>
             })}
         </Slider>
     }

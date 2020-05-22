@@ -5,11 +5,13 @@ import { Button, Card, CardBody } from "reactstrap";
 import { lgStateToPropsUtils } from "../utils";
 import {filterApiResourceObjectsByType} from "../react-utils/ApiResource";
 
+import {settings} from "../settings";
+
 
 class ProductListCard extends React.Component {
     render() {
         const availableBadges = {
-            includesInstallation: <img key="includes_installation" src="/badges/includes_installation.png" alt="Incluye instalación" width="101" height="41" />
+            includesInstallation: <img key="includes_installation" src={settings.path + '/badges/includes_installation.png'} alt="Incluye instalación" width="101" height="41" />
         };
 
         const productEntry = this.props.productEntry;
@@ -65,7 +67,7 @@ class ProductListCard extends React.Component {
                     <div className="d-flex justify-content-center price-text">Precio desde:</div>
                     <div className="d-flex justify-content-center price">
                         <span>{this.props.formatCurrency(entity.active_registry.offer_price)}</span>
-                        <img className="product-card-retailer" alt="retailer logo" src={`/logo-${store.name.toLowerCase()}.png`}/>
+                        <img className="product-card-retailer" alt="retailer logo" src={`${settings.path}/logo-${store.name.toLowerCase()}.png`}/>
                     </div>
                     {referencePrice ?
                         <div className="d-flex justify-content-center old-price">

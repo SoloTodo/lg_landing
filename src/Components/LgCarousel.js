@@ -16,18 +16,18 @@ class LgCarousel extends React.Component {
 
     handleBeforeChange = () => {
         this.dragging = true;
-    }
+    };
 
     handleAfterChange = () => {
         this.dragging = false;
-    }
+    };
 
     handleOnItemClick = e => {
         if (this.dragging) {
             e.preventDefault();
             e.stopPropagation();
         }
-    }
+    };
 
     render() {
         const sliderSettings = {
@@ -43,7 +43,10 @@ class LgCarousel extends React.Component {
         };
 
         const banners = settings.banners;
-        const bannersRoute = isMobile()? '/banners/mobile/' : '/banners/desktop/'
+        console.log(settings.path);
+        let bannersRoute = isMobile()? '/banners/mobile/' : '/banners/desktop/';
+        bannersRoute = settings.path + bannersRoute;
+        console.log(bannersRoute);
 
         return <Container><div className="slider-limits">
             <div className="slider-container">
