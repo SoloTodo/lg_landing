@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
+import {Container} from "reactstrap";
 import Slider from "react-slick";
 
 import CategoryLink from "./CategoryLink";
 import { settings } from "../settings";
 import { isMobile } from "../utils";
-
 
 class LgCarousel extends React.Component {
     constructor(props) {
@@ -36,6 +36,7 @@ class LgCarousel extends React.Component {
             infinite: true,
             slidesToShow: 1,
             slidesToScroll: 1,
+            touchThreshold: 20,
             customPaging: i => {
                 return <div className="custom-dot"/>
             }
@@ -44,7 +45,7 @@ class LgCarousel extends React.Component {
         const banners = settings.banners;
         const bannersRoute = isMobile()? '/banners/mobile/' : '/banners/desktop/'
 
-        return <div className="slider-limits">
+        return <Container><div className="slider-limits">
             <div className="slider-container">
                 <Slider {...sliderSettings} beforeChange={this.handleBeforeChange} afterChange={this.handleAfterChange}>
                     {banners.map(banner => {
@@ -60,7 +61,7 @@ class LgCarousel extends React.Component {
                     })}
                 </Slider>
             </div>
-        </div>
+        </div></Container>
     }
 }
 

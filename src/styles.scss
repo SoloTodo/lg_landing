@@ -146,9 +146,14 @@ body {
   height: 345px;
 }
 
+:focus {
+  outline: none
+}
+
 .slider-card img {
   max-height: 345px;
   max-width: 100%;
+  cursor: pointer;
 }
 
 .custom-dot {

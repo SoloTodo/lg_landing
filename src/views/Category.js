@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { Container } from "reactstrap";
 import scrollToComponent from "react-scroll-to-component";
-import classNames from "classnames"
 
 import LgCarousel from "../Components/LgCarousel";
 import LgCategoryButtons from "../Components/LgCategoryButtons";
@@ -10,16 +9,12 @@ import FilterAndOrderButtons from "../Components/FilterAndOrderButtons";
 import FiltersModal from "../Components/FiltersModal";
 import OrderModal from "../Components/OrderModal";
 import ProductList from "../Components/ProductList";
-import ProductDetailModal from "../Components/Mobile/ProductDetailModal";
 
 import { initializeFilters, setModalProduct, setScroll } from "../redux/actions";
 import { filterApiResourceObjectsByType } from "../react-utils/ApiResource";
-import { isMobile, lgStateToPropsUtils } from "../utils";
+import { lgStateToPropsUtils } from "../utils";
 import { settings } from "../settings";
-import ProductWantModal from "../Components/Mobile/ProductWantModal";
-import ProductWantSidebar from "../Components/Desktop/ProductWantSidebar";
-import ProductDetailSidebar from "../Components/Desktop/ProductDetailSidebar";
-
+import ProductOverlays from "../Components/ProductOverlays";
 
 
 class Category extends React.Component {
@@ -28,20 +23,20 @@ class Category extends React.Component {
         this.state = {
             orderModalOpen: false,
             filterModalOpen: false,
-            detailModalOpen: false,
-            wantModalOpen: false,
+            detailOverlayOpen: false,
+            wantOverlayOpen: false,
             appliedOrder: settings.orderOptions[0],
-            modalProduct: null
+            overlayProduct: null
         }
     }
 
     componentDidMount() {
         if (this.props.modalProduct) {
             this.setState({
-                modalProduct: this.props.modalProduct,
-                detailModalOpen: true
+                overlayProduct: this.props.modalProduct,
+                detailOverlayOpen: true
             })
-            this.props.deleteModalProduct()
+            this.props.deleteOverlayProduct()
         }
 
         const appliedFilters = this.props.appliedFilters;
@@ -60,10 +55,10 @@ class Category extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.modalProduct) {
             this.setState({
-                modalProduct: this.props.modalProduct,
-                detailModalOpen: true
+                overlayProduct: this.props.modalProduct,
+                detailOverlayOpen: true
             })
-            this.props.deleteModalProduct()
+            this.props.deleteOverlayProduct()
         }
 
         const scroll = this.props.scroll;
@@ -85,21 +80,21 @@ class Category extends React.Component {
         })
     };
 
-    setModalProduct = (modalProduct) => {
+    toggleDetailOverlayOpen = () => {
         this.setState({
-            modalProduct
+            detailOverlayOpen: !this.state.detailOverlayOpen
         })
     }
 
-    toggleDetailModalOpen = () => {
+    toggleWantOverlayOpen = () => {
         this.setState({
-            detailModalOpen: !this.state.detailModalOpen
+            wantOverlayOpen: !this.state.wantOverlayOpen
         })
     }
 
-    toggleWantModalOpen = () => {
+    setOverlayProduct = (overlayProduct) => {
         this.setState({
-            wantModalOpen: !this.state.wantModalOpen
+            overlayProduct
         })
     }
 
@@ -113,11 +108,6 @@ class Category extends React.Component {
         if (!this.props.productEntries) {
             return null
         }
-
-        /* TODO: Make to modal filter the product entry */
-
-        const ProductWant = isMobile()? ProductWantModal: ProductWantSidebar;
-        const ProductDetail = isMobile()? ProductDetailModal: ProductDetailSidebar;
 
         let filteredProducts = this.props.productEntries.filter(productEntry => {
             return productEntry.customFields.pageCategories.includes(this.props.name)
@@ -159,28 +149,26 @@ class Category extends React.Component {
 
         return <React.Fragment>
             <LgCarousel/>
-            <ProductDetail
-                isOpen={this.state.detailModalOpen}
-                toggle={this.toggleDetailModalOpen}
-                productId={this.state.modalProduct}/>
-             <ProductWant
-                 isOpen={this.state.wantModalOpen}
-                 toggle={this.toggleWantModalOpen}
-                 productId={this.state.modalProduct}/>
+            <ProductOverlays
+                productId={this.state.overlayProduct}
+                toggleDetailOverlayOpen={this.toggleDetailOverlayOpen}
+                toggleWantOverlayOpen={this.toggleWantOverlayOpen}
+                detailOverlayOpen={this.state.detailOverlayOpen}
+                wantOverlayOpen={this.state.wantOverlayOpen}/>
             <div className="content-container">
                 <Container>
                     <div className="d-flex justify-content-center content-title pt-3">PRODUCTOS</div>
                     <LgCategoryButtons/>
                     {filters &&
-                        <FilterAndOrderButtons
-                            toggleOrderModalOpen={this.toggleOrderModalOpen}
-                            toggleFilterModalOpen={this.toggleFilterModalOpen}/>}
-                    <div className={classNames("d-flex flex-wrap justify-content-between")} ref={(e) => { this.productList = e; }}>
+                    <FilterAndOrderButtons
+                        toggleOrderModalOpen={this.toggleOrderModalOpen}
+                        toggleFilterModalOpen={this.toggleFilterModalOpen}/>}
+                    <div className="d-flex flex-wrap justify-content-between" ref={(e) => { this.productList = e; }}>
                         <ProductList
                             productList={filteredProducts}
-                            setModalProduct={this.setModalProduct}
-                            toggleDetailModalOpen={this.toggleDetailModalOpen}
-                            toggleWantModalOpen={this.toggleWantModalOpen}/>
+                            setOverlayProduct={this.setOverlayProduct}
+                            toggleDetailOverlayOpen={this.toggleDetailOverlayOpen}
+                            toggleWantOverlayOpen={this.toggleWantOverlayOpen}/>
                         <div className="dummy-product-card"/>
                     </div>
                 </Container>
@@ -196,7 +184,7 @@ class Category extends React.Component {
                     isOpen={this.state.filterModalOpen}
                     toggle={this.toggleFilterModalOpen}
                     filters={filters}/>
-                    : null
+                : null
             }
         </React.Fragment>
     }
@@ -204,7 +192,7 @@ class Category extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        deleteModalProduct: () => dispatch(setModalProduct(null)),
+        deleteOverlayProduct: () => dispatch(setModalProduct(null)),
         initializeFilters: (category) => dispatch(initializeFilters(category)),
         deleteScroll: () => dispatch(setScroll(false))
     }
