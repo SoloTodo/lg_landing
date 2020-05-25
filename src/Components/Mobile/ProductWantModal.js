@@ -38,7 +38,7 @@ class ProductWantModal extends React.Component {
                 <ModalHeader className="d-flex align-items-center product-modal-header">
                     <div className="d-flex align-items-center justify-content-between">
                         <span>Estás viendo</span>
-                        <span onClick={this.props.toggle}><CloseModalSvg/></span>
+                        <span onClick={this.props.toggle} className="overlay-close"><CloseModalSvg/></span>
                     </div>
                 </ModalHeader>
                 <ModalBody className="product-modal">

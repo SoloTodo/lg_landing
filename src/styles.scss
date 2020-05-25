@@ -763,6 +763,11 @@ body {
   text-decoration: none;
 }
 
+.product-modal-retailer:hover {
+  color: black;
+  text-decoration: none;
+}
+
 .product-modal-retailer:active {
   color: black;
   text-decoration: none;
@@ -771,6 +776,7 @@ body {
 .product-modal-retailer-text {
   height: 100%;
 }
+
 
 .product-modal-img {
   max-height: 100%;
@@ -851,6 +857,18 @@ body {
   border: none;
   font-size: 20px;
   font-weight: bold;
+  color: black !important;
+}
+
+.gallery-modal-button button:hover {
+  background: white;
+  border: none;
+  color: black !important;
+}
+
+.gallery-modal-button button:active {
+  background: white !important;
+  border: none !important;
   color: black !important;
 }
 
@@ -1018,4 +1036,9 @@ body {
   background-color: white !important;
   box-shadow: none;
   border-bottom: 1px solid #BCBCBC;
+}
+
+/* Overlay */
+.overlay-close {
+  cursor: pointer;
 }

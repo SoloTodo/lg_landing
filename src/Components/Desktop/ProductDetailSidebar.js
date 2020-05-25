@@ -29,7 +29,7 @@ class ProductDetailSidebar extends React.Component {
             <div className="d-flex align-items-center product-sidebar-header">
                 <div className="d-flex align-items-center flex-fill justify-content-between">
                     <span>Estás viendo</span>
-                    <span onClick={this.props.toggle}><CloseModalSvg/></span>
+                    <span onClick={this.props.toggle} className="overlay-close"><CloseModalSvg/></span>
                 </div>
             </div>
             <div className="product-modal">

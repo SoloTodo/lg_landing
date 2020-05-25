@@ -29,14 +29,6 @@ export default {
             button: true,
             button_name: 'REFRIGERADORES',
             url: '/refrigeradores'
-        },
-        {
-            name: 'PREGUNTAS FRECUENTES',
-            url: '/faq'
-        },
-        {
-            name: 'AYUDA',
-            url: '/ayuda'
-        },
+        }
     ]
 }
