@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import scrollToComponent from 'react-scroll-to-component';
 
 import Header from "./Header";
@@ -9,6 +9,14 @@ import routes from "./routes";
 
 
 class Layout extends React.Component{
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.location !== prevProps.location){
+            console.log(this.props.location);
+            window.gtag('set', 'page', this.props.location.pathname)
+            window.gtag('send', 'pageview');
+        }
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -44,4 +52,4 @@ class Layout extends React.Component{
     }
 }
 
-export default Layout
+export default withRouter(Layout)

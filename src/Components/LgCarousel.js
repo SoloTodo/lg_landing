@@ -43,10 +43,8 @@ class LgCarousel extends React.Component {
         };
 
         const banners = settings.banners;
-        console.log(settings.path);
         let bannersRoute = isMobile()? '/banners/mobile/' : '/banners/desktop/';
         bannersRoute = settings.path + bannersRoute;
-        console.log(bannersRoute);
 
         return <Container><div className="slider-limits">
             <div className="slider-container">
