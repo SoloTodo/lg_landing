@@ -9,6 +9,15 @@ import { lgStateToPropsUtils } from "../../utils";
 
 
 class ProductDetailSidebar extends React.Component {
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.isOpen && this.props.productId !== prevProps.productId){
+            const productEntry = this.props.productEntries.filter(productEntry => {
+                return productEntry.product.id === this.props.productId
+            })[0]
+            this.props.registerDisplay(productEntry.product);
+        }
+    }
+
     isMenuOpen = (state) => {
         if (this.props.isOpen !== state.isOpen){
             this.props.toggle();

@@ -9,6 +9,15 @@ import { lgStateToPropsUtils } from "../../utils";
 
 
 class ProductDetailModal extends React.Component {
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.isOpen && this.props.productId !== prevProps.productId){
+            const productEntry = this.props.productEntries.filter(productEntry => {
+                return productEntry.product.id === this.props.productId
+            })[0]
+            this.props.registerDisplay(productEntry.product);
+        }
+    }
+
     render() {
         let productEntry = this.props.productEntries[0];
         if (this.props.productId) {

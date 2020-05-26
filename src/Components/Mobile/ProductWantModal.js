@@ -16,6 +16,15 @@ class ProductWantModal extends React.Component {
         }
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.isOpen && this.props.productId !== prevProps.productId){
+            const productEntry = this.props.productEntries.filter(productEntry => {
+                return productEntry.product.id === this.props.productId
+            })[0]
+            this.props.registerDisplay(productEntry.product);
+        }
+    }
+
     toggleGallery = () => {
         this.setState({
             galleryOpen: !this.state.galleryOpen
