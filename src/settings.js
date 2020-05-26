@@ -6,6 +6,8 @@ export const settings = {
     country: 1,
     currency: apiSettings.endpoint + 'currencies/1/',
     path: '/cl/landing',
+    websiteId: 12,
+    analyticsId: 'UA-137962556-3',
     categoryFilters: {
         "Cell": [
             {

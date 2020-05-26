@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 
 import ProductSpecs from "../ProductSpecs";
+import LgLeadLink from "../LgLeadLink";
 import { ArrowSvg } from "../../Icons";
 import { filterApiResourceObjectsByType } from "../../react-utils/ApiResource";
 import { lgStateToPropsUtils } from "../../utils";
 import { settings } from "../../settings";
-
 
 
 class ProductModalCommon extends React.Component {
@@ -24,8 +24,8 @@ class ProductModalCommon extends React.Component {
                 {entities.map(entity => {
                     const store = this.props.stores.filter(store => store.url === entity.store)[0];
                     const badges = settings.storeBadges[store.id];
-                    return <div>
-                        <a href={entity.external_url} className="d-flex align-items-center justify-content-between product-modal-retailer">
+                    return <div key={entity.id}>
+                        <LgLeadLink entity={entity} product={productEntry.product} className="d-flex align-items-center justify-content-between product-modal-retailer">
                             <div className="d-flex align-items-center product-modal-retailer-text">
                                 <div className="product-modal-img"><img alt="retailer logo" src={`${settings.path}/logo-${store.name.toLowerCase()}.png`}/></div>
                                 <span>{this.props.formatCurrency(entity.active_registry.offer_price)}</span>
@@ -40,7 +40,7 @@ class ProductModalCommon extends React.Component {
                                 }
                             </div>
                             <span><ArrowSvg/></span>
-                        </a>
+                        </LgLeadLink>
                     </div>
                 })}
             </div>

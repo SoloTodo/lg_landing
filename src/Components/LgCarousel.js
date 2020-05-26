@@ -55,8 +55,8 @@ class LgCarousel extends React.Component {
                         if (banner.type === "div"){
                             return <div onClickCapture={this.handleOnItemClick} key={banner.src} className={className} onClick={onClick}><img alt="" src={bannersRoute + banner.src}/></div>
                         } else {
-                            return <div onClickCapture={this.handleOnItemClick}>
-                                <CategoryLink key={banner.src} to={banner.url} className={className} onClick={onClick}><img alt="" src={bannersRoute + banner.src}/></CategoryLink>
+                            return <div key={banner.src} onClickCapture={this.handleOnItemClick}>
+                                <CategoryLink to={banner.url} className={className} onClick={onClick}><img alt="" src={bannersRoute + banner.src}/></CategoryLink>
                             </div>
                         }
                     })}

@@ -11,9 +11,7 @@ import routes from "./routes";
 class Layout extends React.Component{
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.location !== prevProps.location){
-            console.log(this.props.location);
-            window.gtag('set', 'page', this.props.location.pathname)
-            window.gtag('send', 'pageview');
+            window.gtag('config', 'UA-137962556-3', {'page_path': this.props.location.pathname})
         }
     }
 
