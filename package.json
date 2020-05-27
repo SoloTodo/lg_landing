@@ -16,7 +16,8 @@
     "nookies": "^2.2.2",
     "query-string": "^6.12.1",
     "react": "^16.13.1",
-    "react-burger-menu": "^2.6.13",
+    "react-app-polyfill": "^1.0.6",
+    "react-burger-menu": "2.6.4",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
@@ -46,6 +47,7 @@
       "not op_mini all"
     ],
     "development": [
+      "ie 11",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
