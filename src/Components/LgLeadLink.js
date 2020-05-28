@@ -19,7 +19,16 @@ class LgLeadLink extends React.Component {
         params['dimension3'] = store.name;
         params['dimension5'] = `${category.name}¬${product.name}¬${store.name}`;
 
-        window.gtag('event', 'Lead', params)
+        window.gtag('event', 'Lead', params);
+
+        console.log("hola");
+
+        // LG Internal tracking
+        const modelName = product.name.toLowerCase();
+        const scBeacon = document.createElement('img');
+        const locationHref = document.location.href;
+        const scBeaconAddr = `https://tracking.lg.com/b/ss/${settings.lgTrackingName}/1/${Math.random()}?events=event6&v6=${encodeURIComponent(store.name)}&v10=${modelName}&products=;${modelName}&pe=lnk_o&pev2=online-partner&pev1=D=g&g=${encodeURIComponent(locationHref)}`;
+        scBeacon.setAttribute('src', scBeaconAddr);
     }
 
     render() {
