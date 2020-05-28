@@ -53,16 +53,17 @@ class SearchButton extends React.Component {
 
     render() {
         const Icon = this.props.icon;
-        return <div className={classNames("header-search-button d-flex justify-content-end", {active:this.state.keyword})}>
-            { this.state.isOpen? <div className="d-flex align-items-center">
+        return  this.state.isOpen? <div className={classNames("header-search-input-container d-flex justify-content-end", {active:this.state.keyword})}>
+                <div className="d-flex align-items-center">
                     <Input className="header-search-input" innerRef={(input) => this.searchInput = input} onChange={this.updateKeyword} onBlur={this.toggleSearchBar} onKeyPress={this.keyPerformSearch}/>
                     <Button className="header-button-input" color="link" onClick={this.performSearch}><SearchWhiteSvg/></Button>
-                </div>:
+                </div>
+            </div>:
+            <div className={classNames("header-search-button-container d-flex")}>
                 <Button className="header-button" color="link" onClick={this.toggleSearchBar}>
                     <Icon/>
                 </Button>
-            }
-        </div>
+            </div>
     }
 }
 
