@@ -11,7 +11,22 @@ import routes from "./routes";
 class Layout extends React.Component{
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.location !== prevProps.location){
-            window.gtag('config', 'UA-137962556-3', {'page_path': this.props.location.pathname})
+            const path = this.props.location.pathname;
+            const pathToCategoryDict = {
+                '/televisores': 'Televisores',
+                '/lavadoras': 'Lavadoras y Secadoras',
+                '/celulares': 'Celulares',
+                '/refrigeradores': 'Refrigeradores'
+            }
+            const category = pathToCategoryDict[path];
+            const params = {}
+
+            params['page_path'] = path
+            if (category) {
+                params['dimension1'] = category
+            }
+
+            window.gtag('config', 'UA-137962556-3', params)
         }
     }
 

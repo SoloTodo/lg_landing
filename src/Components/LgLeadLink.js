@@ -20,9 +20,7 @@ class LgLeadLink extends React.Component {
         params['dimension5'] = `${category.name}¬${product.name}¬${store.name}`;
 
         window.gtag('event', 'Lead', params);
-
-        console.log("hola");
-
+        
         // LG Internal tracking
         const modelName = product.name.toLowerCase();
         const scBeacon = document.createElement('img');

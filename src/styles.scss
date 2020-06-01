@@ -35,6 +35,10 @@ body {
   padding-top: 24px;
 }
 
+.header-logo img {
+  height: 54px;
+}
+
 .header-sidebar-button {
   display: block;
   background: transparent;
@@ -819,14 +823,15 @@ body {
 
 .product-specs-card-body {
   padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .product-specs-title {
   font-weight: bold;
   font-size: 18px;
-  color: #BF0C3F;
   background: none;
-
+  padding-left: 0;
 }
 
 .product-specs-item {

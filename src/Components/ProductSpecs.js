@@ -36,7 +36,7 @@ class ProductSpecs extends React.Component {
             <Collapse isOpen={this.state.isOpen} toggler="#toggler">
                 <Card className="product-specs-card">
                     <CardHeader className="d-flex align-items-center product-specs-title">
-                        <SpecsSvg/><span className="pl-2">BASIC SPECS</span>
+                        <SpecsSvg/><span className="pl-2">Basic Specs</span>
                     </CardHeader>
                     <CardBody className="product-specs-card-body">
                         <div className="d-flex flex-wrap">
