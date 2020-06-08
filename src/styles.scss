@@ -27,16 +27,12 @@ body {
 
 /* Header */
 .header {
-  height: 86px;
+  //height: 86px;
+  padding-top: 20px;
 }
 
-.header-logo {
-  margin-left: 20px;
-  padding-top: 24px;
-}
-
-.header-logo img {
-  height: 54px;
+.sidebar-header-logo {
+  padding-left: 15px;
 }
 
 .header-sidebar-button {
@@ -133,7 +129,7 @@ body {
   left: 0;
   right: 0;
   height: 345px;
-  top: 103px;
+  top: 70px;
   z-index: 1000;
 }
 

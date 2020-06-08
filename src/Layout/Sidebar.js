@@ -6,7 +6,7 @@ import classNames from "classnames"
 import CategoryLink from "../Components/CategoryLink";
 import navigation from './_nav'
 import {ArrowWhiteSvg, CloseSvg, SearchWhiteSvg} from "../Icons";
-import Logo from "../logo.png";
+import Logo from "../logo.svg";
 import SearchButton from "../Components/SearchButton";
 import {Button} from "reactstrap";
 import { isMobile } from "../utils";
@@ -15,7 +15,7 @@ import { isMobile } from "../utils";
 class Sidebar extends React.Component{
     handleOnclick = () => {
         this.props.toggleSidebarOpen();
-    }
+    };
 
     isMenuOpen = (state) => {
         if (this.props.isOpen !== state.isOpen){
@@ -26,9 +26,9 @@ class Sidebar extends React.Component{
     render() {
         const pathname = this.props.location.pathname;
         return <Menu className={classNames({"mobile-menu": isMobile()}, {"desktop-menu": !isMobile()})} right isOpen={this.props.isOpen} onStateChange={this.isMenuOpen}>
-            <div className={classNames("header d-flex justify-content-between", {sidebar:this.props.isOpen})}>
-                <div className="header-logo">
-                        <img alt= "LG Logo" src={Logo}/>
+            <div className={classNames("header d-flex justify-content-between align-items-center", {sidebar:this.props.isOpen})}>
+                <div className="sidebar-header-logo">
+                    <img alt= "LG Logo" src={Logo} width={80} height={36}/>
                 </div>
                 <div className="d-flex align-items-center justify-content-end flex-fill">
                     <SearchButton icon={SearchWhiteSvg} callback={this.props.toggleSidebarOpen}/>

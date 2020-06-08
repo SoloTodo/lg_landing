@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Button } from "reactstrap";
 
-import Logo from "../logo.png";
+import Logo from "../logo.svg";
 import { ArrowUpSvg } from "../Icons";
 
 
@@ -13,7 +13,7 @@ class Footer extends React.Component {
             </Container>
             <div className="footer">
                 <div className="footer-logo d-flex align-content-center justify-content-center">
-                    <img alt="LG logo" src={Logo}/>
+                    <img alt="LG logo" src={Logo} width={80} height={36}/>
                 </div>
                 <div className="footer-text d-flex align-content-center justify-content-center">
                     Todos los derechos reservados | 2020

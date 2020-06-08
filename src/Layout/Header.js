@@ -6,7 +6,8 @@ import scrollToComponent from "react-scroll-to-component";
 import CategoryLink from "../Components/CategoryLink";
 import SearchButton from "../Components/SearchButton";
 import { SbSvg, SearchSvg} from '../Icons';
-import Logo from '../logo.png'
+import Logo from '../logo.svg'
+import {isMobile} from "../utils";
 
 
 class Header extends React.Component{
@@ -17,11 +18,14 @@ class Header extends React.Component{
     }
 
     render() {
+        const width = isMobile() ? 80 : 120;
+        const height = isMobile() ? 36 : 54;
+
         return <Container>
-            <div className={classNames("header d-flex justify-content-between", {sidebar:this.props.isOpen})} ref={(e) => { this.header = e; }}>
+            <div className={classNames("header d-flex justify-content-between align-items-center", {sidebar:this.props.isOpen})} ref={(e) => { this.header = e; }}>
                 <div className="header-logo">
                     <CategoryLink to="/">
-                        <img alt= "LG Logo" src={Logo}/>
+                        <img alt= "LG Logo" src={Logo} width={width} height={height}/>
                     </CategoryLink>
                 </div>
                 <div className="d-flex align-items-center justify-content-end flex-fill">
