@@ -7,6 +7,7 @@ export const settings = {
     currency: apiSettings.endpoint + 'currencies/1/',
     path: '/cl/landing',
     websiteId: 12,
+    micrositeBrandId: 1,
     analyticsId: 'UA-137962556-3',
     lgTrackingName: 'lgecl',
     categoryFilters: {

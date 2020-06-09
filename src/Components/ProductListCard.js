@@ -16,8 +16,8 @@ class ProductListCard extends React.Component {
 
         const productEntry = this.props.productEntry;
         const product = productEntry.product;
-        const lgData = productEntry.customFields;
-        const referencePrice = lgData.referencePrice;
+        const metadata = productEntry.metadata;
+        const referencePrice = metadata.reference_price;
 
         let entity = productEntry.entities[0];
         for (const e of productEntry.entities){
@@ -41,20 +41,21 @@ class ProductListCard extends React.Component {
         }
 
         const productBadges = [];
-        for (const badgeName of lgData.badges || []) {
-            productBadges.push(availableBadges[badgeName])
-        }
+        // TODO: Badges
+        // for (const badgeName of lgData.badges || []) {
+        //     productBadges.push(availableBadges[badgeName])
+        // }
 
         const store = this.props.stores.filter(store => store.url === entity.store)[0];
 
         return <Card className="product-card">
             <CardBody>
                 <div className="d-flex justify-content-between">
-                    <div className="d-flex product-card-category justify-content-center align-items-center">{lgData.showCategory}</div>
-                    <div className="d-flex product-card-sku align-items-center"><span className="mr-1">SKU:</span>{lgData.lgSku}</div>
+                    <div className="d-flex product-card-category justify-content-center align-items-center">TODO</div>
+                    <div className="d-flex product-card-sku align-items-center"><span className="mr-1">SKU:</span>{metadata.sku}</div>
                 </div>
                 <div className="d-flex product-card-name justify-content-center align-items-center">
-                    <h2 className="d-flex align-items-center">{lgData.customTitle}</h2>
+                    <h2 className="d-flex align-items-center">{metadata.title}</h2>
                 </div>
                 <div className="d-flex product-card-image justify-content-center align-items-center">
                     <img alt={product.name} src={product.picture_url}/>

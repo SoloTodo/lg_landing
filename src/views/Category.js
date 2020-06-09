@@ -109,8 +109,21 @@ class Category extends React.Component {
             return null
         }
 
+        const categoryDict = {
+            'Home': 'Home',
+            'Cell': 'Celulares',
+        }
+
         let filteredProducts = this.props.productEntries.filter(productEntry => {
-            return productEntry.customFields.pageCategories.includes(this.props.name)
+            const currentCategory = categoryDict[this.props.name];
+            const productCategory = this.props.categories.filter(category => category.url === productEntry.product.category)[0]
+            console.log(productCategory)
+
+            if (currentCategory === 'Home') {
+                return productEntry.metadata.home_ordering
+            }
+
+            return currentCategory === productCategory.name
         });
 
         const filters = settings.categoryFilters[this.props.name];
