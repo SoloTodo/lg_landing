@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Button, Card, CardBody } from "reactstrap";
+import ReactMarkdown from "react-markdown";
 
 import { lgStateToPropsUtils } from "../utils";
 import {filterApiResourceObjectsByType} from "../react-utils/ApiResource";
@@ -10,9 +11,9 @@ import {settings} from "../settings";
 
 class ProductListCard extends React.Component {
     render() {
-        const availableBadges = {
-            includesInstallation: <img key="includes_installation" src={settings.path + '/badges/includes_installation.png'} alt="Incluye instalación" width="101" height="41" />
-        };
+        // const availableBadges = {
+        //     includesInstallation: <img key="includes_installation" src={settings.path + '/badges/includes_installation.png'} alt="Incluye instalación" width="101" height="41" />
+        // };
 
         const productEntry = this.props.productEntry;
         const product = productEntry.product;
@@ -40,8 +41,16 @@ class ProductListCard extends React.Component {
             }
         }
 
-        const productBadges = [];
+        const category = this.props.categories.filter(category => category.url === product.category)[0]
+        const showCategoryDict = {
+            'Celulares': 'Celulares',
+            'Lavadoras y Secadoras': 'Lavadoras',
+            'Televisores': 'Televisores',
+            'Refrigeradores': 'Refrigeradores'
+        }
+
         // TODO: Badges
+        // const productBadges = [];
         // for (const badgeName of lgData.badges || []) {
         //     productBadges.push(availableBadges[badgeName])
         // }
@@ -51,18 +60,23 @@ class ProductListCard extends React.Component {
         return <Card className="product-card">
             <CardBody>
                 <div className="d-flex justify-content-between">
-                    <div className="d-flex product-card-category justify-content-center align-items-center">TODO</div>
+                    <div className="d-flex product-card-category justify-content-center align-items-center">{showCategoryDict[category.name]}</div>
                     <div className="d-flex product-card-sku align-items-center"><span className="mr-1">SKU:</span>{metadata.sku}</div>
                 </div>
                 <div className="d-flex product-card-name justify-content-center align-items-center">
-                    <h2 className="d-flex align-items-center">{metadata.title}</h2>
+                    {metadata.subtitle?
+                        <div className="d-flex flex-column align-items-center product-title">
+                            <h2 className="d-flex align-items-center">{metadata.title}</h2>
+                            <span><ReactMarkdown source={metadata.subtitle}/></span>
+                        </div>:
+                        <h2 className="d-flex align-items-center">{metadata.title}</h2>}
                 </div>
                 <div className="d-flex product-card-image justify-content-center align-items-center">
                     <img alt={product.name} src={product.picture_url}/>
 
-                    {productBadges.length > 0 && <div className="product-card__badges">
-                        {productBadges.map(badge => badge)}
-                    </div> }
+                    {/*{productBadges.length > 0 && <div className="product-card__badges">*/}
+                    {/*    {productBadges.map(badge => badge)}*/}
+                    {/*</div> }*/}
                 </div>
                 <div className="product-card-price">
                     <div className="d-flex justify-content-center price-text">Precio desde:</div>
@@ -95,7 +109,8 @@ function mapStateToProps(state) {
     const {formatCurrency} = lgStateToPropsUtils(state);
     return {
         formatCurrency,
-        stores: filterApiResourceObjectsByType(state.apiResourceObjects, 'stores')
+        stores: filterApiResourceObjectsByType(state.apiResourceObjects, 'stores'),
+        categories: filterApiResourceObjectsByType(state.apiResourceObjects, 'categories')
     }
 }
 

@@ -41,7 +41,7 @@ class Category extends React.Component {
 
         const appliedFilters = this.props.appliedFilters;
         if (!appliedFilters) {
-            this.props.initializeFilters(this.props.name)
+            this.props.initializeFilters(this.props.categoryName)
         }
 
         const scroll = this.props.scroll;
@@ -109,15 +109,9 @@ class Category extends React.Component {
             return null
         }
 
-        const categoryDict = {
-            'Home': 'Home',
-            'Cell': 'Celulares',
-        }
-
         let filteredProducts = this.props.productEntries.filter(productEntry => {
-            const currentCategory = categoryDict[this.props.name];
+            const currentCategory = this.props.categoryName;
             const productCategory = this.props.categories.filter(category => category.url === productEntry.product.category)[0]
-            console.log(productCategory)
 
             if (currentCategory === 'Home') {
                 return productEntry.metadata.home_ordering
@@ -126,7 +120,7 @@ class Category extends React.Component {
             return currentCategory === productCategory.name
         });
 
-        const filters = settings.categoryFilters[this.props.name];
+        const filters = settings.categoryFilters[this.props.categoryName];
         const orderOptions = settings.orderOptions;
         const appliedOrder = this.state.appliedOrder;
         const appliedFilters = this.props.appliedFilters;
@@ -138,7 +132,7 @@ class Category extends React.Component {
                 filteredProducts = filteredProducts.filter(productEntry => {
                     let result = false;
                     for (const appliedFilter of filterList){
-                        const filtersDict = Object.assign({}, productEntry.product.specs, productEntry.customFields["filters"])
+                        const filtersDict = Object.assign({}, productEntry.product.specs, productEntry.metadata)
                         const productValue = filtersDict[filterData.key]
                         const filterValue = Array.isArray(filterData.options) ? appliedFilter.option : filterData.options[appliedFilter.option];
 

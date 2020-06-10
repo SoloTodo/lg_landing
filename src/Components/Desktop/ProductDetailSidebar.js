@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { slide as Menu } from "react-burger-menu";
+import ReactMarkdown from "react-markdown";
 
 import ProductModalCommon from "../Mobile/ProductModalCommon";
 import ProductGallery from "../ProductGallery";
@@ -44,7 +45,13 @@ class ProductDetailSidebar extends React.Component {
             <div className="product-modal">
                 <div className="d-flex flex-column">
                     <span className="product-modal-sku"><span>SKU</span>: {metadata.sku}</span>
-                    <span className="product-modal-name flex-fill">{metadata.title}</span>
+                    {metadata.subtitle?
+                        <div className="d-flex flex-column product-modal-name-container">
+                            <span className="product-modal-name flex-fill">{metadata.title}</span>
+                            <span className="product-modal-name-subtitle"><ReactMarkdown source={metadata.subtitle}/></span>
+                        </div>:
+                        <span className="product-modal-name flex-fill">{metadata.title}</span>}
+
                 </div>
                 <div>
                     <ProductGallery productEntry={productEntry}/>
