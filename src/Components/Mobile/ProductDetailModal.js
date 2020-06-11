@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import ReactMarkdown from "react-markdown";
 
 import ProductModalCommon from "./ProductModalCommon";
 import ProductGallery from "../ProductGallery";
@@ -26,7 +27,7 @@ class ProductDetailModal extends React.Component {
             })[0]
         }
 
-        const lgData = productEntry.customFields;
+        const metadata = productEntry.metadata;
 
         return <React.Fragment>
             <Modal centered isOpen={this.props.isOpen} toggle={this.props.toggle}>
@@ -38,14 +39,19 @@ class ProductDetailModal extends React.Component {
                 </ModalHeader>
                 <ModalBody className="product-modal">
                     <div className="d-flex flex-column">
-                        <span className="product-modal-sku"><span>SKU</span>: {lgData.lgSku}</span>
-                        <span className="product-modal-name flex-fill">{lgData.customTitle}</span>
+                        <span className="product-modal-sku"><span>SKU</span>: {metadata.sku}</span>
+                        {metadata.subtitle?
+                            <div className="d-flex flex-column product-modal-name-container">
+                                <span className="product-modal-name flex-fill">{metadata.title}</span>
+                                <span className="product-modal-name-subtitle"><ReactMarkdown source={metadata.subtitle}/></span>
+                            </div>:
+                            <span className="product-modal-name flex-fill">{metadata.title}</span>}
                     </div>
                     <div>
                         <ProductGallery productEntry={productEntry}/>
                     </div>
                     <div className="d-flex justify-content-center pt-3 pb-2">
-                        <span className="product-modal-description">{lgData.customDescription}.</span>
+                        <span className="product-modal-description">{metadata.description}.</span>
                     </div>
                     <ProductModalCommon productEntry={productEntry}/>
                 </ModalBody>

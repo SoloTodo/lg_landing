@@ -41,7 +41,7 @@ class Category extends React.Component {
 
         const appliedFilters = this.props.appliedFilters;
         if (!appliedFilters) {
-            this.props.initializeFilters(this.props.name)
+            this.props.initializeFilters(this.props.categoryName)
         }
 
         const scroll = this.props.scroll;
@@ -110,10 +110,17 @@ class Category extends React.Component {
         }
 
         let filteredProducts = this.props.productEntries.filter(productEntry => {
-            return productEntry.customFields.pageCategories.includes(this.props.name)
+            const currentCategory = this.props.categoryName;
+            const productCategory = this.props.categories.filter(category => category.url === productEntry.product.category)[0]
+
+            if (currentCategory === 'Home') {
+                return productEntry.metadata.home_ordering
+            }
+
+            return currentCategory === productCategory.name
         });
 
-        const filters = settings.categoryFilters[this.props.name];
+        const filters = settings.categoryFilters[this.props.categoryName];
         const orderOptions = settings.orderOptions;
         const appliedOrder = this.state.appliedOrder;
         const appliedFilters = this.props.appliedFilters;
@@ -125,7 +132,7 @@ class Category extends React.Component {
                 filteredProducts = filteredProducts.filter(productEntry => {
                     let result = false;
                     for (const appliedFilter of filterList){
-                        const filtersDict = Object.assign({}, productEntry.product.specs, productEntry.customFields["filters"])
+                        const filtersDict = Object.assign({}, productEntry.product.specs, productEntry.metadata)
                         const productValue = filtersDict[filterData.key]
                         const filterValue = Array.isArray(filterData.options) ? appliedFilter.option : filterData.options[appliedFilter.option];
 
@@ -145,7 +152,15 @@ class Category extends React.Component {
             }
         }
 
-        filteredProducts = filteredProducts.sort(appliedOrder.sortFunction);
+        if (this.props.categoryName !== 'Home'){
+            filteredProducts = filteredProducts.sort(appliedOrder.sortFunction);
+        } else {
+            filteredProducts = filteredProducts.sort((a, b) => {
+                const order1 = a.metadata.home_ordering;
+                const order2 = b.metadata.home_ordering ;
+                return order1 - order2
+            })
+        }
 
         return <React.Fragment>
             <LgCarousel/>

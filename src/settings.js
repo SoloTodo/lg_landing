@@ -7,10 +7,11 @@ export const settings = {
     currency: apiSettings.endpoint + 'currencies/1/',
     path: '/cl/landing',
     websiteId: 12,
+    micrositeBrandId: 1,
     analyticsId: 'UA-137962556-3',
     lgTrackingName: 'lgecl',
     categoryFilters: {
-        "Cell": [
+        "Celulares": [
             {
                 name: "Serie",
                 options: [
@@ -19,7 +20,7 @@ export const settings = {
                     "Serie Q"
                 ],
                 type: "exact",
-                key: "serie"
+                key: "custom_attr_1_str"
             },
             {
                 name: "Tipo de pantalla",
@@ -46,7 +47,7 @@ export const settings = {
                 key: "battery_mah"
             }
         ],
-        "Television": [
+        "Televisores": [
             {
                 name: "TECNOLOGIA",
                 options: {
@@ -163,7 +164,7 @@ export const settings = {
             url: "/televisores",
             actionName: "initializeFilters",
             actions: [
-                initializeFilters('Television'),
+                initializeFilters('Televisores'),
                 toggleFilter('TECNOLOGIA', {option: "OLED"}),
                 setScroll(true)
             ]

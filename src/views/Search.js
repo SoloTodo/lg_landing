@@ -49,8 +49,7 @@ class Search extends React.Component {
         const options = {
             keys: [
                 "product.name",
-                "customFields.customTitle",
-                "customFields.showCategory"
+                "metadata.title",
             ],
             threshold: 0.3
         }

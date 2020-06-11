@@ -31,6 +31,10 @@ body {
   padding-top: 20px;
 }
 
+.sidebar {
+  padding-bottom: 25px;
+}
+
 .sidebar-header-logo {
   padding-left: 15px;
 }
@@ -554,6 +558,27 @@ body {
   text-align: center;
 }
 
+.product-card-name .product-title {
+  height: 85px;
+}
+
+.product-card-name .product-title h2{
+  height: 40px;
+  padding-top: 20px;
+  margin-bottom: 0;
+  font-size:20px;
+  line-height: 25px;
+  font-weight: bold;
+  color: #CB2853;
+  text-align: center;
+}
+
+.product-card-name .product-title span {
+  font-size:16px;
+  line-height: 16px;
+  text-align: center;
+}
+
 .product-card-image {
   height: 204px;
   padding-left: 10px;
@@ -705,6 +730,16 @@ body {
   font-size: 25px;
   color: #CB2853;
   font-weight: bold;
+}
+
+.product-modal-name-container .product-modal-name{
+  font-size: 20px;
+  color: #CB2853;
+  font-weight: bold;
+}
+
+.product-modal-name-container .product-modal-name-subtitle{
+  font-size: 16px;
 }
 
 .product-modal-description {
