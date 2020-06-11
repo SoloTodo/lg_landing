@@ -152,7 +152,15 @@ class Category extends React.Component {
             }
         }
 
-        filteredProducts = filteredProducts.sort(appliedOrder.sortFunction);
+        if (this.props.categoryName !== 'Home'){
+            filteredProducts = filteredProducts.sort(appliedOrder.sortFunction);
+        } else {
+            filteredProducts = filteredProducts.sort((a, b) => {
+                const order1 = a.metadata.home_ordering;
+                const order2 = b.metadata.home_ordering ;
+                return order1 - order2
+            })
+        }
 
         return <React.Fragment>
             <LgCarousel/>
