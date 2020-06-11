@@ -25,7 +25,10 @@ class ProductSpecs extends React.Component {
         const buttonText = this.state.isOpen? 'Ver menos':'Ver detalles técnicos'
         const category = this.props.categories.filter(category => category.url === this.props.productEntry.product.category)[0];
 
-        const specsDict = this.props.productEntry.product.specs;
+        const specsDict = {
+            ...this.props.productEntry.product.specs,
+            ...this.props.productEntry.metadata
+        };
         const categorySpecs = settings.categorySpecs[category.name];
 
         if (!categorySpecs) {

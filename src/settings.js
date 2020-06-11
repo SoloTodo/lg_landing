@@ -49,30 +49,35 @@ export const settings = {
         ],
         "Televisores": [
             {
-                name: "TECNOLOGIA",
-                options: {
-                    'LED': 281170,
-                    'NanoCell': 958742,
-                    'OLED': 281176
-                },
+                name: "Panel",
+                options: [
+                    'FHD', 'UHD', 'NanoCell', 'OLED'
+                ],
                 type: "exact",
-                key: "display_id"
+                key: "custom_attr_1_str"
             },
             {
-                name: "TAMAÑO",
+                name: "Tamaño",
                 options: {
+                    '32"': 281344,
                     '43"': 281366,
                     '49"': 281396,
+                    '50"': 281403,
                     '55"': 281423,
+                    '60"': 281432,
                     '65"': 281447,
+                    '70"': 281453,
+                    '75"': 281456,
+                    '77"': 1002145,
+                    '86"': 508018,
                 },
                 type: "exact",
                 key: "size_id"
             },
             {
-                name: "RESOLUCION",
+                name: "Resolución",
                 options: {
-                    "FULL HD": 281535,
+                    "Full HD": 281535,
                     "UHD 4K": 281518
                 },
                 type: "exact",
@@ -89,8 +94,11 @@ export const settings = {
             {'key': 'ram_unicode', 'name': 'RAM'}
         ],
         'Televisores': [
-            {'key': 'display_backlight', 'name': 'Tecnología'},
-            {'key': 'resolution_commercial_name', 'name': 'Resolución'}
+            {'key': 'resolution_commercial_name', 'name': 'Resolución'},
+            {'key': 'custom_attr_2_str', 'name': 'Procesador'},
+            {'key': 'custom_attr_3_str', 'name': 'Sistema Operativo'},
+            {'key': 'custom_attr_4_str', 'name': 'Sonido'},
+            {'key': 'custom_attr_5_str', 'name': 'Magic Remote'},
         ],
         'Refrigeradores': [
             {'key': 'pretty_refrigerator_capacity', 'name': 'Capacidad refrigerador'},
