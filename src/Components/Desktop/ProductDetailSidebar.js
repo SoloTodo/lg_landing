@@ -57,7 +57,7 @@ class ProductDetailSidebar extends React.Component {
                     <ProductGallery productEntry={productEntry}/>
                 </div>
                 <div className="d-flex justify-content-center pt-3 pb-2">
-                    <span className="product-modal-description">{metadata.description}.</span>
+                    <span className="product-modal-description">{metadata.description}</span>
                 </div>
                 <ProductModalCommon productEntry={productEntry}/>
             </div>

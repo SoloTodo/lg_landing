@@ -78,7 +78,7 @@ class ProductWantSidebar extends React.Component {
                 <div className="d-flex align-content-between pt-4">
                     <div className="d-flex align-items-center product-modal-image"><img alt={product.name} src={product.picture_url} onClick={this.toggleGallery}/></div>
                     <div className="d-flex flex-column product-modal-text">
-                        <span className="product-modal-description">{metadata.description}.</span>
+                        <span className="product-modal-description">{metadata.description}</span>
                     </div>
                 </div>
                 <ProductModalCommon productEntry={productEntry}/>
