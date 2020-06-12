@@ -177,15 +177,15 @@ export const settings = {
     ],
 
     storeBadges: {
-        18: [
-            {
-                icon: "/badges/ico-truck.svg",
-                text: "Despacho Gratis"
-            },
-            {
-                icon: "/badges/ico-creditcard.svg",
-                text: "6 cuotas sin interés"
-            }
-        ]
+        // 18: [
+        //     {
+        //         icon: "/badges/ico-truck.svg",
+        //         text: "Despacho Gratis"
+        //     },
+        //     {
+        //         icon: "/badges/ico-creditcard.svg",
+        //         text: "6 cuotas sin interés"
+        //     }
+        // ]
     }
 };

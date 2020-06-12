@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 
 import { lgStateToPropsUtils } from "../utils";
 import {filterApiResourceObjectsByType} from "../react-utils/ApiResource";
+import { isMobile } from "../utils";
 
 import {settings} from "../settings";
 
@@ -56,6 +57,7 @@ class ProductListCard extends React.Component {
         // }
 
         const store = this.props.stores.filter(store => store.url === entity.store)[0];
+        const pictureSide = isMobile()? 600 : 300;
 
         return <Card className="product-card">
             <CardBody>
@@ -72,7 +74,7 @@ class ProductListCard extends React.Component {
                         <h2 className="d-flex align-items-center">{metadata.title}</h2>}
                 </div>
                 <div className="d-flex product-card-image justify-content-center align-items-center">
-                    <img alt={product.name} src={product.picture_url}/>
+                    <img alt={product.name} src={`https://publicapi.solotodo.com/products/${product.id}/picture?width=${pictureSide}&height=${pictureSide}`}/>
 
                     {/*{productBadges.length > 0 && <div className="product-card__badges">*/}
                     {/*    {productBadges.map(badge => badge)}*/}
