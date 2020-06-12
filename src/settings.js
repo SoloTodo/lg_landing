@@ -14,74 +14,25 @@ export const settings = {
         "Celulares": [
             {
                 name: "Serie",
-                options: [
-                    "Serie K",
-                    "Serie G",
-                    "Serie Q"
-                ],
-                type: "exact",
                 key: "custom_attr_1_str"
             },
             {
                 name: "Tipo de pantalla",
-                options: [
-                  "HD",
-                  "Full HD"
-                ],
-                type: "exact",
                 key: "screen_type"
-            },
-            {
-                name: "Batería",
-                options: [
-                  "3000 MAH",
-                    "3500 MAH",
-                    "4000 MAH"
-                ],
-                type: "range",
-                range_data: {
-                    "3000 MAH": [3000, 3499],
-                    "3500 MAH": [3500, 3999],
-                    "4000 MAH": [4000, 99999]
-                },
-                key: "battery_mah"
             }
         ],
         "Televisores": [
             {
                 name: "Panel",
-                options: [
-                    'FHD', 'UHD', 'NanoCell', 'OLED'
-                ],
-                type: "exact",
                 key: "custom_attr_1_str"
             },
             {
                 name: "Tamaño",
-                options: {
-                    '32"': 281344,
-                    '43"': 281366,
-                    '49"': 281396,
-                    '50"': 281403,
-                    '55"': 281423,
-                    '60"': 281432,
-                    '65"': 281447,
-                    '70"': 281453,
-                    '75"': 281456,
-                    '77"': 1002145,
-                    '86"': 508018,
-                },
-                type: "exact",
-                key: "size_id"
+                key: "size_family_unicode"
             },
             {
                 name: "Resolución",
-                options: {
-                    "Full HD": 281535,
-                    "UHD 4K": 281518
-                },
-                type: "exact",
-                key: "resolution_id"
+                key: "resolution_commercial_name"
             }
         ]
     },

@@ -109,7 +109,7 @@ class Category extends React.Component {
             return null
         }
 
-        let filteredProducts = this.props.productEntries.filter(productEntry => {
+        const categoryProducts = this.props.productEntries.filter(productEntry => {
             const currentCategory = this.props.categoryName;
             const productCategory = this.props.categories.filter(category => category.url === productEntry.product.category)[0]
 
@@ -119,6 +119,8 @@ class Category extends React.Component {
 
             return currentCategory === productCategory.name
         });
+
+        let filteredProducts = categoryProducts.slice();
 
         const filters = settings.categoryFilters[this.props.categoryName];
         const orderOptions = settings.orderOptions;
@@ -134,14 +136,8 @@ class Category extends React.Component {
                     for (const appliedFilter of filterList){
                         const filtersDict = Object.assign({}, productEntry.product.specs, productEntry.metadata)
                         const productValue = filtersDict[filterData.key]
-                        const filterValue = Array.isArray(filterData.options) ? appliedFilter.option : filterData.options[appliedFilter.option];
-
-                        if (filterData.type === "exact") {
-                            result = productValue === filterValue;
-                        } else if (filterData.type === "range") {
-                            const range = filterData.range_data[filterValue];
-                            result = productValue >= range[0] && productValue <= range[1];
-                        }
+                        const filterValue = appliedFilter.option;
+                        result = productValue === filterValue;
 
                         if (result) {
                             return true;
@@ -196,6 +192,7 @@ class Category extends React.Component {
                 changeOrder={this.changeOrder}/>
             {filters && appliedFilters?
                 <FiltersModal
+                    entries={categoryProducts}
                     isOpen={this.state.filterModalOpen}
                     toggle={this.toggleFilterModalOpen}
                     filters={filters}/>

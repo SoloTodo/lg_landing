@@ -10,22 +10,31 @@ import { CheckSvg } from "../Icons";
 class FiltersModal extends React.Component {
     render() {
         const filters = this.props.filters;
+        const entries = this.props.entries;
         const appliedFilters = this.props.appliedFilters;
 
-        const filterOptionsKeys = _filter => {
-            return Array.isArray(_filter) ? _filter : Object.keys(_filter)
-        }
+        const filtersWithOptions = filters.map(filter => {
+            const options = [...new Set(entries.map(entry => {
+                const filtersDict = Object.assign({}, entry.product.specs, entry.metadata);
+                return filtersDict[filter.key]
+            }))]
+
+            return {
+                ...filter,
+                options: options
+            }
+        })
 
         return <Modal className="filter-modal" centered isOpen={this.props.isOpen} toggle={this.props.toggle}>
             <ModalHeader className="filter-modal-header">
                 FILTRAR POR
             </ModalHeader>
             <ModalBody>
-                {filters.map(filter => <div key={filter.name}>
+                {filtersWithOptions.map(filter => <div key={filter.name}>
                         <span className="filter-name">{filter.name.toUpperCase()}</span>
                         <div>
                             {
-                                filterOptionsKeys(filter.options).map(option => {
+                                filter.options.map(option => {
                                     if (!appliedFilters[filter.name]) {
                                         return null;
                                     }
