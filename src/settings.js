@@ -101,10 +101,13 @@ export const settings = {
             {'key': 'custom_attr_5_str', 'name': 'Magic Remote'},
         ],
         'Refrigeradores': [
-            {'key': 'pretty_refrigerator_capacity', 'name': 'Capacidad refrigerador'},
-            {'key': 'pretty_freezer_capacity', 'name': 'Capacidad freezer'},
             {'key': 'r_format_unicode', 'name': 'Tipo'},
-            {'key': 'energy_efficiency_unicode', 'name': 'Eficiencia energética'}
+            {'key': 'custom_attr_1_str', 'name': 'Tecnología principal'},
+            {'key': 'custom_attr_3_str', 'name': '¿ThinQ?'},
+            {'key': 'custom_attr_4_str', 'name': 'Motor'},
+            {'key': 'energy_efficiency_unicode', 'name': 'Eficiencia energética'},
+            {'key': 'custom_attr_5_str', 'name': 'USP Estratégico'},
+
         ],
         'Lavadoras y Secadoras': [
             {'key': 'w_type_unicode', 'name': 'Categoría'},

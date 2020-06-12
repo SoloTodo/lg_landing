@@ -68,7 +68,7 @@ class ProductListCard extends React.Component {
                 <div className="d-flex product-card-name justify-content-center align-items-center">
                     {metadata.subtitle?
                         <div className="d-flex flex-column align-items-center product-title">
-                            <h2 className="d-flex align-items-center">{metadata.title}</h2>
+                            <h2 className="d-flex align-items-start">{metadata.title}</h2>
                             <span><ReactMarkdown source={metadata.subtitle}/></span>
                         </div>:
                         <h2 className="d-flex align-items-center">{metadata.title}</h2>}
