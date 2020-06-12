@@ -40,9 +40,11 @@ export const settings = {
     categorySpecs: {
         'Celulares': [
             {'key': 'color_name', 'name': 'Color'},
-            {'key': 'operating_system_unicode', 'name': 'Sistema Operativo'},
+            {'key': 'custom_attr_4_str', 'name': 'Procesador'},
             {'key': 'internal_storage_unicode', 'name': 'Almacenamiento'},
-            {'key': 'ram_unicode', 'name': 'RAM'}
+            {'key': 'ram_unicode', 'name': 'RAM'},
+            {'key': 'custom_attr_5_str', 'name': 'Cámaras'},
+
         ],
         'Televisores': [
             {'key': 'resolution_commercial_name', 'name': 'Resolución'},
@@ -61,10 +63,10 @@ export const settings = {
 
         ],
         'Lavadoras y Secadoras': [
-            {'key': 'w_type_unicode', 'name': 'Categoría'},
-            {'key': 'w_format_unicode', 'name': 'Tipo carga'},
             {'key': 'capacity_unicode', 'name': 'Capacidad lavado'},
             {'key': 'drying_capacity_unicode', 'name': 'Capacidad secado'},
+            {'key': 'custom_attr_2_str', 'name': 'Color'},
+            {'key': 'custom_attr_3_str', 'name': 'ThinQ'},
         ],
     },
 
