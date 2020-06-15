@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import { Spinner } from "reactstrap";
 
 import { fetchJson } from "../react-utils/utils";
 
@@ -8,7 +9,8 @@ class ProductGallery extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            images: null
+            images: null,
+            loading: false
         }
     }
 
@@ -23,10 +25,14 @@ class ProductGallery extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.productEntry !== prevProps.productEntry) {
+            this.setState({
+                loading: true
+            })
             const product = this.props.productEntry.product;
             fetchJson(`product_pictures/?products=${product.id}`).then(images => {
                 this.setState({
-                    images: images.results
+                    images: images.results,
+                    loading: false
                 })
             })
         }
@@ -34,6 +40,12 @@ class ProductGallery extends React.Component {
 
     render() {
         const productEntry = this.props.productEntry;
+
+        if(this.state.loading) {
+            return <div className="gallery-modal-spinner d-flex align-items-center justify-content-center">
+                <Spinner color="secondary"/>
+            </div>
+        }
 
         if (!this.state.images) {
             return null

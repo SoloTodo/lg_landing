@@ -35,12 +35,7 @@ class FiltersModal extends React.Component {
                         <div>
                             {
                                 filter.options.map(option => {
-                                    if (!appliedFilters[filter.name]) {
-                                        return null;
-                                    }
-
                                     const isApplied = appliedFilters[filter.name].filter(appliedFilter => appliedFilter.option === option).length
-
                                     return <Button
                                         key={option}
                                         className={classNames('filter-modal-button', {selected:isApplied})}
