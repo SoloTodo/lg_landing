@@ -34,6 +34,30 @@ export const settings = {
                 name: "Resolución",
                 key: "resolution_commercial_name"
             }
+        ],
+        'Lavadoras y Secadoras': [
+            {
+                name: 'Tipo carga',
+                key: 'w_format_unicode'
+            },
+            {
+                name: 'Tecnología',
+                key: 'custom_attr_1_str'
+            }
+        ],
+        'Refrigeradores': [
+            {
+                name: 'Tipo',
+                key: 'r_format_unicode'
+            },
+            {
+                name: 'Tecnología',
+                key: 'custom_attr_1_str'
+            },
+            {
+                name: 'Eficiencia energética',
+                key: 'energy_efficiency_unicode'
+            }
         ]
     },
 
