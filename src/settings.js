@@ -153,7 +153,7 @@ export const settings = {
             actionName: "initializeFilters",
             actions: [
                 initializeFilters('Televisores'),
-                toggleFilter('TECNOLOGIA', {option: "OLED"}),
+                toggleFilter('Panel', {option: "OLED"}),
                 setScroll(true)
             ]
         },
