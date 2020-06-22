@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { slide as Menu } from "react-burger-menu";
 import ReactMarkdown from "react-markdown";
 
-import ProductModalCommon from "../Mobile/ProductModalCommon";
+import ProductModalCommon from "../ProductOverlayCommon";
 import ProductGallery from "../ProductGallery";
 import { CloseModalSvg } from "../../Icons";
 import { lgStateToPropsUtils } from "../../utils";
@@ -55,9 +55,6 @@ class ProductDetailSidebar extends React.Component {
                 </div>
                 <div>
                     <ProductGallery productEntry={productEntry}/>
-                </div>
-                <div className="d-flex justify-content-center pt-3 pb-2">
-                    <span className="product-modal-description">{metadata.description}</span>
                 </div>
                 <ProductModalCommon productEntry={productEntry}/>
             </div>

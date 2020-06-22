@@ -14,7 +14,6 @@ class Search extends React.Component {
         super(props);
         this.state = {
             detailOverlayOpen: false,
-            wantOverlayOpen: false,
             overlayProduct: null
         }
     }
@@ -22,12 +21,6 @@ class Search extends React.Component {
     toggleDetailOverlayOpen = () => {
         this.setState({
             detailOverlayOpen: !this.state.detailOverlayOpen
-        })
-    }
-
-    toggleWantOverlayOpen = () => {
-        this.setState({
-            wantOverlayOpen: !this.state.wantOverlayOpen
         })
     }
 
@@ -67,9 +60,7 @@ class Search extends React.Component {
             <ProductOverlays
                 productId={this.state.overlayProduct}
                 toggleDetailOverlayOpen={this.toggleDetailOverlayOpen}
-                toggleWantOverlayOpen={this.toggleWantOverlayOpen}
-                detailOverlayOpen={this.state.detailOverlayOpen}
-                wantOverlayOpen={this.state.wantOverlayOpen}/>
+                detailOverlayOpen={this.state.detailOverlayOpen}/>
             <div className="content-container search">
                 <Container>
                     <div className="d-flex justify-content-center content-title search pb-4">{searchResult.length} PRODUCTOS ENCONTRADOS</div>
@@ -77,8 +68,7 @@ class Search extends React.Component {
                         <ProductList
                             productList={searchResult}
                             setOverlayProduct={this.setOverlayProduct}
-                            toggleDetailOverlayOpen={this.toggleDetailOverlayOpen}
-                            toggleWantOverlayOpen={this.toggleWantOverlayOpen}/>
+                            toggleDetailOverlayOpen={this.toggleDetailOverlayOpen}/>
                         <div className="dummy-product-card"/>
                     </div>
                 </Container>

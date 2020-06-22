@@ -1,15 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import ProductSpecs from "../ProductSpecs";
-import LgLeadLink from "../LgLeadLink";
-import { ArrowSvg } from "../../Icons";
-import { filterApiResourceObjectsByType } from "../../react-utils/ApiResource";
-import { lgStateToPropsUtils } from "../../utils";
-import { settings } from "../../settings";
+import ProductSpecs from "./ProductSpecs";
+import LgLeadLink from "./LgLeadLink";
+import { ArrowSvg } from "../Icons";
+import { filterApiResourceObjectsByType } from "../react-utils/ApiResource";
+import { lgStateToPropsUtils } from "../utils";
+import { settings } from "../settings";
 
 
-class ProductModalCommon extends React.Component {
+class ProductOverlayCommon extends React.Component {
     render() {
         const productEntry = this.props.productEntry;
         const entities = productEntry.entities;
@@ -57,4 +57,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(ProductModalCommon);
+export default connect(mapStateToProps)(ProductOverlayCommon);

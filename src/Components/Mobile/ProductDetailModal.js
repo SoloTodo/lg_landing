@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import ReactMarkdown from "react-markdown";
 
-import ProductModalCommon from "./ProductModalCommon";
+import ProductModalCommon from "../ProductOverlayCommon";
 import ProductGallery from "../ProductGallery";
 import { CloseModalSvg } from "../../Icons";
 import { lgStateToPropsUtils } from "../../utils";
