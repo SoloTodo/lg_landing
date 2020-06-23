@@ -28,7 +28,7 @@ export const settings = {
             },
             {
                 name: "Tamaño",
-                key: "size_family_unicode"
+                key: "size_family_lg_cl_segment_unicode"
             },
             {
                 name: "Resolución",
@@ -36,6 +36,10 @@ export const settings = {
             }
         ],
         'Lavadoras y Secadoras': [
+            {
+                name: 'Capacidad',
+                key: 'lg_cl_capacity_segment'
+            },
             {
                 name: 'Tipo carga',
                 key: 'w_format_unicode'
@@ -46,6 +50,10 @@ export const settings = {
             }
         ],
         'Refrigeradores': [
+            {
+                name: 'Capacidad',
+                key: 'lg_cl_total_capacity_segment'
+            },
             {
                 name: 'Tipo',
                 key: 'r_format_unicode'
