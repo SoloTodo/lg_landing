@@ -56,7 +56,7 @@ class ProductDetailSidebar extends React.Component {
                 <div>
                     <ProductGallery productEntry={productEntry}/>
                 </div>
-                <ProductModalCommon productEntry={productEntry}/>
+                <ProductModalCommon productEntry={productEntry} productPosition={this.props.productPosition}/>
             </div>
         </Menu>
     }

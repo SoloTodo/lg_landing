@@ -25,7 +25,7 @@ class ProductOverlayCommon extends React.Component {
                     const store = this.props.stores.filter(store => store.url === entity.store)[0];
                     const badges = settings.storeBadges[store.id];
                     return <div key={entity.id}>
-                        <LgLeadLink entity={entity} product={productEntry.product} className="d-flex align-items-center justify-content-between product-modal-retailer">
+                        <LgLeadLink entity={entity} product={productEntry.product} productPosition={this.props.productPosition} className="d-flex align-items-center justify-content-between product-modal-retailer">
                             <div className="d-flex align-items-center product-modal-retailer-text">
                                 <div className="product-modal-img"><img alt="retailer logo" src={`${settings.path}/logo-${store.name.toLowerCase()}.png`}/></div>
                                 <span>{this.props.formatCurrency(entity.active_registry.offer_price)}</span>

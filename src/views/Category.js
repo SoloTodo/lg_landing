@@ -151,10 +151,15 @@ class Category extends React.Component {
             })
         }
 
+        const productOverlayPosition = filteredProducts.findIndex(product=>{
+            return product.product.id===this.state.overlayProduct
+        }) + 1;
+
         return <React.Fragment>
             <LgCarousel/>
             <ProductOverlays
                 productId={this.state.overlayProduct}
+                productPosition={productOverlayPosition}
                 toggleDetailOverlayOpen={this.toggleDetailOverlayOpen}
                 detailOverlayOpen={this.state.detailOverlayOpen}/>
             <div className="content-container">

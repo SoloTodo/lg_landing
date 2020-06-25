@@ -19,6 +19,17 @@ class LgLeadLink extends React.Component {
         params['dimension3'] = store.name;
         params['dimension5'] = `${category.name}¬${product.name}¬${store.name}`;
 
+        const analyticsSpecs = settings.categoryAnalyticsSpecs[category.id]
+        const analyticsSpecsKeys = settings.categoryAnalyticsKeys;
+
+        for (const idx of Object.keys(analyticsSpecs)) {
+            const key = analyticsSpecsKeys[idx];
+            const specName = analyticsSpecs[idx];
+            params['dimension'+key] = product.specs[specName]
+        }
+
+        params['metric1'] = this.props.productPosition;
+
         window.gtag('event', 'Lead', params);
 
         // LG Internal tracking
