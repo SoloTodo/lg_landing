@@ -44,10 +44,10 @@ class ProductListCard extends React.Component {
 
         const category = this.props.categories.filter(category => category.url === product.category)[0]
         const showCategoryDict = {
-            'Celulares': 'Celulares',
-            'Lavadoras y Secadoras': 'Lavadoras',
-            'Televisores': 'Televisores',
-            'Refrigeradores': 'Refrigeradores'
+            6:  'Celulares',
+            19: 'Lavadoras',
+            11: 'Televisores',
+            15: 'Refrigeradores'
         }
 
         // TODO: Badges
@@ -62,7 +62,7 @@ class ProductListCard extends React.Component {
         return <Card className="product-card">
             <CardBody>
                 <div className="d-flex justify-content-between">
-                    <div className="d-flex product-card-category justify-content-center align-items-center">{showCategoryDict[category.name]}</div>
+                    <div className="d-flex product-card-category justify-content-center align-items-center">{showCategoryDict[category.id]}</div>
                     <div className="d-flex product-card-sku align-items-center"><span className="mr-1">SKU:</span>{metadata.sku}</div>
                 </div>
                 <div className="d-flex product-card-name justify-content-center align-items-center">

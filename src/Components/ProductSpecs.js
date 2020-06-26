@@ -22,7 +22,7 @@ class ProductSpecs extends React.Component {
             ...this.props.productEntry.product.specs,
             ...this.props.productEntry.metadata
         };
-        const categorySpecs = settings.categorySpecs[category.name];
+        const categorySpecs = settings.categorySpecs[category.id];
 
         if (!categorySpecs) {
             return null

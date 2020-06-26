@@ -11,7 +11,7 @@ export const settings = {
     analyticsId: 'UA-137962556-3',
     lgTrackingName: 'lgecl',
     categoryFilters: {
-        "Celulares": [
+        6: [
             {
                 name: "Serie",
                 key: "custom_attr_1_str"
@@ -21,7 +21,7 @@ export const settings = {
                 key: "screen_type"
             }
         ],
-        "Televisores": [
+        11: [
             {
                 name: "Panel",
                 key: "custom_attr_1_str"
@@ -36,7 +36,7 @@ export const settings = {
                 key: "resolution_commercial_name"
             }
         ],
-        'Lavadoras y Secadoras': [
+        19: [
             {
                 name: 'Capacidad',
                 key: 'lg_cl_capacity_segment'
@@ -50,7 +50,7 @@ export const settings = {
                 key: 'custom_attr_1_str'
             }
         ],
-        'Refrigeradores': [
+        15: [
             {
                 name: 'Capacidad',
                 key: 'lg_cl_total_capacity_segment'
@@ -71,7 +71,7 @@ export const settings = {
     },
 
     categorySpecs: {
-        'Celulares': [
+        6: [
             {'key': 'color_name', 'name': 'Color'},
             {'key': 'custom_attr_4_str', 'name': 'Procesador'},
             {'key': 'internal_storage_unicode', 'name': 'Almacenamiento'},
@@ -79,14 +79,14 @@ export const settings = {
             {'key': 'custom_attr_5_str', 'name': 'Cámaras'},
 
         ],
-        'Televisores': [
+        11: [
             {'key': 'resolution_commercial_name', 'name': 'Resolución'},
             {'key': 'custom_attr_2_str', 'name': 'Procesador'},
             {'key': 'custom_attr_3_str', 'name': 'Sistema Operativo'},
             {'key': 'custom_attr_4_str', 'name': 'Sonido'},
             {'key': 'custom_attr_5_str', 'name': 'Magic Remote'},
         ],
-        'Refrigeradores': [
+        15: [
             {'key': 'r_format_unicode', 'name': 'Tipo'},
             {'key': 'custom_attr_1_str', 'name': 'Tecnología principal'},
             {'key': 'custom_attr_3_str', 'name': '¿ThinQ?'},
@@ -95,7 +95,7 @@ export const settings = {
             {'key': 'custom_attr_5_str', 'name': 'USP Estratégico'},
 
         ],
-        'Lavadoras y Secadoras': [
+        19: [
             {'key': 'capacity_unicode', 'name': 'Capacidad lavado'},
             {'key': 'drying_capacity_unicode', 'name': 'Capacidad secado'},
             {'key': 'custom_attr_2_str', 'name': 'Color'},
@@ -161,7 +161,7 @@ export const settings = {
             url: "/televisores",
             actionName: "initializeFilters",
             actions: [
-                initializeFilters('Televisores'),
+                initializeFilters(11),
                 toggleFilter('Panel', {option: "OLED"}),
                 setScroll(true)
             ]

@@ -40,7 +40,7 @@ class Category extends React.Component {
 
         const appliedFilters = this.props.appliedFilters;
         if (!appliedFilters) {
-            this.props.initializeFilters(this.props.categoryName)
+            this.props.initializeFilters(this.props.categoryId)
         }
 
         const scroll = this.props.scroll;
@@ -102,20 +102,21 @@ class Category extends React.Component {
             return null
         }
 
+        const currentCategoryId = parseInt(this.props.categoryId);
+
         const categoryProducts = this.props.productEntries.filter(productEntry => {
-            const currentCategory = this.props.categoryName;
             const productCategory = this.props.categories.filter(category => category.url === productEntry.product.category)[0]
 
-            if (currentCategory === 'Home') {
+            if (!currentCategoryId) {
                 return productEntry.metadata.home_ordering
             }
 
-            return currentCategory === productCategory.name
+            return currentCategoryId === productCategory.id
         });
 
         let filteredProducts = categoryProducts.slice();
 
-        const filters = settings.categoryFilters[this.props.categoryName];
+        const filters = settings.categoryFilters[currentCategoryId];
         const orderOptions = settings.orderOptions;
         const appliedOrder = this.state.appliedOrder;
         const appliedFilters = this.props.appliedFilters;
@@ -141,7 +142,7 @@ class Category extends React.Component {
             }
         }
 
-        if (this.props.categoryName !== 'Home'){
+        if (currentCategoryId){
             filteredProducts = filteredProducts.sort(appliedOrder.sortFunction);
         } else {
             filteredProducts = filteredProducts.sort((a, b) => {
