@@ -42,9 +42,11 @@ class Search extends React.Component {
         const options = {
             keys: [
                 "product.name",
+                "product.keywords",
                 "metadata.title",
             ],
-            threshold: 0.3
+            threshold: 0.1,
+            distance: 2000,
         }
 
         const fuse = new Fuse(productList, options);

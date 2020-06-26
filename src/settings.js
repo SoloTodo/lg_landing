@@ -28,7 +28,8 @@ export const settings = {
             },
             {
                 name: "Tamaño",
-                key: "size_family_lg_cl_segment_unicode"
+                key: "size_family_lg_cl_segment_unicode",
+                order: "size_family_lg_cl_segment_ordering"
             },
             {
                 name: "Resolución",

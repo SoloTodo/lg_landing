@@ -15,13 +15,25 @@ class FiltersModal extends React.Component {
 
         const filtersWithOptions = filters.map(filter => {
             const options = [...new Set(entries.map(entry => {
-                const filtersDict = Object.assign({}, entry.product.specs, entry.metadata);
+                const filtersDict = {...entry.product.specs, ...entry.metadata};
                 return filtersDict[filter.key]
             }))]
 
+            if (filter.order) {
+                const weightsDict = {}
+                for (const entry of entries) {
+                    const filtersDict = entry.product.specs;
+                    weightsDict[filtersDict[filter.key]] = filtersDict[filter.order]
+                }
+
+                options.sort((a,b) => {
+                    return weightsDict[a] - weightsDict[b]
+                })
+            }
+
             return {
                 ...filter,
-                options: options
+                options
             }
         })
 
