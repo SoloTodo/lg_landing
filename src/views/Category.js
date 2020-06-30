@@ -102,7 +102,7 @@ class Category extends React.Component {
             return null
         }
 
-        const currentCategoryId = parseInt(this.props.categoryId);
+        const currentCategoryId = this.props.categoryId;
 
         const categoryProducts = this.props.productEntries.filter(productEntry => {
             const productCategory = this.props.categories.filter(category => category.url === productEntry.product.category)[0]
@@ -152,9 +152,8 @@ class Category extends React.Component {
             })
         }
 
-        const productOverlayPosition = filteredProducts.findIndex(product=>{
-            return product.product.id===this.state.overlayProduct
-        }) + 1;
+        const productOverlayPosition = filteredProducts.findIndex(product=>
+            product.product.id===this.state.overlayProduct) + 1;
 
         return <React.Fragment>
             <LgCarousel/>

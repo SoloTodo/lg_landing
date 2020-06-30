@@ -19,17 +19,17 @@ class FiltersModal extends React.Component {
                 return filtersDict[filter.key]
             }))]
 
-            if (filter.order) {
-                const weightsDict = {}
-                for (const entry of entries) {
-                    const filtersDict = entry.product.specs;
-                    weightsDict[filtersDict[filter.key]] = filtersDict[filter.order]
-                }
-
-                options.sort((a,b) => {
-                    return weightsDict[a] - weightsDict[b]
-                })
+            const weightsDict = {}
+            for (const entry of entries) {
+                const filtersDict = {...entry.product.specs, ...entry.metadata};
+                weightsDict[filtersDict[filter.key]] = filtersDict[filter.order || filter.key]
             }
+
+            options.sort((a,b) => {
+                if(weightsDict[a] > weightsDict[b]) return 1;
+                if(weightsDict[a] < weightsDict[b]) return -1;
+                return 0
+            })
 
             return {
                 ...filter,
