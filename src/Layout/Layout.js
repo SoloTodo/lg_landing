@@ -9,25 +9,34 @@ import routes from "./routes";
 
 
 class Layout extends React.Component{
+    componentDidMount() {
+        this.registerPageView();
+    }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.location !== prevProps.location){
-            const path = this.props.location.pathname;
-            const pathToCategoryDict = {
-                '/televisores': 'Televisores',
-                '/lavadoras': 'Lavadoras y Secadoras',
-                '/celulares': 'Celulares',
-                '/refrigeradores': 'Refrigeradores'
-            }
-            const category = pathToCategoryDict[path];
-            const params = {}
-
-            params['page_path'] = path
-            if (category) {
-                params['dimension1'] = category
-            }
-
-            window.gtag('config', 'UA-137962556-3', params)
+            this.registerPageView()
         }
+    }
+
+    registerPageView = () => {
+        const path = this.props.location.pathname;
+        const pathToCategoryDict = {
+            '/': 'Home',
+            '/televisores': 'Televisores',
+            '/lavadoras': 'Lavadoras y Secadoras',
+            '/celulares': 'Celulares',
+            '/refrigeradores': 'Refrigeradores'
+        }
+        const category = pathToCategoryDict[path];
+        const params = {}
+
+        params['page_path'] = path
+        if (category) {
+            params['dimension1'] = category
+        }
+
+        window.gtag('config', 'UA-137962556-3', params)
     }
 
     constructor(props) {

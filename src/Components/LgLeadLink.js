@@ -22,7 +22,7 @@ class LgLeadLink extends React.Component {
         const analyticsSpecs = settings.categoryAnalyticsSpecs[category.id]
         const analyticsSpecsKeys = settings.categoryAnalyticsKeys;
 
-        for (const idx of Object.keys(analyticsSpecs)) {
+        for (let idx=0; idx<analyticsSpecs.length; idx++) {
             const key = analyticsSpecsKeys[idx];
             const specName = analyticsSpecs[idx];
             params['dimension'+key] = product.specs[specName]
