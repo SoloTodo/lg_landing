@@ -150,13 +150,13 @@ export const settings = {
     ],
     banners: [
         {
-            src: "slide-1.png",
+            src: "1.jpg",
             type: "div",
             actionName: "setModalProduct",
             actions: [setModalProduct(63424)]
         },
         {
-            src: "slide-2.png",
+            src: "2.jpg",
             type: "actionLink",
             url: "/televisores",
             actionName: "initializeFilters",
@@ -167,7 +167,7 @@ export const settings = {
             ]
         },
         {
-            src: "slide-3.png",
+            src: "3.jpg",
             type: "link",
             url: "/"
         }

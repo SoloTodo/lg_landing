@@ -38,12 +38,20 @@ class Search extends React.Component {
         const queryParams = this.props.location.search;
         const keyword = parse(queryParams)['keyword'];
         const productList = this.props.productEntries;
+        console.log(productList[0])
 
         const options = {
             keys: [
                 "product.name",
                 "product.keywords",
+                "metadata.sku",
                 "metadata.title",
+                "metadata.subtitle",
+                "metadata.custom_attr_1_str",
+                "metadata.custom_attr_2_str",
+                "metadata.custom_attr_3_str",
+                "metadata.custom_attr_4_str",
+                "metadata.custom_attr_5_str",
             ],
             threshold: 0.1,
             distance: 2000,
