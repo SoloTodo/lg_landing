@@ -38,7 +38,6 @@ class Search extends React.Component {
         const queryParams = this.props.location.search;
         const keyword = parse(queryParams)['keyword'];
         const productList = this.props.productEntries;
-        console.log(productList[0])
 
         const options = {
             keys: [
