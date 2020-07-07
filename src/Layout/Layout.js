@@ -14,7 +14,7 @@ class Layout extends React.Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.location !== prevProps.location){
+        if (this.props.location.pathname !== prevProps.location.pathname){
             this.registerPageView()
         }
     }
@@ -57,9 +57,16 @@ class Layout extends React.Component{
     };
 
     render() {
+        const isRegister = this.props.location.pathname === '/register';
+
         return <React.Fragment>
-            <Sidebar isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen}/>
-            <Header isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen} ref={(e) => { this.header = e; }}/>
+            {isRegister? null:
+                <React.Fragment>
+                <Sidebar isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen}/>
+                <Header isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen} ref={(e) => { this.header = e; }}/>
+                </React.Fragment>
+            }
+
             <Switch>
                 {routes.map((route, idx) => {
                     return <Route

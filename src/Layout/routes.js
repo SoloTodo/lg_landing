@@ -1,6 +1,7 @@
 import React from 'react';
 import Category from "../views/Category";
 import Search from "../views/Search";
+import Register from "../views/Register";
 
 const routes = [
     { path: '/', exact: true, name: 'Inicio', render: props => <Category {...props}/> },
@@ -8,7 +9,8 @@ const routes = [
     { path: '/lavadoras', exact: true, name: 'Lavadoras', render: props => <Category {...props} categoryId={19}/> },
     { path: '/televisores', exact: true, name: 'Televisores', render: props => <Category {...props} categoryId={11}/> },
     { path: '/refrigeradores', exact: true, name: 'Refrigeradores', render: props => <Category {...props} categoryId={15}/> },
-    { path: '/search', exact: true, name: 'Búsqueda', render: props => <Search {...props}/> }
+    { path: '/search', exact: true, name: 'Búsqueda', render: props => <Search {...props}/> },
+    { path: '/register', exact: true, name: 'Registro', render: props => <Register/> }
 ];
 
 export default routes
