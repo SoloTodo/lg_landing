@@ -25,3 +25,10 @@
 body {
     background-image: url('bg-landing-lg.gif');
 }
+
+.register-card {
+    padding-top: 35px;
+    padding-bottom: 35px;
+    margin-top: 30px;
+    background-image: url('bg-landing-lg.gif') !important;
+}

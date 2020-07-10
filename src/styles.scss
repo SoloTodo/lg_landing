@@ -229,14 +229,14 @@ body {
 
 @media(min-width: 700px) {
   .desktop-menu.bm-menu-wrap {
-  width: 50% !important;
-}
+    width: 50% !important;
+  }
 }
 
 @media(min-width:1000px) {
   .desktop-menu.bm-menu-wrap {
-  width: 30% !important;
-}
+    width: 30% !important;
+  }
 }
 
 .desktop-menu .bm-menu {
@@ -939,7 +939,7 @@ body {
 }
 
 .slick-active .custom-dot.gallery {
-    background: #CB2853;
+  background: #CB2853;
 }
 
 .gallery-modal-slider .slick-dots {
@@ -1085,4 +1085,52 @@ body {
 /* Overlay */
 .overlay-close {
   cursor: pointer;
+}
+
+/* REGISTER PAGE*/
+.register-container {
+  position: fixed;
+  background: black;
+  width: 100%;
+  height: 100%;
+}
+
+.register-iframe {
+  display: block;
+  margin-top: 240px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%
+}
+
+.register-card-container {
+  position: fixed;
+  width: 100%;
+}
+
+.register-card {
+  width: 98%;
+}
+
+@media(min-width: 570px) {
+  .register-card {
+    width: 540px;
+  }
+}
+
+.register-title {
+  font-weight: bold;
+  font-size: 42px;
+  color: white;
+}
+
+.register-text {
+  color: white;
+  font-size: 23px;
+}
+
+.register-image {
+  width: 100px;
+  margin-bottom: 20px;
 }
