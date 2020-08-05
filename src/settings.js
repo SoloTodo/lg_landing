@@ -11,6 +11,34 @@ export const settings = {
     analyticsId: 'UA-137962556-3',
     lgTrackingName: 'lgecl',
     categoryFilters: {
+        31: [
+            {
+                name: "Resolución",
+                key: "resolution_unicode"
+            },
+            {
+                name: "Brillo (lúmenes)",
+                key: "brightness"
+            },
+            {
+                name: "Tamaño máximo (pulgada)",
+                key: "max_projection_size"
+            },
+        ],
+        4: [
+            {
+                name: "Panel",
+                key: "panel_type_unicode"
+            },
+            {
+                name: "Pulgadas",
+                key: "size_family_unicode"
+            },
+            {
+                name: "Resolución",
+                key: "resolution_unicode"
+            }
+        ],
         6: [
             {
                 name: "Serie",
@@ -71,6 +99,23 @@ export const settings = {
     },
 
     categorySpecs: {
+        31: [
+            {name: "Resolución", key: "resolution_unicode"},
+            {name: "Brillo (lúmenes)", key: "brightness"},
+            {name: "Tamaño máximo (pulgada)", key: "max_projection_size"},
+            {name: "Conectividad", key: "custom_attr_1_str"},
+            {name: "Batería", key: "custom_attr_2_str"},
+        ],
+        4: [
+            {'key': 'panel_type_unicode', 'name': 'Panel'},
+            {'key': 'size_family_unicode', 'name': 'Pulgada'},
+            {'key': 'resolution_unicode', 'name': 'Resolución'},
+            {'key': 'resolution_aspect_ratio_unicode', 'name': 'Relación de aspecto'},
+            {'key': 'refresh_rate_unicode', 'name': 'Tasa de Refresco'},
+            {'key': 'response_time_unicode', 'name': 'Tiempo de Respuesta'},
+            {'key': 'custom_attr_1_str', 'name': 'Conectividad'},
+            {'key': 'custom_attr_2_str', 'name': 'Tecnología'},
+        ],
         6: [
             {'key': 'color_name', 'name': 'Color'},
             {'key': 'custom_attr_4_str', 'name': 'Procesador'},
@@ -195,6 +240,8 @@ export const settings = {
         26: ['category_unicode'],
         43: ['type_unicode', 'cooling_power_btu_unicode'],
         45: ['categoria_unicode'],
-        50: ['type_unicode']
+        50: ['type_unicode'],
+        4: [],
+        31: []
   },
 };

@@ -26,7 +26,9 @@ class Layout extends React.Component{
             '/televisores': 'Televisores',
             '/lavadoras': 'Lavadoras y Secadoras',
             '/celulares': 'Celulares',
-            '/refrigeradores': 'Refrigeradores'
+            '/refrigeradores': 'Refrigeradores',
+            '/monitores': 'Monitores',
+            '/proyectores': 'Proyectores',
         }
         const category = pathToCategoryDict[path];
         const params = {}

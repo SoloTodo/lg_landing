@@ -29,6 +29,18 @@ export default {
             button: true,
             button_name: 'REFRIGERADORES',
             url: '/refrigeradores'
+        },
+        {
+            name: 'MONITORES',
+            button: true,
+            button_name: 'MONITORES',
+            url: '/monitores'
+        },
+        {
+            name: 'PROYECTORES',
+            button: true,
+            button_name: 'PROYECTORES',
+            url: '/proyectores'
         }
     ]
 }

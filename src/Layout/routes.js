@@ -9,6 +9,8 @@ const routes = [
     { path: '/lavadoras', exact: true, name: 'Lavadoras', render: props => <Category {...props} categoryId={19}/> },
     { path: '/televisores', exact: true, name: 'Televisores', render: props => <Category {...props} categoryId={11}/> },
     { path: '/refrigeradores', exact: true, name: 'Refrigeradores', render: props => <Category {...props} categoryId={15}/> },
+    { path: '/monitores', exact: true, name: 'Monitores', render: props => <Category {...props} categoryId={4}/> },
+    { path: '/proyectores', exact: true, name: 'Proyectores', render: props => <Category {...props} categoryId={31}/> },
     { path: '/search', exact: true, name: 'Búsqueda', render: props => <Search {...props}/> },
     { path: '/register', exact: true, name: 'Registro', render: props => <Register/> }
 ];

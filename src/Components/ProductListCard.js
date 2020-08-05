@@ -47,7 +47,9 @@ class ProductListCard extends React.Component {
             6:  'Celulares',
             19: 'Lavadoras',
             11: 'Televisores',
-            15: 'Refrigeradores'
+            15: 'Refrigeradores',
+            4: 'Monitores',
+            31: 'Proyectores'
         }
 
         // TODO: Badges
