@@ -411,9 +411,26 @@ body {
   font-weight: bold;
 }
 
+.desktop-category-button {
+  color: white !important;
+  text-decoration: none !important;
+  height: 37px;
+  width: 150px;
+  border-radius: 18px;
+  background: #CECECE;
+  border: none;
+  font-size: 13px;
+  font-weight: bold;
+}
+
 .slider-button.selected {
   background: #CB2853;
 }
+
+.desktop-category-button.selected {
+  background: #CB2853;
+}
+
 
 /* Filter Buttons */
 
