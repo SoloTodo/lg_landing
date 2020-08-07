@@ -431,6 +431,19 @@ body {
   background: #CB2853;
 }
 
+.desktop-category-option {
+  color: #CB2853;
+  width: 100%;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.desktop-category-option:hover {
+  text-decoration: none;
+  background-color: #CB2853;
+  color: white;
+}
+
 
 /* Filter Buttons */
 

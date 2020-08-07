@@ -4,7 +4,6 @@ import {
     UncontrolledButtonDropdown,
     DropdownToggle,
     DropdownMenu,
-    DropdownItem
 } from "reactstrap"
 import classNames from "classnames"
 
@@ -67,9 +66,7 @@ class CategoryButtonsDesktop extends React.Component {
                         </DropdownToggle>
                         <DropdownMenu>
                         {itemList[1].map(item => {
-                            return <DropdownItem key={item.button_name}>
-                                <CategoryLink to={item.url}>{item.button_name}</CategoryLink>
-                            </DropdownItem>
+                            return <CategoryLink key={item.button_name} to={item.url} className="dropdown-item desktop-category-option d-flex justify-content-center">{item.button_name}</CategoryLink>
                         })}
                         </DropdownMenu>
                     </UncontrolledButtonDropdown>
