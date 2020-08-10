@@ -64,7 +64,7 @@ class CategoryButtonsDesktop extends React.Component {
                         <DropdownToggle caret className={classNames('desktop-category-button d-flex justify-content-center align-items-center', {selected:isSelected})}>
                             {itemList[0]}
                         </DropdownToggle>
-                        <DropdownMenu>
+                        <DropdownMenu className="desktop-category-menu">
                         {itemList[1].map(item => {
                             return <CategoryLink key={item.button_name} to={item.url} className="dropdown-item desktop-category-option d-flex justify-content-center">{item.button_name}</CategoryLink>
                         })}

@@ -7,6 +7,12 @@ export default {
             url: '/',
         },
         {
+            name: 'TELEVISORES',
+            button: true,
+            button_name: 'TELEVISORES',
+            url: '/televisores'
+        },
+        {
             name: 'CELULARES',
             button: true,
             button_name: 'CELULARES',
@@ -19,12 +25,7 @@ export default {
             button_parent_name: 'LINEA BLANCA',
             url: '/lavadoras',
         },
-        {
-            name: 'TELEVISORES',
-            button: true,
-            button_name: 'TELEVISORES',
-            url: '/televisores'
-        },
+
         {
             name: 'REFRIGERADORES',
             button: true,

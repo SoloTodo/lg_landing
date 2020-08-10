@@ -6,6 +6,7 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import routes from "./routes";
+import CookiesMessage from "../Components/CookiesMessage";
 
 
 class Layout extends React.Component{
@@ -62,6 +63,7 @@ class Layout extends React.Component{
         const isRegister = this.props.location.pathname === '/register';
 
         return <React.Fragment>
+            <CookiesMessage/>
             {isRegister? null:
                 <React.Fragment>
                 <Sidebar isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen}/>

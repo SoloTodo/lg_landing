@@ -14,6 +14,9 @@ class App extends React.Component{
   constructor(props) {
     super(props);
     this.store = initializeStore();
+  }
+
+  componentDidMount() {
     this.store.dispatch(loadRequiredProducts);
   }
 
