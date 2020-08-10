@@ -6,6 +6,34 @@ body {
   font-family: "LG Smart", sans-serif;
 }
 
+/** COOKIES **/
+.cookies-message {
+  padding: 15px 52px;
+  background-color: #EEE;
+  font-size: 14px;
+}
+
+.cookies-message-text {
+  text-align: center;
+  margin: 0;
+}
+
+.cookies-message-accept {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  font-size: 35px;
+}
+
+.cookies-message-link {
+  color: #333;
+  text-decoration: underline;
+}
+
+.cookies-message-link:hover {
+  color: #333;
+}
+
 /*** COMMON ***/
 
 /* React Burger Menu */
@@ -129,11 +157,11 @@ body {
 }
 
 .slider-container {
-  position: absolute;
+  position: relative;
   left: 0;
   right: 0;
   height: 345px;
-  top: 90px;
+  top: 15px;
   z-index: 1000;
 }
 
@@ -225,6 +253,7 @@ body {
 /* Sidebar */
 .desktop-menu.bm-menu-wrap {
   width: 100% !important;
+  top: 0;
 }
 
 @media(min-width: 700px) {
@@ -411,9 +440,45 @@ body {
   font-weight: bold;
 }
 
+.desktop-category-button {
+  color: white !important;
+  text-decoration: none !important;
+  height: 37px;
+  width: 170px;
+  border-radius: 18px;
+  background: #CECECE;
+  border: none;
+  font-size: 13px;
+  font-weight: bold;
+}
+
 .slider-button.selected {
   background: #CB2853;
 }
+
+.desktop-category-button.selected {
+  background: #CB2853;
+}
+
+.desktop-category-option {
+  color: #6c757d;
+  width: 100%;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.desktop-category-option:hover {
+  text-decoration: none;
+  background-color: #CB2853;
+  color: white;
+}
+
+.desktop-category-menu {
+  border-radius: 15px;
+  margin-top: 8px;
+  width: 170px;
+}
+
 
 /* Filter Buttons */
 

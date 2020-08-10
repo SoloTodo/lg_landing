@@ -25,7 +25,7 @@ class Category extends React.Component {
             filterModalOpen: false,
             detailOverlayOpen: false,
             appliedOrder: settings.orderOptions[0],
-            overlayProduct: null
+            overlayProduct: null,
         }
     }
 
