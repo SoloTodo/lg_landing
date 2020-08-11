@@ -1170,18 +1170,14 @@ body {
 }
 
 .register-card-container {
-  position: fixed;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .register-card {
-  width: 98%;
-}
-
-@media(min-width: 570px) {
-  .register-card {
-    width: 540px;
-  }
+  width: 100%;
+  margin: 0;
 }
 
 .register-title {
