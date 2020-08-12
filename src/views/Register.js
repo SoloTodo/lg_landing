@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 import { Container, Card, CardHeader, CardBody, Form, FormGroup, Label, Input, Button } from 'reactstrap'
 import {ToastContainer, toast} from 'react-toastify'
 
@@ -19,6 +20,7 @@ class Register extends React.Component {
             lists: [],
             optIn1: false,
             optIn2: false,
+            invalidOptions: [],
         }
     }
 
@@ -41,9 +43,13 @@ class Register extends React.Component {
             return
         }
 
+        // ADD list 2, corresponding to "All"
+        const lists = state.lists;
+        lists.push(2)
+
         const jsonData = {
             "email": state.email,
-            "listIds": state.lists,
+            "listIds": lists,
             "attributes": {
                 "FIRSTNAME": state.firstName,
                 "LASTNAME": state.lastName,
@@ -93,6 +99,20 @@ class Register extends React.Component {
         })
     }
 
+    validateInput = (key) => {
+        if(this.state[key] === "") {
+            if (!this.state.invalidOptions.includes(key)) {
+                this.setState({
+                    invalidOptions: [...this.state.invalidOptions, key]
+                })
+            }
+        } else {
+            this.setState({
+                invalidOptions: this.state.invalidOptions.filter(option => option !== key)
+            })
+        }
+    }
+
     onInputChange = (key, e) => {
         this.setState({
             [key]: e.target.value
@@ -118,6 +138,7 @@ class Register extends React.Component {
     }
 
     render() {
+        console.log(this.state);
         return  <Container fluid className="register-container d-flex flex-column align-items-center justify-content-center">
             <ToastContainer
                 position="top-right"
@@ -142,9 +163,24 @@ class Register extends React.Component {
                 <CardBody>
                     <p className="register-content-text pt-2 pb-2">Ya llega <strong>Cyberday</strong> y <strong>LG</strong> tiene las mejores ofertas para ti. Se el primero en comprar saltándote la fila, ingresa tus datos y listo!</p>
                     <Form>
-                        <Input className="register-input mb-3" placeholder="Nombre" onChange={(e) => this.onInputChange('firstName', e)}/>
-                        <Input className="register-input mb-3" placeholder="Apellido" onChange={(e) => this.onInputChange('lastName', e)}/>
-                        <Input className="register-input mb-3" placeholder="Correo" onChange={(e) => this.onInputChange('email', e)}/>
+                        <Input
+                            className={classNames("register-input mb-3", {"invalid":this.state.invalidOptions.includes('firstName')})}
+                            placeholder="Nombre"
+                            onChange={(e) => this.onInputChange('firstName', e)}
+                            onBlur={() => this.validateInput('firstName')}
+                        />
+                        <Input
+                            className={classNames("register-input mb-3", {"invalid":this.state.invalidOptions.includes('lastName')})}
+                            placeholder="Apellido"
+                            onChange={(e) => this.onInputChange('lastName', e)}
+                            onBlur={() => this.validateInput('lastName')}
+                        />
+                        <Input
+                            className={classNames("register-input mb-3", {"invalid":this.state.invalidOptions.includes('email')})}
+                            placeholder="Correo"
+                            onChange={(e) => this.onInputChange('email', e)}
+                            onBlur={() => this.validateInput('email')}
+                        />
                         <p className="register-content-title">¿De que productos quieres recibir ofertas?</p>
                         <FormGroup check>
                             <Label check>
@@ -156,6 +192,12 @@ class Register extends React.Component {
                             <Label check>
                                 <Input type="checkbox" onChange={() => this.onListChange(4)}/>
                                 Lavadoras y Refrigeradores
+                            </Label>
+                        </FormGroup>
+                        <FormGroup check>
+                            <Label check>
+                                <Input type="checkbox" onChange={() => this.onListChange(5)}/>
+                                Celulares
                             </Label>
                         </FormGroup>
                         <p className="register-content-title">Politica de Privacidad</p>

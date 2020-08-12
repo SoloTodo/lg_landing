@@ -1223,6 +1223,10 @@ body {
   border-color: black;
 }
 
+.register-input.invalid {
+  border-color: red;
+}
+
 .register-button {
   width: 300px;
   height: 45px;
