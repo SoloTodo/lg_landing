@@ -1,13 +1,15 @@
-import React from 'react'
-import classNames from 'classnames'
-import { Container, Card, CardHeader, CardBody, Form, FormGroup, Label, Input, Button } from 'reactstrap'
-import {ToastContainer, toast} from 'react-toastify'
+import React from 'react';
+import classNames from 'classnames';
+import {
+    Container,
+    Card, CardHeader, CardBody,
+    Form, FormGroup, Label, Input, Button
+} from 'reactstrap'
+import { ToastContainer, toast } from 'react-toastify';
+import {fetchJson} from "../react-utils/utils";
 
-import fetch from 'isomorphic-unfetch'
-import Logo from '../logo.svg'
-
+import Logo from '../logo.svg';
 import 'react-toastify/dist/ReactToastify.css';
-import {settings} from "../settings";
 
 
 class Register extends React.Component {
@@ -57,45 +59,22 @@ class Register extends React.Component {
             }
         }
 
-        const createEndpoint = 'https://api.sendinblue.com/v3/contacts';
+        const apiEndpoint = 'lg_pricing/sendinblue/contacts/';
         const init = {
             method: 'POST',
             body: JSON.stringify(jsonData),
             headers: {
                 'Content-Type': 'application/json',
-                'Acept': 'application/json',
-                'api-key': settings.sibKey
+                'Accept': 'application/json',
             }
         };
 
-        fetch(createEndpoint, init).then(async res => {
-            const jsonResponse = await res.json();
-            if (!res.ok) {
-                // try to add to list
-                if (jsonResponse.message === 'Invalid email address') {
-                    toast.error('Correo electronico Invalido')
-                } else {
-                    for (const listId of state.lists) {
-                        const addToListEndpoint = `https://api.sendinblue.com/v3/contacts/lists/${listId}/contacts/add`;
-                        const jsonData = {
-                            "emails": [this.state.email]
-                        }
-                        const init = {
-                            method: 'POST',
-                            body: JSON.stringify(jsonData),
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Acept': 'application/json',
-                                'api-key': settings.sibKey
-                            }
-                        }
-                        fetch(addToListEndpoint, init).then(res => {})
-                    }
-                    toast.success('Suscripción exitosa')
-                }
-            } else {
-                toast.success('Suscripción exitosa')
-            }
+        fetchJson(apiEndpoint, init).then(res => {
+            toast.success("Suscripción Exitosa")
+        }).catch(async err => {
+            const jsonError = await err.json()
+            console.log(jsonError)
+            toast.error(jsonError.message)
         })
     }
 
@@ -138,7 +117,6 @@ class Register extends React.Component {
     }
 
     render() {
-        console.log(this.state);
         return  <Container fluid className="register-container d-flex flex-column align-items-center justify-content-center">
             <ToastContainer
                 position="top-right"
