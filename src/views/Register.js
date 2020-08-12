@@ -140,10 +140,12 @@ class Register extends React.Component {
                     </div>
                 </CardHeader>
                 <CardBody>
+                    <p className="register-content-text pt-2 pb-2">Ya llega <strong>Cyberday</strong> y <strong>LG</strong> tiene las mejores ofertas para ti. Se el primero en comprar saltándote la fila, ingresa tus datos y listo!</p>
                     <Form>
-                        <Input className="mb-3" placeholder="Nombre" onChange={(e) => this.onInputChange('firstName', e)}/>
-                        <Input className="mb-3" placeholder="Apellido" onChange={(e) => this.onInputChange('lastName', e)}/>
-                        <Input className="mb-3" placeholder="Correo" onChange={(e) => this.onInputChange('email', e)}/>
+                        <Input className="register-input mb-3" placeholder="Nombre" onChange={(e) => this.onInputChange('firstName', e)}/>
+                        <Input className="register-input mb-3" placeholder="Apellido" onChange={(e) => this.onInputChange('lastName', e)}/>
+                        <Input className="register-input mb-3" placeholder="Correo" onChange={(e) => this.onInputChange('email', e)}/>
+                        <p className="register-content-title">¿De que productos quieres recibir ofertas?</p>
                         <FormGroup check>
                             <Label check>
                                 <Input type="checkbox" onChange={() => this.onListChange(3)}/>
@@ -156,6 +158,7 @@ class Register extends React.Component {
                                 Lavadoras y Refrigeradores
                             </Label>
                         </FormGroup>
+                        <p className="register-content-title">Politica de Privacidad</p>
                         <FormGroup check>
                             <Label check>
                                 <Input type="checkbox" onChange={(e) => this.togglePrivacy('optIn1')}/>
@@ -169,7 +172,7 @@ class Register extends React.Component {
                             </Label>
                         </FormGroup>
                         <div className="d-flex justify-content-center">
-                            <Button className="mt-3" type="button" onClick={this.submit}>Enviar</Button>
+                            <Button className="register-button  mt-3" type="button" onClick={this.submit}>Enviar</Button>
                         </div>
                     </Form>
                 </CardBody>
