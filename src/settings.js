@@ -233,7 +233,7 @@ export const settings = {
     categoryAnalyticsKeys: [6, 7],
     categoryAnalyticsSpecs: {
         11: ['display_unicode', 'size_family_lg_cl_segment_unicode'],
-        15: ['r_format_unicode', 'door_style_unicode'],
+        15: ['r_format_unicode', 'lg_cl_total_capacity_segment'],
         17: ['o_type_unicode'],
         19: ['w_type_unicode', 'w_format_unicode'],
         25: ['category_unicode'],
@@ -241,7 +241,7 @@ export const settings = {
         43: ['type_unicode', 'cooling_power_btu_unicode'],
         45: ['categoria_unicode'],
         50: ['type_unicode'],
-        4: [],
-        31: []
+        4: ['size_unicode', 'panel_type_unicode'],
+        31: ['resolution_unicode', 'brightness']
   },
 };
