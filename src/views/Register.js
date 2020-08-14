@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import {
     Container,
     Card, CardHeader, CardBody,
@@ -45,13 +44,10 @@ class Register extends React.Component {
             return
         }
 
-        // ADD list 2, corresponding to "All"
-        const lists = state.lists;
-        lists.push(2)
-
         const jsonData = {
             "email": state.email,
-            "listIds": lists,
+            "updateEnabled": true,
+            "listIds": state.lists,
             "attributes": {
                 "FIRSTNAME": state.firstName,
                 "LASTNAME": state.lastName,
@@ -88,6 +84,21 @@ class Register extends React.Component {
         } else {
             this.setState({
                 invalidOptions: this.state.invalidOptions.filter(option => option !== key)
+            })
+        }
+    }
+
+    validateEmail = () => {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const email = this.state.email;
+        const isValid =  re.test(email);
+        if(isValid && this.state.invalidOptions.includes('email')) {
+            this.setState({
+                invalidOptions: this.state.invalidOptions.filter(option => option !== 'email')
+            })
+        } else if (!isValid && !this.state.invalidOptions.includes('email')) {
+            this.setState({
+                invalidOptions: [...this.state.invalidOptions, 'email']
             })
         }
     }
@@ -142,22 +153,26 @@ class Register extends React.Component {
                     <p className="register-content-text pt-2 pb-2">Ya llega <strong>Cyberday</strong> y <strong>LG</strong> tiene las mejores ofertas para ti. Se el primero en comprar saltándote la fila, ingresa tus datos y listo!</p>
                     <Form>
                         <Input
-                            className={classNames("register-input mb-3", {"invalid":this.state.invalidOptions.includes('firstName')})}
+                            invalid={this.state.invalidOptions.includes('firstName')}
+                            className="register-input mb-3"
                             placeholder="Nombre"
                             onChange={(e) => this.onInputChange('firstName', e)}
                             onBlur={() => this.validateInput('firstName')}
                         />
                         <Input
-                            className={classNames("register-input mb-3", {"invalid":this.state.invalidOptions.includes('lastName')})}
+                            invalid={this.state.invalidOptions.includes('lastName')}
+                            className="register-input mb-3"
                             placeholder="Apellido"
                             onChange={(e) => this.onInputChange('lastName', e)}
                             onBlur={() => this.validateInput('lastName')}
                         />
                         <Input
-                            className={classNames("register-input mb-3", {"invalid":this.state.invalidOptions.includes('email')})}
+                            invalid={this.state.invalidOptions.includes('email')}
+                            type="email"
+                            className="register-input mb-3"
                             placeholder="Correo"
                             onChange={(e) => this.onInputChange('email', e)}
-                            onBlur={() => this.validateInput('email')}
+                            onBlur={this.validateEmail}
                         />
                         <p className="register-content-title">¿De que productos quieres recibir ofertas?</p>
                         <FormGroup check>
@@ -182,15 +197,16 @@ class Register extends React.Component {
                         <FormGroup check>
                             <Label check>
                                 <Input type="checkbox" onChange={(e) => this.togglePrivacy('optIn1')}/>
-                                He leído y acepto la Política de Privacidad
+                                He leído y acepto la <a href="https://www.lg.com/cl/privacy" rel="noopener noreferrer" target="_blank">Política de Privacidad</a>
                             </Label>
                         </FormGroup>
                         <FormGroup check>
                             <Label check>
                                 <Input type="checkbox" onChange={(e) => this.togglePrivacy('optIn2')}/>
-                                Deseo recibir comunicaciones comerciales en los términos previstos en la Política de Privacidad
+                                Deseo recibir comunicaciones comerciales en los términos previstos en la <a href="https://www.lg.com/cl/privacy" rel="noopener noreferrer" target="_blank">Política de Privacidad</a>
                             </Label>
                         </FormGroup>
+                        <p className="register-content-message">Estos servicios son para mayores de 18 años</p>
                         <div className="d-flex justify-content-center">
                             <Button className="register-button  mt-3" type="button" onClick={this.submit}>Enviar</Button>
                         </div>

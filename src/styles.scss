@@ -1214,6 +1214,13 @@ body {
   margin-bottom: 5px;
 }
 
+.register-content-message {
+  font-size: 15px;
+  color: #6c757d;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
 .register-input {
   font-size: 18px;
   border-radius: 25px;
@@ -1221,10 +1228,6 @@ body {
   padding-top: 10px;
   padding-left: 25px;
   border-color: black;
-}
-
-.register-input.invalid {
-  border-color: red;
 }
 
 .register-button {
