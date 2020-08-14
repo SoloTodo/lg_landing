@@ -13,12 +13,6 @@ export default {
             url: '/televisores'
         },
         {
-            name: 'CELULARES',
-            button: true,
-            button_name: 'CELULARES',
-            url: '/celulares',
-        },
-        {
             name: 'LAVADORAS',
             button: true,
             button_name: 'LAVADORAS',
@@ -33,6 +27,13 @@ export default {
             button_parent_name: 'LINEA BLANCA',
             url: '/refrigeradores'
         },
+        {
+            name: 'CELULARES',
+            button: true,
+            button_name: 'CELULARES',
+            url: '/celulares',
+        },
+
         {
             name: 'MONITORES',
             button: true,
