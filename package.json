@@ -25,6 +25,7 @@
     "react-scripts": "3.4.1",
     "react-scroll-to-component": "^1.0.2",
     "react-slick": "^0.25.2",
+    "react-toastify": "^6.0.8",
     "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",

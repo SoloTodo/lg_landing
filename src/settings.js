@@ -3,6 +3,7 @@ import {initializeFilters, toggleFilter, setModalProduct, setScroll} from "./red
 
 export const settings = {
     ...apiSettings,
+    sibKey: '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',
     country: 1,
     currency: apiSettings.endpoint + 'currencies/1/',
     path: '/cl/cyber',
