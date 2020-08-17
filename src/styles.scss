@@ -430,11 +430,12 @@ body {
 }
 
 .slider-button {
+  width: 200px;
   color: white !important;
   text-decoration: none !important;
   height: 37px;
   border-radius: 18px;
-  background: #CECECE;
+  background: #CB2853;
   border: none;
   font-size: 13px;
   font-weight: bold;
@@ -452,9 +453,6 @@ body {
   font-weight: bold;
 }
 
-.slider-button.selected {
-  background: #CB2853;
-}
 
 .desktop-category-button.selected {
   background: #CB2853;
