@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from 'react-router-dom'
 
 import ProductDetailModal from "./Mobile/ProductDetailModal";
 import ProductDetailSidebar from "./Desktop/ProductDetailSidebar";
@@ -11,12 +12,14 @@ import {settings} from "../settings";
 class ProductOverlays extends React.Component {
     registerDisplay = (product) => {
         const category = this.props.categories.filter(category => category.url === product.category)[0];
+        const path = this.props.location.pathname;
 
         const params = {};
         params['dimension1'] = category.name;
         params['dimension2'] = product.name;
         params['dimension4'] = `${category.name}¬${product.name}`;
         params['dimension8'] = "PDP";
+        params['page_path'] = `${path}#${product.name}`;
 
         const analyticsSpecs = settings.categoryAnalyticsSpecs[category.id]
         const analyticsSpecsKeys = settings.categoryAnalyticsKeys;
@@ -53,4 +56,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(ProductOverlays);
+export default withRouter(connect(mapStateToProps)(ProductOverlays));

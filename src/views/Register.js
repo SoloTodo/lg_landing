@@ -2,7 +2,8 @@ import React from 'react';
 import {
     Container,
     Card, CardHeader, CardBody,
-    Form, FormGroup, Label, Input, Button
+    Form, FormGroup, Label, Input, Button,
+    Modal, ModalBody
 } from 'reactstrap'
 import { ToastContainer, toast } from 'react-toastify';
 import {fetchJson} from "../react-utils/utils";
@@ -22,6 +23,7 @@ class Register extends React.Component {
             optIn1: false,
             optIn2: false,
             invalidOptions: [],
+            successModalOpen: false,
         }
     }
 
@@ -66,10 +68,16 @@ class Register extends React.Component {
         };
 
         fetchJson(apiEndpoint, init).then(res => {
-            toast.success("Suscripción Exitosa")
+            this.openSuccessModal();
         }).catch(async err => {
             const jsonError = await err.json()
             toast.error(jsonError.message)
+        })
+    }
+
+    openSuccessModal = () => {
+        this.setState({
+            successModalOpen: true
         })
     }
 
@@ -137,6 +145,12 @@ class Register extends React.Component {
                 closeOnClick
                 pauseOnHover
             />
+            <Modal centered isOpen={this.state.successModalOpen}>
+                <ModalBody className="d-flex flex-column align-items-center">
+                    <p className="register-end-text"><b>¡Gracias por registrarte!</b> <br/> El día del Cyber te haremos llegar nuestras mejores ofertas.</p>
+                    <a href="https://www.lg.com/cl" className="btn btn-success register-end-button">Ir a LG</a>
+                </ModalBody>
+            </Modal>
             <Card>
                 <CardHeader className="register-card-container d-flex justify-content-center">
                     <div className="register-card d-flex justify-content-center align-items-center">
