@@ -18,7 +18,7 @@ class Register extends React.Component {
             email: "",
             firstName: "",
             lastName: "",
-            lists: [],
+            lists: [3, 4, 5],
             optIn1: false,
             optIn2: false,
             invalidOptions: [],
@@ -69,7 +69,6 @@ class Register extends React.Component {
             toast.success("Suscripción Exitosa")
         }).catch(async err => {
             const jsonError = await err.json()
-            console.log(jsonError)
             toast.error(jsonError.message)
         })
     }
@@ -177,19 +176,19 @@ class Register extends React.Component {
                         <p className="register-content-title">¿De que productos quieres recibir ofertas?</p>
                         <FormGroup check>
                             <Label check>
-                                <Input type="checkbox" onChange={() => this.onListChange(3)}/>
+                                <Input type="checkbox" checked={this.state.lists.includes(3)} onChange={() => this.onListChange(3)}/>
                                 Televisores
                             </Label>
                         </FormGroup>
                         <FormGroup check>
                             <Label check>
-                                <Input type="checkbox" onChange={() => this.onListChange(4)}/>
+                                <Input type="checkbox" checked={this.state.lists.includes(4)} onChange={() => this.onListChange(4)}/>
                                 Lavadoras y Refrigeradores
                             </Label>
                         </FormGroup>
                         <FormGroup check>
                             <Label check>
-                                <Input type="checkbox" onChange={() => this.onListChange(5)}/>
+                                <Input type="checkbox" checked={this.state.lists.includes(5)} onChange={() => this.onListChange(5)}/>
                                 Celulares
                             </Label>
                         </FormGroup>

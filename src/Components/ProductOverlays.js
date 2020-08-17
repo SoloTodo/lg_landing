@@ -16,6 +16,7 @@ class ProductOverlays extends React.Component {
         params['dimension1'] = category.name;
         params['dimension2'] = product.name;
         params['dimension4'] = `${category.name}¬${product.name}`;
+        params['dimension8'] = "PDP";
 
         const analyticsSpecs = settings.categoryAnalyticsSpecs[category.id]
         const analyticsSpecsKeys = settings.categoryAnalyticsKeys;
@@ -28,7 +29,7 @@ class ProductOverlays extends React.Component {
 
         params['metric1'] = this.props.productPosition;
 
-        window.gtag('event', 'ProductDisplay', params);
+        window.gtag('config', 'UA-137962556-3', params);
     }
 
     render() {

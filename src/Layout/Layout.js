@@ -31,12 +31,27 @@ class Layout extends React.Component{
             '/monitores': 'Monitores',
             '/proyectores': 'Proyectores',
         }
+        const pathToPageCategoryDict = {
+            '/': 'Home',
+            '/televisores': 'PLP',
+            '/lavadoras': 'PLP',
+            '/celulares': 'PLP',
+            '/refrigeradores': 'PLP',
+            '/monitores': 'PLP',
+            '/proyectores': 'PLP',
+            '/register': 'Register',
+            '/search': 'Keywords'
+        }
         const category = pathToCategoryDict[path];
+        const pageCategory = pathToPageCategoryDict[path];
         const params = {}
 
         params['page_path'] = path
         if (category) {
             params['dimension1'] = category
+        }
+        if (pageCategory) {
+            params['dimension8'] = pageCategory
         }
 
         window.gtag('config', 'UA-137962556-3', params)
