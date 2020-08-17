@@ -1,9 +1,9 @@
 export default {
     items: [
         {
-            name: 'INICIO',
+            name: 'DESTACADOS',
             button: true,
-            button_name: 'TODOS',
+            button_name: 'DESTACADOS',
             url: '/',
         },
         {
