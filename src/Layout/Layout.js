@@ -22,6 +22,7 @@ class Layout extends React.Component{
 
     registerPageView = () => {
         const path = this.props.location.pathname;
+        const search = this.props.location.search;
         const pathToCategoryDict = {
             '/': 'Home',
             '/televisores': 'Televisores',
@@ -47,7 +48,7 @@ class Layout extends React.Component{
         const params = {}
 
         params['page_path'] = path
-        params['page_location'] = `https://www.lg.com/cyber${path}`
+        params['page_location'] = `https://www.lg.com/cyber${path}${search}`
 
         if (category) {
             params['page_title'] = category
