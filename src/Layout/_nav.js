@@ -1,9 +1,9 @@
 export default {
     items: [
         {
-            name: 'INICIO',
+            name: 'DESTACADOS',
             button: true,
-            button_name: 'TODOS',
+            button_name: 'DESTACADOS',
             url: '/',
         },
         {
@@ -11,12 +11,6 @@ export default {
             button: true,
             button_name: 'TELEVISORES',
             url: '/televisores'
-        },
-        {
-            name: 'CELULARES',
-            button: true,
-            button_name: 'CELULARES',
-            url: '/celulares',
         },
         {
             name: 'LAVADORAS',
@@ -33,6 +27,13 @@ export default {
             button_parent_name: 'LINEA BLANCA',
             url: '/refrigeradores'
         },
+        {
+            name: 'CELULARES',
+            button: true,
+            button_name: 'CELULARES',
+            url: '/celulares',
+        },
+
         {
             name: 'MONITORES',
             button: true,

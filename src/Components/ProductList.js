@@ -15,9 +15,10 @@ class ProductList extends React.Component {
         }
 
         return <React.Fragment>
-            {this.props.productList.map(productEntry => {
+            {this.props.productList.map((productEntry, idx) => {
                 return <ProductListCard
                     key={productEntry.product.id}
+                    position={idx}
                     productEntry={productEntry}
                     toggleProductDetailModal={() => this.toggleDetailOverlayOpen(productEntry.product.id)}
                 />

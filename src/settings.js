@@ -3,7 +3,6 @@ import {initializeFilters, toggleFilter, setModalProduct, setScroll} from "./red
 
 export const settings = {
     ...apiSettings,
-    sibKey: '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',
     country: 1,
     currency: apiSettings.endpoint + 'currencies/1/',
     path: '/cl/cyber',
@@ -196,12 +195,14 @@ export const settings = {
     ],
     banners: [
         {
+            id: "Q60",
             src: "1.jpg",
             type: "div",
             actionName: "setModalProduct",
             actions: [setModalProduct(63424)]
         },
         {
+            id: "Oled",
             src: "2.jpg",
             type: "actionLink",
             url: "/televisores",
@@ -213,6 +214,7 @@ export const settings = {
             ]
         },
         {
+            id: "Test",
             src: "3.jpg",
             type: "link",
             url: "/"

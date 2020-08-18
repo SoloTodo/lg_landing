@@ -17,7 +17,6 @@ class LgLeadLink extends React.Component {
         params['dimension1'] = category.name;
         params['dimension2'] = product.name;
         params['dimension3'] = store.name;
-        params['dimension5'] = `${category.name}¬${product.name}¬${store.name}`;
 
         const analyticsSpecs = settings.categoryAnalyticsSpecs[category.id]
         const analyticsSpecsKeys = settings.categoryAnalyticsKeys;
@@ -29,8 +28,11 @@ class LgLeadLink extends React.Component {
         }
 
         params['metric1'] = this.props.productPosition;
+        params['event_category'] = 'Lead';
+        params['event_label'] = product.name;
+        params['event_value'] = entity.active_registry.offer_price;
 
-        window.gtag('event', 'Lead', params);
+        window.gtag('event', 'Follow', params);
 
         // LG Internal tracking
         const modelName = product.name.toLowerCase();

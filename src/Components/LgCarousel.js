@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import {Container} from "reactstrap";
+import { withRouter } from 'react-router-dom'
+import { Container } from "reactstrap";
 import Slider from "react-slick";
 
 import CategoryLink from "./CategoryLink";
@@ -29,6 +30,33 @@ class LgCarousel extends React.Component {
         }
     };
 
+    registerBannerClick = (banner, position) => {
+        const path = this.props.location.pathname;
+
+        const pathToCategoryDict = {
+            '/': 'Home',
+            '/televisores': 'Televisores',
+            '/lavadoras': 'Lavadoras y Secadoras',
+            '/celulares': 'Celulares',
+            '/refrigeradores': 'Refrigeradores',
+            '/monitores': 'Monitores',
+            '/proyectores': 'Proyectores',
+        }
+
+        const pageCategory = path === '/'? 'Home':'PLP';
+        const category = pathToCategoryDict[path]
+
+        const params = {};
+        params['event_category'] = "Banner";
+        params['event_label'] = banner.id;
+
+        params['dimension1'] = category;
+        params['dimension8'] = pageCategory;
+
+        params['metric1'] = position+1;
+        window.gtag('event', 'Click', params);
+    }
+
     render() {
         const sliderSettings = {
             dots: true,
@@ -49,9 +77,14 @@ class LgCarousel extends React.Component {
         return <Container><div className="slider-limits">
             <div className="slider-container">
                 <Slider {...sliderSettings} beforeChange={this.handleBeforeChange} afterChange={this.handleAfterChange}>
-                    {banners.map(banner => {
+                    {banners.map((banner, idx) => {
                         const className = "d-flex justify-content-center align-items-center slider-card"
-                        const onClick = this.props[banner.actionName]? this.props[banner.actionName] : () => {}
+                        const onClick = this.props[banner.actionName]?
+                            () => {
+                                this.props[banner.actionName]();
+                                this.registerBannerClick(banner, idx)} :
+                            () => {
+                                this.registerBannerClick(banner, idx)}
                         if (banner.type === "div"){
                             return <div onClickCapture={this.handleOnItemClick} key={banner.src} className={className} onClick={onClick}><img alt="" src={bannersRoute + banner.src}/></div>
                         } else {
@@ -88,4 +121,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(LgCarousel);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LgCarousel));

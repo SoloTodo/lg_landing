@@ -430,14 +430,22 @@ body {
 }
 
 .slider-button {
+  width: 200px;
   color: white !important;
   text-decoration: none !important;
   height: 37px;
   border-radius: 18px;
-  background: #CECECE;
+  background: #CB2853;
   border: none;
   font-size: 13px;
   font-weight: bold;
+}
+
+.slider-button:focus {
+  background: #CB2853 !important;
+}
+.slider-button:active {
+  background: #CB2853 !important;
 }
 
 .desktop-category-button {
@@ -452,9 +460,6 @@ body {
   font-weight: bold;
 }
 
-.slider-button.selected {
-  background: #CB2853;
-}
 
 .desktop-category-button.selected {
   background: #CB2853;
@@ -479,6 +484,24 @@ body {
   width: 170px;
 }
 
+.mobile-category-option {
+  color: #CB2853;
+  width: 100%;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.mobile-category-option:hover {
+  text-decoration: none;
+  background-color: #CB2853;
+  color: white;
+}
+
+.mobile-category-menu {
+  border-radius: 15px;
+  margin-top: 8px;
+  width: 200px;
+}
 
 /* Filter Buttons */
 
@@ -1173,11 +1196,18 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+  border: none;
+}
+
+.register-container .card {
+  max-width: 500px;
 }
 
 .register-card {
   width: 100%;
   margin: 0;
+  border-bottom-right-radius: 20px !important;
+  border-bottom-left-radius: 20px !important;
 }
 
 .register-title {
@@ -1194,4 +1224,58 @@ body {
 .register-image {
   width: 100px;
   margin-bottom: 20px;
+}
+
+.register-content-text {
+  font-size: 18px;
+}
+
+.register-content-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.register-content-message {
+  font-size: 15px;
+  color: #6c757d;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.register-input {
+  font-size: 18px;
+  border-radius: 25px;
+  height: 50px;
+  padding-top: 10px;
+  padding-left: 25px;
+  border-color: black;
+}
+
+.register-button {
+  width: 300px;
+  height: 45px;
+  background-color: #BF0C3F;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.register-end-button {
+  width: 200px;
+  height: 45px;
+  background-color: #BF0C3F;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.register-end-button:hover {
+  background-color: #BF0C3F;
+}
+
+.register-end-text {
+  font-size: 23px;
+  text-align: center;
 }
