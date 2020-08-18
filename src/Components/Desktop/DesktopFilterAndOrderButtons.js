@@ -23,7 +23,7 @@ class DesktopFilterAndOrderButtons extends React.Component {
             </Button>
             <div>
                 {filterList.map(appliedFilter => {
-                    return <Button className="filter-remove-button" onClick={() => this.props.toggleFilter(appliedFilter.name, appliedFilter.filter)}>
+                    return <Button key={appliedFilter.filter.option} className="filter-remove-button" onClick={() => this.props.toggleFilter(appliedFilter.name, appliedFilter.filter)}>
                         {appliedFilter.filter.option}
                     </Button>
                 })}

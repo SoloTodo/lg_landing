@@ -47,7 +47,10 @@ class Layout extends React.Component{
         const params = {}
 
         params['page_path'] = path
+        params['page_location'] = `https://www.lg.com/cyber${path}`
+
         if (category) {
+            params['page_title'] = category
             params['dimension1'] = category
         }
         if (pageCategory) {

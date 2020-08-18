@@ -46,9 +46,6 @@ class CategoryButtonsDesktop extends React.Component {
             }
         }
 
-        console.log(categoriesData);
-
-
         return <div className="d-flex justify-content-between ml-5 mr-5 mt-5 mb-5">
             {
                 Object.entries(categoriesData).map(categoryData => {
@@ -59,7 +56,8 @@ class CategoryButtonsDesktop extends React.Component {
                         const isSelected = item.name === selectedButton
                         return <CategoryLink
                             to={item.url}
-                            className={classNames('desktop-category-button d-flex justify-content-center align-items-center', {selected:isSelected})} key={item.button_name}>
+                            className={classNames('desktop-category-button d-flex justify-content-center align-items-center', {selected:isSelected})}
+                            key={item.button_name}>
                             {button_name}
                         </CategoryLink>
                     } else {
@@ -71,7 +69,7 @@ class CategoryButtonsDesktop extends React.Component {
                             }
                         }
 
-                        return <UncontrolledButtonDropdown>
+                        return <UncontrolledButtonDropdown key={categoryData}>
                             <DropdownToggle caret className={classNames('desktop-category-button d-flex justify-content-center align-items-center', {selected:isSelected})}>
                                 {button_name}
                             </DropdownToggle>

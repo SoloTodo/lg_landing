@@ -195,12 +195,14 @@ export const settings = {
     ],
     banners: [
         {
+            id: "Q60",
             src: "1.jpg",
             type: "div",
             actionName: "setModalProduct",
             actions: [setModalProduct(63424)]
         },
         {
+            id: "Oled",
             src: "2.jpg",
             type: "actionLink",
             url: "/televisores",
@@ -212,6 +214,7 @@ export const settings = {
             ]
         },
         {
+            id: "Test",
             src: "3.jpg",
             type: "link",
             url: "/"

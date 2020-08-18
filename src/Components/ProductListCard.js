@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom'
 import { Button, Card, CardBody } from "reactstrap";
 import ReactMarkdown from "react-markdown";
 
@@ -11,6 +12,51 @@ import {settings} from "../settings";
 
 
 class ProductListCard extends React.Component {
+    onProductClick = () => {
+        const productEntry = this.props.productEntry;
+        const product = productEntry.product;
+        const category = this.props.categories.filter(category => category.url === product.category)[0];
+        const path = this.props.location.pathname;
+
+        this.props.toggleProductDetailModal(productEntry);
+
+        // Product Cell Click Event
+        const pathToPageCategoryDict = {
+            '/': 'Home',
+            '/televisores': 'PLP',
+            '/lavadoras': 'PLP',
+            '/celulares': 'PLP',
+            '/refrigeradores': 'PLP',
+            '/monitores': 'PLP',
+            '/proyectores': 'PLP',
+            '/search': 'Keywords'
+        }
+        const pageCategory = pathToPageCategoryDict[path];
+
+        const params = {}
+        params['event_category'] = 'Product cell';
+        params['event_label'] = product.name;
+
+        params['dimension1'] = category.name;
+        params['dimension2'] = product.name;
+
+        const analyticsSpecs = settings.categoryAnalyticsSpecs[category.id]
+        const analyticsSpecsKeys = settings.categoryAnalyticsKeys;
+
+        for (let idx=0; idx<analyticsSpecs.length; idx++) {
+            const key = analyticsSpecsKeys[idx];
+            const specName = analyticsSpecs[idx];
+            params['dimension'+key] = product.specs[specName]
+        }
+
+        if (pageCategory) {
+            params['dimension8'] = pageCategory
+        }
+
+        params['metric1'] = this.props.position+1;
+        window.gtag('event', 'Click', params);
+    }
+
     render() {
         // const availableBadges = {
         //     includesInstallation: <img key="includes_installation" src={settings.path + '/badges/includes_installation.png'} alt="Incluye instalación" width="101" height="41" />
@@ -101,8 +147,8 @@ class ProductListCard extends React.Component {
                     </div>}
                 </div>
                 <div className="d-flex flex-column pt-4">
-                    <Button className="card-button product" onClick={() => this.props.toggleProductDetailModal(productEntry)}>Ver producto</Button>
-                    <Button className="card-button want" onClick={() => this.props.toggleProductDetailModal(productEntry)}>Lo quiero</Button>
+                    <Button className="card-button product" onClick={this.onProductClick}>Ver producto</Button>
+                    <Button className="card-button want" onClick={this.onProductClick}>Lo quiero</Button>
                 </div>
             </CardBody>
         </Card>
@@ -118,4 +164,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(ProductListCard);
+export default withRouter(connect(mapStateToProps)(ProductListCard));
