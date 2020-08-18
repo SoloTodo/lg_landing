@@ -54,6 +54,7 @@ class Search extends React.Component {
             ],
             threshold: 0.1,
             distance: 2000,
+            useExtendedSearch: true
         }
 
         const fuse = new Fuse(productList, options);

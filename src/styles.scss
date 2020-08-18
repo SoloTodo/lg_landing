@@ -441,6 +441,13 @@ body {
   font-weight: bold;
 }
 
+.slider-button:focus {
+  background: #CB2853 !important;
+}
+.slider-button:active {
+  background: #CB2853 !important;
+}
+
 .desktop-category-button {
   color: white !important;
   text-decoration: none !important;
@@ -477,6 +484,24 @@ body {
   width: 170px;
 }
 
+.mobile-category-option {
+  color: #CB2853;
+  width: 100%;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.mobile-category-option:hover {
+  text-decoration: none;
+  background-color: #CB2853;
+  color: white;
+}
+
+.mobile-category-menu {
+  border-radius: 15px;
+  margin-top: 8px;
+  width: 200px;
+}
 
 /* Filter Buttons */
 

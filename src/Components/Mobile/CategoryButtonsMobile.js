@@ -31,9 +31,9 @@ class CategoryButtonsMobile extends React.Component {
                 <DropdownToggle caret className="slider-button">
                     {selectedItem.button_name}
                 </DropdownToggle>
-                <DropdownMenu>
+                <DropdownMenu className="mobile-category-menu">
                     {items.map(item => {
-                        return <CategoryLink key={item.button_name} to={item.url} className="dropdown-item" >
+                        return <CategoryLink key={item.button_name} to={item.url} className="dropdown-item mobile-category-option d-flex justify-content-center" >
                             {item.button_name}
                         </CategoryLink>
                     })}
