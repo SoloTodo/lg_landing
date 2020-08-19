@@ -17,8 +17,6 @@ class ProductOverlayCommon extends React.Component {
             return stores.includes(entity.store)? newEntities:[...newEntities, entity]
         }, []);
 
-        console.log(entities)
-
         return <React.Fragment>
             <div className="d-flex justify-content-center">
                 <ProductSpecs productEntry={productEntry}/>
