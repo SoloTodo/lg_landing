@@ -7,6 +7,7 @@ import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import routes from "./routes";
 import CookiesMessage from "../Components/CookiesMessage";
+import {settings} from "../settings";
 
 
 class Layout extends React.Component{
@@ -24,7 +25,6 @@ class Layout extends React.Component{
         const path = this.props.location.pathname;
         const search = this.props.location.search;
         const pathToCategoryDict = {
-            '/': 'Home',
             '/televisores': 'Televisores',
             '/lavadoras': 'Lavadoras y Secadoras',
             '/celulares': 'Celulares',
@@ -48,17 +48,62 @@ class Layout extends React.Component{
         const params = {}
 
         params['page_path'] = path
-        params['page_location'] = `https://www.lg.com/cyber${path}${search}`
+        const pageUrl = `https://www.lg.com/cyber${path}${search}`
+        params['page_location'] = pageUrl
+
+        let pageTitle = 'Promociones LG';
+
+        if (pageCategory === 'Home') {
+            pageTitle = 'Home'
+        }
+
+        if (pageCategory === 'Keywords') {
+            pageTitle = 'Keywords'
+        }
+
+        if (pageCategory === 'Register') {
+            pageTitle = 'Register'
+        }
 
         if (category) {
-            params['page_title'] = category
+            pageTitle = category
             params['dimension1'] = category
         }
         if (pageCategory) {
             params['dimension8'] = pageCategory
         }
 
-        window.gtag('config', 'UA-137962556-3', params)
+        params['page_title'] = pageTitle
+        window.gtag('config', settings.analyticsId, params)
+
+        // Sendinblue tracking
+
+        const sendinblueParams = {
+            ma_title: pageTitle,
+            ma_url: pageUrl
+        }
+
+        if (params['dimension1']) {
+            sendinblueParams['category'] = params['dimension1']
+        }
+
+        if (params['dimension2']) {
+            sendinblueParams['product'] = params['dimension2']
+        }
+
+        if (params['dimension6']) {
+            sendinblueParams['spec1'] = params['dimension6']
+        }
+
+        if (params['dimension7']) {
+            sendinblueParams['spec2'] = params['dimension7']
+        }
+
+        if (params['dimension8']) {
+            sendinblueParams['page_category'] = params['dimension8']
+        }
+
+        window.sendinblue.page(pageTitle, sendinblueParams)
     }
 
     constructor(props) {
@@ -85,8 +130,8 @@ class Layout extends React.Component{
             <CookiesMessage/>
             {isRegister? null:
                 <React.Fragment>
-                <Sidebar isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen}/>
-                <Header isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen} ref={(e) => { this.header = e; }}/>
+                    <Sidebar isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen}/>
+                    <Header isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen} ref={(e) => { this.header = e; }}/>
                 </React.Fragment>
             }
 

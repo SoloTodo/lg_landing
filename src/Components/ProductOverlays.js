@@ -13,10 +13,10 @@ class ProductOverlays extends React.Component {
     registerDisplay = (product) => {
         const category = this.props.categories.filter(category => category.url === product.category)[0];
         const path = this.props.location.pathname;
-        const productPath = `${path}?product=${product.name}`;
+        const productPath = `${path}?product=${product.id}`;
 
         const params = {};
-        params['title'] = category.name
+        params['page_title'] = product.name
         params['page_path'] = productPath
         params['page_location'] = `https://www.lg.com/cyber${productPath}`
 
@@ -27,15 +27,23 @@ class ProductOverlays extends React.Component {
         const analyticsSpecs = settings.categoryAnalyticsSpecs[category.id]
         const analyticsSpecsKeys = settings.categoryAnalyticsKeys;
 
+        const sendinblueParams = {
+            ma_title: params['page_title'],
+            ma_url: params['page_location'],
+            category: params['dimension1'],
+            product: params['dimension2'],
+            page_category: params['dimension8'],
+        }
+
         for (let idx=0; idx<analyticsSpecs.length; idx++) {
             const key = analyticsSpecsKeys[idx];
             const specName = analyticsSpecs[idx];
             params['dimension'+key] = product.specs[specName];
+            sendinblueParams['spec'+(idx+1)] = product.specs[specName];
         }
 
-        // params['metric1'] = this.props.productPosition;
-
-        window.gtag('config', 'UA-137962556-3', params);
+        window.gtag('config', settings.analyticsId, params);
+        window.sendinblue.page(params['page_title'], sendinblueParams)
     }
 
     render() {

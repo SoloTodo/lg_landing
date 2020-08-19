@@ -69,6 +69,10 @@ class Register extends React.Component {
 
         fetchJson(apiEndpoint, init).then(res => {
             this.openSuccessModal();
+            window.sendinblue.identify(state.email, {
+                FIRSTNAME: state.firstName,
+                LASTNAME: state.lastName,
+            })
         }).catch(async err => {
             const jsonError = await err.json()
             toast.error(jsonError.message)

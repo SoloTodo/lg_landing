@@ -30,7 +30,8 @@ class LgLeadLink extends React.Component {
         params['metric1'] = this.props.productPosition;
         params['event_category'] = 'Lead';
         params['event_label'] = product.name;
-        params['event_value'] = entity.active_registry.offer_price;
+        params['value'] = parseInt(entity.active_registry.offer_price);
+        console.log(params)
 
         window.gtag('event', 'Follow', params);
 
