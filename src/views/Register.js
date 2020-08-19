@@ -73,6 +73,9 @@ class Register extends React.Component {
                 FIRSTNAME: state.firstName,
                 LASTNAME: state.lastName,
             })
+            window.gtag('event', 'Register', {
+                event_category: 'Registry'
+            })
         }).catch(async err => {
             const jsonError = await err.json()
             toast.error(jsonError.message)
