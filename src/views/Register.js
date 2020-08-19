@@ -53,7 +53,9 @@ class Register extends React.Component {
             "attributes": {
                 "FIRSTNAME": state.firstName,
                 "LASTNAME": state.lastName,
-                "OPT_IN": true
+                "OPT_IN": true,
+                "COMPLIANCE_CHECKBOX_1": 'He leído y acepto la Política de Privacidad (https://www.lg.com/cl/privacy)',
+                "COMPLIANCE_CHECKBOX_2": 'Deseo recibir comunicaciones comerciales en los términos previstos en la Política de Privacidad (https://www.lg.com/cl/privacy)',
             }
         }
 
