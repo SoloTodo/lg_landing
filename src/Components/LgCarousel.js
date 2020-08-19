@@ -53,8 +53,14 @@ class LgCarousel extends React.Component {
         params['dimension1'] = category;
         params['dimension8'] = pageCategory;
 
+        const sendinblueParams = {
+            category:params['dimension1'],
+            position: position+1,
+        }
+
         params['metric1'] = position+1;
         window.gtag('event', 'Click', params);
+        window.sendinblue.track('Banner click', {}, {data: sendinblueParams});
     }
 
     render() {
