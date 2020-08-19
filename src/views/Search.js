@@ -53,8 +53,8 @@ class Search extends React.Component {
                 "metadata.custom_attr_5_str",
             ],
             threshold: 0.1,
-            distance: 2000,
-            useExtendedSearch: true
+            distance: 5000,
+            useExtendedSearch: true,
         }
 
         const fuse = new Fuse(productList, options);

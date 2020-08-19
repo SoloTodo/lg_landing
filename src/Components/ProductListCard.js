@@ -47,12 +47,13 @@ class ProductListCard extends React.Component {
             category: params['dimension1'],
             product: params['dimension2'],
         }
-
-        for (let idx=0; idx<analyticsSpecs.length; idx++) {
-            const key = analyticsSpecsKeys[idx];
-            const specName = analyticsSpecs[idx];
-            params['dimension'+key] = product.specs[specName]
-            sendinblueParams['spec' + (idx+1)] = product.specs[specName];
+        if (analyticsSpecs) {
+            for (let idx = 0; idx < analyticsSpecs.length; idx++) {
+                const key = analyticsSpecsKeys[idx];
+                const specName = analyticsSpecs[idx];
+                params['dimension' + key] = product.specs[specName]
+                sendinblueParams['spec' + (idx + 1)] = product.specs[specName];
+            }
         }
 
         if (pageCategory) {
@@ -142,7 +143,7 @@ class ProductListCard extends React.Component {
                     <div className="d-flex justify-content-center price-text">Precio desde:</div>
                     <div className="d-flex justify-content-center price">
                         <span>{this.props.formatCurrency(entity.active_registry.offer_price)}</span>
-                        <img className="product-card-retailer" alt="retailer logo" src={`${settings.path}/logo-${store.name.toLowerCase()}.png`}/>
+                        <img className="product-card-retailer" alt="retailer logo" src={`${settings.path}/logo-${store.name.toLowerCase().replace(' ', '_')}.png`}/>
                     </div>
                     {referencePrice ?
                         <div className="d-flex justify-content-center old-price">
@@ -157,7 +158,6 @@ class ProductListCard extends React.Component {
                     </div>}
                 </div>
                 <div className="d-flex flex-column pt-4">
-                    <Button className="card-button product" onClick={this.onProductClick}>Ver producto</Button>
                     <Button className="card-button want" onClick={this.onProductClick}>Lo quiero</Button>
                 </div>
             </CardBody>

@@ -164,7 +164,6 @@ class Category extends React.Component {
                 detailOverlayOpen={this.state.detailOverlayOpen}/>
             <div className="content-container">
                 <Container>
-                    <div className="d-flex justify-content-center content-title pt-3">PRODUCTOS</div>
                     <LgCategoryButtons/>
                     {filters &&
                     <FilterAndOrderButtons

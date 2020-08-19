@@ -12,7 +12,12 @@ import { settings } from "../settings";
 class ProductOverlayCommon extends React.Component {
     render() {
         const productEntry = this.props.productEntry;
-        const entities = productEntry.entities;
+        const entities = productEntry.entities.reduce((newEntities, entity) => {
+            const stores = newEntities.map(entity => entity.store);
+            return stores.includes(entity.store)? newEntities:[...newEntities, entity]
+        }, []);
+
+        console.log(entities)
 
         return <React.Fragment>
             <div className="d-flex justify-content-center">
@@ -27,7 +32,7 @@ class ProductOverlayCommon extends React.Component {
                     return <div key={entity.id}>
                         <LgLeadLink entity={entity} product={productEntry.product} productPosition={this.props.productPosition} className="d-flex align-items-center justify-content-between product-modal-retailer">
                             <div className="d-flex align-items-center product-modal-retailer-text">
-                                <div className="product-modal-img"><img alt="retailer logo" src={`${settings.path}/logo-${store.name.toLowerCase()}.png`}/></div>
+                                <div className="product-modal-img"><img alt="retailer logo" src={`${settings.path}/logo-${store.name.toLowerCase().replace(' ','_')}.png`}/></div>
                                 <span>{this.props.formatCurrency(entity.active_registry.offer_price)}</span>
                                 {badges?
                                     badges.map(badge => {

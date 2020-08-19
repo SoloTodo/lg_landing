@@ -35,11 +35,13 @@ class ProductOverlays extends React.Component {
             page_category: params['dimension8'],
         }
 
-        for (let idx=0; idx<analyticsSpecs.length; idx++) {
-            const key = analyticsSpecsKeys[idx];
-            const specName = analyticsSpecs[idx];
-            params['dimension'+key] = product.specs[specName];
-            sendinblueParams['spec'+(idx+1)] = product.specs[specName];
+        if (analyticsSpecs) {
+            for (let idx = 0; idx < analyticsSpecs.length; idx++) {
+                const key = analyticsSpecsKeys[idx];
+                const specName = analyticsSpecs[idx];
+                params['dimension' + key] = product.specs[specName];
+                sendinblueParams['spec' + (idx + 1)] = product.specs[specName];
+            }
         }
 
         window.gtag('config', settings.analyticsId, params);
