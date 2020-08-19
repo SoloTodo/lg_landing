@@ -1,7 +1,7 @@
 import { fetchJson } from '../react-utils/utils';
 
 export const loadRequiredProducts = dispatch => {
-  let endPointUrl = `microsite/brands/1/site_data/?v=3`;
+  let endPointUrl = `microsite/brands/1/site_data/?`;
 
   return fetchJson(endPointUrl).then(values => {
       const productEntries = [];

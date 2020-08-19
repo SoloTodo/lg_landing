@@ -43,18 +43,28 @@ class ProductListCard extends React.Component {
         const analyticsSpecs = settings.categoryAnalyticsSpecs[category.id]
         const analyticsSpecsKeys = settings.categoryAnalyticsKeys;
 
+        const sendinblueParams = {
+            category: params['dimension1'],
+            product: params['dimension2'],
+        }
+
         for (let idx=0; idx<analyticsSpecs.length; idx++) {
             const key = analyticsSpecsKeys[idx];
             const specName = analyticsSpecs[idx];
             params['dimension'+key] = product.specs[specName]
+            sendinblueParams['spec' + (idx+1)] = product.specs[specName];
         }
 
         if (pageCategory) {
             params['dimension8'] = pageCategory
+            sendinblueParams['page_category'] = pageCategory
         }
 
         params['metric1'] = this.props.position+1;
+        sendinblueParams['position'] = this.props.position+1;
         window.gtag('event', 'Click', params);
+        window.sendinblue.track('Product cell click', {}, {data: sendinblueParams});
+
     }
 
     render() {
