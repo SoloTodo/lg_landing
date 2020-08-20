@@ -579,6 +579,15 @@ body {
   position: relative;
 }
 
+.product-card__link {
+  color: inherit;
+}
+
+.product-card__link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 @media(min-width: 800px) {
   .product-card {
     width: 48%;

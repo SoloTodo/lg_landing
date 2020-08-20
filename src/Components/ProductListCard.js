@@ -12,7 +12,8 @@ import {settings} from "../settings";
 
 
 class ProductListCard extends React.Component {
-    onProductClick = () => {
+    onProductClick = evt => {
+        evt.preventDefault()
         const productEntry = this.props.productEntry;
         const product = productEntry.product;
         const category = this.props.categories.filter(category => category.url === product.category)[0];
@@ -120,46 +121,48 @@ class ProductListCard extends React.Component {
 
         return <Card className="product-card">
             <CardBody>
-                <div className="d-flex justify-content-between">
-                    <div className="d-flex product-card-category justify-content-center align-items-center">{showCategoryDict[category.id]}</div>
-                    <div className="d-flex product-card-sku align-items-center"><span className="mr-1">SKU:</span>{metadata.sku}</div>
-                </div>
-                <div className="d-flex product-card-name justify-content-center align-items-center">
-                    {metadata.subtitle?
-                        <div className="d-flex flex-column align-items-center product-title">
-                            <h2 className="d-flex align-items-start">{metadata.title}</h2>
-                            <span><ReactMarkdown source={metadata.subtitle}/></span>
-                        </div>:
-                        <h2 className="d-flex align-items-center">{metadata.title}</h2>}
-                </div>
-                <div className="d-flex product-card-image justify-content-center align-items-center">
-                    <img alt={product.name} src={`https://publicapi.solotodo.com/products/${product.id}/picture?width=${pictureSide}&height=${pictureSide}`}/>
-
-                    {/*{productBadges.length > 0 && <div className="product-card__badges">*/}
-                    {/*    {productBadges.map(badge => badge)}*/}
-                    {/*</div> }*/}
-                </div>
-                <div className="product-card-price">
-                    <div className="d-flex justify-content-center price-text">Precio desde:</div>
-                    <div className="d-flex justify-content-center price">
-                        <span>{this.props.formatCurrency(entity.active_registry.offer_price)}</span>
-                        <img className="product-card-retailer" alt="retailer logo" src={`${settings.path}/logo-${store.name.toLowerCase().replace(' ', '_')}.png`}/>
+                <a href="#" className="product-card__link" onClick={this.onProductClick}>
+                    <div className="d-flex justify-content-between">
+                        <div className="d-flex product-card-category justify-content-center align-items-center">{showCategoryDict[category.id]}</div>
+                        <div className="d-flex product-card-sku align-items-center"><span className="mr-1">SKU:</span>{metadata.sku}</div>
                     </div>
-                    {referencePrice ?
-                        <div className="d-flex justify-content-center old-price">
-                            Precio normal: <span className="ml-1">{this.props.formatCurrency(referencePrice)}</span>
-                        </div>:
-                        null
-                    }
+                    <div className="d-flex product-card-name justify-content-center align-items-center">
+                        {metadata.subtitle?
+                            <div className="d-flex flex-column align-items-center product-title">
+                                <h2 className="d-flex align-items-start">{metadata.title}</h2>
+                                <span><ReactMarkdown source={metadata.subtitle}/></span>
+                            </div>:
+                            <h2 className="d-flex align-items-center">{metadata.title}</h2>}
+                    </div>
+                    <div className="d-flex product-card-image justify-content-center align-items-center">
+                        <img alt={product.name} src={`https://publicapi.solotodo.com/products/${product.id}/picture?width=${pictureSide}&height=${pictureSide}`}/>
 
-                    {discountPercentage && <div className="product-card__discount-badge d-flex flex-column justify-content-center align-items-center">
-                        <span className="product-card__discount-badge__value">{discountPercentage}%</span>
-                        <span>de desct.</span>
-                    </div>}
-                </div>
-                <div className="d-flex flex-column pt-4">
-                    <Button className="card-button want" onClick={this.onProductClick}>Lo quiero</Button>
-                </div>
+                        {/*{productBadges.length > 0 && <div className="product-card__badges">*/}
+                        {/*    {productBadges.map(badge => badge)}*/}
+                        {/*</div> }*/}
+                    </div>
+                    <div className="product-card-price">
+                        <div className="d-flex justify-content-center price-text">Precio desde:</div>
+                        <div className="d-flex justify-content-center price">
+                            <span>{this.props.formatCurrency(entity.active_registry.offer_price)}</span>
+                            <img className="product-card-retailer" alt="retailer logo" src={`${settings.path}/logo-${store.name.toLowerCase().replace(' ', '_')}.png`}/>
+                        </div>
+                        {referencePrice ?
+                            <div className="d-flex justify-content-center old-price">
+                                Precio normal: <span className="ml-1">{this.props.formatCurrency(referencePrice)}</span>
+                            </div>:
+                            null
+                        }
+
+                        {discountPercentage && <div className="product-card__discount-badge d-flex flex-column justify-content-center align-items-center">
+                            <span className="product-card__discount-badge__value">{discountPercentage}%</span>
+                            <span>de desct.</span>
+                        </div>}
+                    </div>
+                    <div className="d-flex flex-column pt-4">
+                        <Button className="card-button want">Lo quiero</Button>
+                    </div>
+                </a>
             </CardBody>
         </Card>
     }
