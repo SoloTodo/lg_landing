@@ -12,6 +12,7 @@ import {settings} from "../settings";
 
 class Layout extends React.Component{
     componentDidMount() {
+        window.LiveChatWidget.call('hide');
         this.registerPageView();
     }
 

@@ -121,7 +121,7 @@ class ProductListCard extends React.Component {
 
         return <Card className="product-card">
             <CardBody>
-                <a href="#" className="product-card__link" onClick={this.onProductClick}>
+                <a href="." className="product-card__link" onClick={this.onProductClick}>
                     <div className="d-flex justify-content-between">
                         <div className="d-flex product-card-category justify-content-center align-items-center">{showCategoryDict[category.id]}</div>
                         <div className="d-flex product-card-sku align-items-center"><span className="mr-1">SKU:</span>{metadata.sku}</div>

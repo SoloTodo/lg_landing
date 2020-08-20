@@ -12,21 +12,3 @@ code {
     monospace;
 }
 
-#promotor_lg_mobile {
-  position: fixed;
-  bottom: 150px;
-  right: 0;
-  z-index: 2147483640;
-}
-
-@media(max-width: 767px) {
-  #chat-widget {
-    visibility: hidden;
-  }
-}
-
-@media(min-width: 768px) {
-  #promotor_lg_mobile {
-    visibility: hidden;
-  }
-}
