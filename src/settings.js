@@ -220,7 +220,6 @@ export const settings = {
             url: "/"
         }
     ],
-
     storeBadges: {
         // 18: [
         //     {
@@ -246,5 +245,25 @@ export const settings = {
         50: ['type_unicode'],
         4: ['size_unicode', 'panel_type_unicode'],
         31: ['resolution_unicode', 'brightness']
-  },
+    },
+    storeIcons: {
+        4: "bip.png",
+        5: "la_polar.png",
+        9: "falabella.png",
+        11: "paris.png",
+        12: "pc_factory.png",
+        18: "ripley.png",
+        30: "abcdin.png",
+        43: "lider.png",
+        45: "winpy.png",
+        60: "corona.png",
+        67: "sodimac.png",
+        76: "linio_chile.png",
+        86: "sp_digital.png",
+        87: "hites.png",
+        167: "tienda_movistar.png",
+        181: "tienda_entel.png",
+        197: "jumbo.png",
+        228: "llevatelo.png"
+  }
 };

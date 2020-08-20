@@ -117,6 +117,7 @@ class ProductListCard extends React.Component {
         // }
 
         const store = this.props.stores.filter(store => store.url === entity.store)[0];
+        const storeLogo = settings.storeIcons[store.id]
         const pictureSide = isMobile()? 600 : 300;
 
         return <Card className="product-card">
@@ -145,7 +146,11 @@ class ProductListCard extends React.Component {
                         <div className="d-flex justify-content-center price-text">Precio desde:</div>
                         <div className="d-flex justify-content-center price">
                             <span>{this.props.formatCurrency(entity.active_registry.offer_price)}</span>
-                            <img className="product-card-retailer" alt="retailer logo" src={`${settings.path}/logo-${store.name.toLowerCase().replace(' ', '_')}.png`}/>
+                            {storeLogo &&
+                            <img className="product-card-retailer"
+                                 alt="retailer logo"
+                                 src={`${settings.path}/logos/${storeLogo}`}/>
+                            }
                         </div>
                         {referencePrice ?
                             <div className="d-flex justify-content-center old-price">
