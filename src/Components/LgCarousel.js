@@ -80,7 +80,7 @@ class LgCarousel extends React.Component {
         let bannersRoute = isMobile()? '/banners/mobile/' : '/banners/desktop/';
         bannersRoute = settings.path + bannersRoute;
 
-        return <Container><div className="slider-limits">
+        return <Container className="banners-container"><div className="slider-limits">
             <div className="slider-container">
                 <Slider {...sliderSettings} beforeChange={this.handleBeforeChange} afterChange={this.handleAfterChange}>
                     {banners.map((banner, idx) => {

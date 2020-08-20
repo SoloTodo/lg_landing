@@ -162,9 +162,14 @@ class Category extends React.Component {
                 productPosition={productOverlayPosition}
                 toggleDetailOverlayOpen={this.toggleDetailOverlayOpen}
                 detailOverlayOpen={this.state.detailOverlayOpen}/>
-            <div className="content-container">
+            <div className="cut-container"/>
+            <div className="category-buttons-container">
                 <Container>
                     <LgCategoryButtons/>
+                </Container>
+            </div>
+            <div className="content-container">
+                <Container>
                     {filters &&
                     <FilterAndOrderButtons
                         toggleOrderModalOpen={this.toggleOrderModalOpen}

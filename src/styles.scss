@@ -151,6 +151,8 @@ body {
 }
 
 /* Slider / Carousel */
+.banners-container {
+}
 
 .slider-limits {
   height: 184px;
@@ -406,12 +408,27 @@ body {
 }
 
 /* Content */
+.cut-container {
+  position: relative;
+  background-color: #F8F8F8;
+  padding-top: 220px;
+  clip-path: polygon(0 13px, 0 100%, 100% 100%, 100% 0);
+}
+
+.category-buttons-container {
+  position: relative;
+  background-color: #F8F8F8;
+  padding-top:8px;
+  padding-bottom: 8px;
+
+}
 
 .content-container {
+  position: relative;
   background: #F8F8F8;
-  padding-top: 220px;
+  padding-top: 0;
   padding-bottom: 122px;
-  clip-path: polygon(0 13px, 0 100%, 100% 100%, 100% 0);
+
 }
 
 .content-container.search {
