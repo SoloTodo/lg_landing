@@ -156,12 +156,13 @@ class Register extends React.Component {
             />
             <Modal centered isOpen={this.state.successModalOpen}>
                 <ModalBody className="d-flex flex-column align-items-center">
-                    <p className="register-end-text"><b>¡Gracias por registrarte!</b> <br/> El día del Cyber te haremos llegar nuestras mejores ofertas.</p>
-                    <a href="https://www.lg.com/cl" className="btn btn-success register-end-button">Ir a LG</a>
+                    <p className="register-end-text"><b>¡Registro Exitoso!</b> <br/>
+                    Prepárate para recibir, este 31 de agosto, desde las 00:00 hrs, nuestras mejores ofertas.</p>
+                    <a href="https://www.lg.com/cl" className="btn btn-success register-end-button">Volver a LG.com</a>
                 </ModalBody>
             </Modal>
-            <Card>
-                <CardHeader className="register-card-container d-flex justify-content-center">
+            <Card className="register-card-container">
+                <CardHeader className="register-card-header d-flex justify-content-center">
                     <div className="register-card d-flex justify-content-center align-items-center">
                         <div className="d-flex flex-column align-items-center justify-content-center">
                             <img className="register-image" src={Logo} alt="LG logo"/>
@@ -172,7 +173,7 @@ class Register extends React.Component {
                     </div>
                 </CardHeader>
                 <CardBody>
-                    <p className="register-content-text pt-2 pb-2">Ya llega <strong>Cyberday</strong> y <strong>LG</strong> tiene las mejores ofertas para ti. Se el primero en comprar saltándote la fila, ingresa tus datos y listo!</p>
+                    <p className="register-content-text pt-2 pb-2">Inscríbete, ahorra tiempo y sé el primero en recibir las ofertas de LG en Cyber. Además, estarás participando en el sorteo de un parlante portátil bluetooth LG XBOOM Go PL5.</p>
                     <Form>
                         <Input
                             invalid={this.state.invalidOptions.includes('firstName')}
@@ -229,7 +230,7 @@ class Register extends React.Component {
                             </Label>
                         </FormGroup>
                         <p className="register-content-message">Estos servicios son para mayores de 18 años</p>
-                        <div className="d-flex justify-content-center">
+                        <div className="d-flex justify-content-center register-button-container">
                             <Button className="register-button  mt-3" type="button" onClick={this.submit}>Enviar</Button>
                         </div>
                     </Form>

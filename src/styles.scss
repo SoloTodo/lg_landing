@@ -1207,6 +1207,7 @@ body {
   background: black;
   width: 100%;
   height: 100%;
+  padding: 0;
 }
 
 .register-iframe {
@@ -1218,7 +1219,7 @@ body {
   height: 100%
 }
 
-.register-card-container {
+.register-card-header {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -1227,6 +1228,11 @@ body {
 
 .register-container .card {
   max-width: 500px;
+  overflow: auto;
+}
+
+.register-container .card .card-body {
+  padding-bottom: 0;
 }
 
 .register-card {
@@ -1277,6 +1283,10 @@ body {
   padding-top: 10px;
   padding-left: 25px;
   border-color: black;
+}
+
+.register-button-container {
+  padding-bottom: 20px;
 }
 
 .register-button {
