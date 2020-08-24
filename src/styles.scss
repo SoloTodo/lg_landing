@@ -1311,6 +1311,14 @@ body {
   background-color: #BF0C3F;
 }
 
+.register-end-button:active {
+  background-color: #BF0C3F !important;
+}
+
+.register-end-button:focus {
+  background-color: #BF0C3F !important;
+}
+
 .register-end-text {
   font-size: 23px;
   text-align: center;

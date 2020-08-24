@@ -48,7 +48,7 @@ class Layout extends React.Component{
         const pageCategory = pathToPageCategoryDict[path];
         const params = {}
 
-        params['page_path'] = path
+        params['page_path'] = `${path}${search}`
         const pageUrl = `https://www.lg.com/cyber${path}${search}`
         params['page_location'] = pageUrl
 
