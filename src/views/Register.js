@@ -168,12 +168,12 @@ class Register extends React.Component {
                             <img className="register-image" src={Logo} alt="LG logo"/>
                             <h1 className="register-title">CYBERDAY LG</h1>
                             <span className="register-text">APROVECHA TU TIEMPO</span>
-                            <span className="register-text">Y <b>#SALTATELAFILA</b></span>
+                            <span className="register-text">Y <b>#SÁLTATELAFILA</b></span>
                         </div>
                     </div>
                 </CardHeader>
                 <CardBody>
-                    <p className="register-content-text pt-2 pb-2">Inscríbete, ahorra tiempo y sé el primero en recibir las ofertas de LG en Cyber. Además, estarás participando en el sorteo de un parlante portátil bluetooth LG XBOOM Go PL5.</p>
+                    <div className="register-content-text pt-2"><p>Inscríbete, ahorra tiempo y sé el primero en recibir las ofertas de LG en Cyber.</p><p>Además, estarás participando en el sorteo de un parlante portátil bluetooth LG XBOOM Go PL5.</p></div>
                     <Form>
                         <Input
                             invalid={this.state.invalidOptions.includes('firstName')}

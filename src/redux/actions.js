@@ -1,7 +1,7 @@
 import { fetchJson } from '../react-utils/utils';
 
 export const loadRequiredProducts = dispatch => {
-  let endPointUrl = `microsite/brands/1/site_data/?`;
+  let endPointUrl = `microsite/brands/1/site_data/?v=2&`;
 
   return fetchJson(endPointUrl).then(values => {
       const productEntries = [];
@@ -15,6 +15,7 @@ export const loadRequiredProducts = dispatch => {
           productEntries.push({
               product: productEntry.product,
               metadata: productEntry.metadata,
+              keywords: productEntry.keywords,
               entities,
           })
       }

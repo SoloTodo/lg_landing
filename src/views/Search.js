@@ -41,7 +41,7 @@ class Search extends React.Component {
 
         const options = {
             keys: [
-                "product.keywords",
+                "keywords",
             ],
             threshold: 0.1,
             distance: 10000,
