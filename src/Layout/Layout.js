@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
 import scrollToComponent from 'react-scroll-to-component';
 
 import Header from "./Header";
@@ -127,10 +127,15 @@ class Layout extends React.Component{
     render() {
         const isRegister = this.props.location.pathname === '/register';
 
+        // TODO: Remove when cyber starts
+        if (!isRegister) {
+            return <Redirect to='register'/>
+        }
+
         return <React.Fragment>
-            <CookiesMessage/>
             {isRegister? null:
                 <React.Fragment>
+                    <CookiesMessage/>
                     <Sidebar isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen}/>
                     <Header isOpen={this.state.isOpen} toggleSidebarOpen={this.toggleSidebarOpen} ref={(e) => { this.header = e; }}/>
                 </React.Fragment>
