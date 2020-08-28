@@ -8,11 +8,11 @@ import Footer from "./Footer";
 import routes from "./routes";
 import CookiesMessage from "../Components/CookiesMessage";
 import {settings} from "../settings";
+import PromotorVirtual from "../Components/PromotorVirtual";
 
 
 class Layout extends React.Component{
     componentDidMount() {
-        window.LiveChatWidget.call('hide');
         this.registerPageView();
     }
 
@@ -29,6 +29,7 @@ class Layout extends React.Component{
             '/televisores': 'Televisores',
             '/lavadoras': 'Lavadoras y Secadoras',
             '/celulares': 'Celulares',
+            '/audio': 'Audio',
             '/refrigeradores': 'Refrigeradores',
             '/monitores': 'Monitores',
             '/proyectores': 'Proyectores',
@@ -38,6 +39,7 @@ class Layout extends React.Component{
             '/televisores': 'PLP',
             '/lavadoras': 'PLP',
             '/celulares': 'PLP',
+            '/audio': 'PLP',
             '/refrigeradores': 'PLP',
             '/monitores': 'PLP',
             '/proyectores': 'PLP',
@@ -129,7 +131,7 @@ class Layout extends React.Component{
 
         // TODO: Remove when cyber starts
         if (!isRegister) {
-            return <Redirect to='register'/>
+            // return <Redirect to='register'/>
         }
 
         return <React.Fragment>
@@ -150,6 +152,8 @@ class Layout extends React.Component{
                         name={route.name}
                         render={route.render}/>})}
             </Switch>
+
+            <PromotorVirtual />
             <Footer footerButtonClick={this.footerButtonClick}/>
         </React.Fragment>
     }

@@ -12,15 +12,16 @@ import navigation from "../../Layout/_nav";
 
 class CategoryButtonsMobile extends React.Component {
     render() {
-
         const pathname = this.props.location.pathname;
-        let selectedItem = null;
+        let selectedItem = navigation.items[0];
 
-        for (const idx in navigation.items) {
-            if (navigation.items[idx].url === pathname) {
-                selectedItem = navigation.items[idx]
+        for (const item of navigation.items) {
+            if (item.url === pathname) {
+                selectedItem = item
             }
         }
+
+        const dropdownLabel = selectedItem.url === '/' ? 'VER CATEGORIAS' : selectedItem.button_name
 
         const items = navigation.items.filter(item => {
             return item.button
@@ -29,28 +30,17 @@ class CategoryButtonsMobile extends React.Component {
         return <div className="d-flex justify-content-center mt-2 mb-3">
             <UncontrolledButtonDropdown>
                 <DropdownToggle caret className="slider-button">
-                    {selectedItem.button_name}
+                    {dropdownLabel}
                 </DropdownToggle>
                 <DropdownMenu className="mobile-category-menu">
                     {items.map(item => {
-                        return <CategoryLink key={item.button_name} to={item.url} className="dropdown-item mobile-category-option d-flex justify-content-center" >
+                        return <CategoryLink key={item.url} to={item.url} className="dropdown-item mobile-category-option d-flex justify-content-center" >
                             {item.button_name}
                         </CategoryLink>
                     })}
                 </DropdownMenu>
             </UncontrolledButtonDropdown>
         </div>
-
-        // return <Slider {...sliderSettings} className="slider-buttons">
-        //     {
-        //         items.map(item => {
-        //             const isSelected = item.url === pathname;
-        //             return <CategoryLink to={item.url} key={item.url} className={classNames('slider-button d-flex justify-content-center align-items-center', {selected:isSelected})}>
-        //                 {item.button_name}
-        //             </CategoryLink>
-        //         })
-        //     }
-        // </Slider>
     }
 }
 

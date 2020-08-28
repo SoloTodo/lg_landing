@@ -10,7 +10,15 @@ export default {
             name: 'TELEVISORES',
             button: true,
             button_name: 'TELEVISORES',
+            button_parent_name: 'TV & AUDIO',
             url: '/televisores'
+        },
+        {
+            name: 'AUDIO',
+            button: true,
+            button_name: 'AUDIO',
+            button_parent_name: 'TV & AUDIO',
+            url: '/audio',
         },
         {
             name: 'LAVADORAS',
@@ -33,7 +41,6 @@ export default {
             button_name: 'CELULARES',
             url: '/celulares',
         },
-
         {
             name: 'MONITORES',
             button: true,

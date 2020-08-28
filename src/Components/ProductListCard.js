@@ -27,6 +27,7 @@ class ProductListCard extends React.Component {
             '/televisores': 'PLP',
             '/lavadoras': 'PLP',
             '/celulares': 'PLP',
+            '/audio': 'PLP',
             '/refrigeradores': 'PLP',
             '/monitores': 'PLP',
             '/proyectores': 'PLP',
@@ -107,7 +108,8 @@ class ProductListCard extends React.Component {
             11: 'Televisores',
             15: 'Refrigeradores',
             4: 'Monitores',
-            31: 'Proyectores'
+            31: 'Proyectores',
+            25: 'Audio'
         }
 
         // TODO: Badges
@@ -118,7 +120,7 @@ class ProductListCard extends React.Component {
 
         const store = this.props.stores.filter(store => store.url === entity.store)[0];
         const storeLogo = settings.storeIcons[store.id]
-        const pictureSide = isMobile()? 600 : 300;
+        const pictureSide = isMobile()? 600 : 301;
 
         return <Card className="product-card">
             <CardBody>
@@ -130,8 +132,8 @@ class ProductListCard extends React.Component {
                     <div className="d-flex product-card-name justify-content-center align-items-center">
                         {metadata.subtitle?
                             <div className="d-flex flex-column align-items-center product-title">
-                                <h2 className="d-flex align-items-start">{metadata.title}</h2>
-                                <span><ReactMarkdown source={metadata.subtitle}/></span>
+                                <h2>{metadata.title}</h2>
+                                <div className="text-center"><ReactMarkdown source={metadata.subtitle}/></div>
                             </div>:
                             <h2 className="d-flex align-items-center">{metadata.title}</h2>}
                     </div>

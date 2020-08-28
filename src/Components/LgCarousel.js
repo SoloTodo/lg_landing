@@ -38,6 +38,7 @@ class LgCarousel extends React.Component {
             '/televisores': 'Televisores',
             '/lavadoras': 'Lavadoras y Secadoras',
             '/celulares': 'Celulares',
+            '/audio': 'Audio',
             '/refrigeradores': 'Refrigeradores',
             '/monitores': 'Monitores',
             '/proyectores': 'Proyectores',

@@ -107,11 +107,11 @@ class Category extends React.Component {
         const categoryProducts = this.props.productEntries.filter(productEntry => {
             const productCategory = this.props.categories.filter(category => category.url === productEntry.product.category)[0]
 
-            if (!currentCategoryId) {
+            if (currentCategoryId) {
+                return currentCategoryId === productCategory.id && productEntry.metadata.ordering
+            } else {
                 return productEntry.metadata.home_ordering
             }
-
-            return currentCategoryId === productCategory.id
         });
 
         let filteredProducts = categoryProducts.slice();

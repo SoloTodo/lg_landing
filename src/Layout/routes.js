@@ -6,6 +6,7 @@ import Register from "../views/Register";
 const routes = [
     { path: '/', exact: true, name: 'Inicio', render: props => <Category {...props}/> },
     { path: '/celulares', exact: true, name: 'Celulares', render: props => <Category {...props} categoryId={6}/> },
+    { path: '/audio', exact: true, name: 'Audio', render: props => <Category {...props} categoryId={25}/> },
     { path: '/lavadoras', exact: true, name: 'Lavadoras', render: props => <Category {...props} categoryId={19}/> },
     { path: '/televisores', exact: true, name: 'Televisores', render: props => <Category {...props} categoryId={11}/> },
     { path: '/refrigeradores', exact: true, name: 'Refrigeradores', render: props => <Category {...props} categoryId={15}/> },

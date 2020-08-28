@@ -8,7 +8,7 @@ import {
 import { ToastContainer, toast } from 'react-toastify';
 import {fetchJson} from "../react-utils/utils";
 
-import Logo from '../logo.svg';
+import header from '../register_header.png'
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -25,6 +25,11 @@ class Register extends React.Component {
             invalidOptions: [],
             successModalOpen: false,
         }
+    }
+
+    componentDidMount() {
+        window.LiveChatWidget.call('destroy');
+        document.getElementById('promotor_lg_mobile').style.visibility = 'hidden';
     }
 
     submit = () => {
@@ -162,18 +167,10 @@ class Register extends React.Component {
                 </ModalBody>
             </Modal>
             <Card className="register-card-container">
-                <CardHeader className="register-card-header d-flex justify-content-center">
-                    <div className="register-card d-flex justify-content-center align-items-center">
-                        <div className="d-flex flex-column align-items-center justify-content-center">
-                            <img className="register-image" src={Logo} alt="LG logo"/>
-                            <h1 className="register-title">CYBERDAY LG</h1>
-                            <span className="register-text">APROVECHA TU TIEMPO</span>
-                            <span className="register-text">Y <b>#SÁLTATELAFILA</b></span>
-                        </div>
-                    </div>
+                <CardHeader className="register-card-header justify-content-center">
+                    <img src={header} alt="LG Cyber" className="img-fluid" />
                 </CardHeader>
                 <CardBody>
-                    <div className="register-content-text pt-2"><p>Inscríbete, ahorra tiempo y sé el primero en recibir las ofertas de LG en Cyber.</p><p>Además, estarás participando en el sorteo de un parlante portátil bluetooth LG XBOOM Go PL5.</p></div>
                     <Form>
                         <Input
                             invalid={this.state.invalidOptions.includes('firstName')}

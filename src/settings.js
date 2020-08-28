@@ -5,7 +5,7 @@ export const settings = {
     ...apiSettings,
     country: 1,
     currency: apiSettings.endpoint + 'currencies/1/',
-    path: '/cl/cyber',
+    path: '/cl/cyber_test',
     websiteId: 12,
     micrositeBrandId: 1,
     analyticsId: 'UA-137962556-3',
@@ -95,10 +95,12 @@ export const settings = {
                 name: 'Eficiencia energética',
                 key: 'energy_efficiency_unicode'
             }
-        ]
+        ],
+        25: []
     },
 
     categorySpecs: {
+        25: [],
         31: [
             {name: "Resolución", key: "resolution_unicode"},
             {name: "Brillo (lúmenes)", key: "brightness"},
@@ -195,30 +197,62 @@ export const settings = {
     ],
     banners: [
         {
-            id: "Q60",
-            src: "1.jpg",
-            type: "div",
-            actionName: "setModalProduct",
-            actions: [setModalProduct(63424)]
-        },
-        {
-            id: "Oled",
-            src: "2.jpg",
+            id: "TV",
+            src: "tv.jpg",
             type: "actionLink",
             url: "/televisores",
             actionName: "initializeFilters",
             actions: [
-                initializeFilters(11),
-                toggleFilter('Panel', {option: "OLED"}),
                 setScroll(true)
             ]
         },
         {
-            id: "Test",
-            src: "3.jpg",
-            type: "link",
-            url: "/"
-        }
+            id: "Refrigeradores",
+            src: "refrigeracion.jpg",
+            type: "actionLink",
+            url: "/refrigeradores",
+            actionName: "initializeFilters",
+            actions: [
+                setScroll(true)
+            ]
+        },
+        {
+            id: "Lavadoras",
+            src: "lavadoras.jpg",
+            type: "actionLink",
+            url: "/lavadoras",
+            actionName: "initializeFilters",
+            actions: [
+                setScroll(true)
+            ]
+        },
+        {
+            id: "Celulares",
+            src: "celulares.jpg",
+            type: "actionLink",
+            url: "/celulares",
+            actionName: "initializeFilters",
+            actions: [
+                setScroll(true)
+            ]
+        },
+        {
+            id: "Monitores",
+            src: "monitores.jpg",
+            type: "actionLink",
+            url: "/monitores",
+            actionName: "initializeFilters",
+            actions: [
+                setScroll(true)
+            ]
+        },
+        // {
+        //     id: "Q60",
+        //     src: "1.jpg",
+        //     type: "div",
+        //     actionName: "setModalProduct",
+        //     actions: [setModalProduct(63424)]
+        // },
     ],
     storeBadges: {
         // 18: [
@@ -244,7 +278,8 @@ export const settings = {
         45: ['categoria_unicode'],
         50: ['type_unicode'],
         4: ['size_unicode', 'panel_type_unicode'],
-        31: ['resolution_unicode', 'brightness']
+        31: ['resolution_unicode', 'brightness'],
+        6: [],
     },
     storeIcons: {
         4: "bip.png",
