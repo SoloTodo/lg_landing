@@ -7,7 +7,7 @@ import CategoryButtonsDesktop from "./Desktop/CategoryButtonsDesktop";
 
 class LgCategoryButtons extends React.Component {
     render() {
-        return isMobile()?
+        return window.innerWidth < 992?
             <CategoryButtonsMobile/>:
             <CategoryButtonsDesktop/>
     }

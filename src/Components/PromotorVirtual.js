@@ -3,7 +3,9 @@ import image from './PromotorVirtual.png'
 
 class PromotorVirtual extends React.Component {
     componentDidMount() {
-        window.LiveChatWidget.call('hide');
+        if (window.innerWidth < 768) {
+            window.LiveChatWidget.call('hide');
+        }
     }
 
     handleClick = evt => {
