@@ -5,7 +5,7 @@ export const settings = {
     ...apiSettings,
     country: 1,
     currency: apiSettings.endpoint + 'currencies/1/',
-    path: '/cl/cyber_test',
+    path: '/cl/cyber',
     websiteId: 12,
     micrositeBrandId: 1,
     analyticsId: 'UA-137962556-3',
